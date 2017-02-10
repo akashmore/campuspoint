@@ -1,0 +1,262 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:none;
+}
+
+a{ 
+	text-decoration: none; 
+}
+
+body {
+	background-color:#222;
+}
+
+
+/* wrapper for component */
+.componentWrapper{
+	position:relative;
+	max-width:903px;
+	max-height:509px;
+	margin-top:5px;
+	
+}
+
+/* flash preview embed */
+.componentWrapper #flashPreview{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	outline:none;
+	display:none;
+}
+
+
+
+
+
+/* playlist holder */	
+.componentWrapper .playlistHolder{
+	width:100%;
+	height:100%;
+	background:#222;
+	overflow:hidden;
+}
+
+.componentWrapper .componentPlaylist{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+
+.componentWrapper .playlist_inner{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+
+.componentWrapper .playlist_content{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+
+/* playlist data remains hidden! */
+.componentWrapper .playlistData{
+	display:none;
+}
+
+
+
+
+
+/* playlist items */	
+.componentWrapper .playlistNonSelected{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:300px;
+	height:169px;
+	background:#111;
+	list-style:none;
+	
+	margin-right:1px;
+	margin-bottom:1px;
+	float:left;
+}
+
+.componentWrapper .playlistSelected{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:300px;
+	height:169px;
+	background:#111;
+	list-style:none;
+	
+	margin-right:1px;
+	margin-bottom:1px;
+	float:left;
+}
+
+/* div which will hold the preview video. Also holds thumb image and preview video preloader. */
+.componentWrapper .playlistThumb {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:300px;
+	height:169px;
+	background:#111;
+	overflow:hidden;
+}
+
+/* thumb image inside playlistThumb div. Needs to have class of thumb to distinguish between img preloader */
+.componentWrapper .thumb{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:block;
+	width:300px;
+	height:169px;
+	
+	/* hide thumbs on beginning */
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+/* video preview holder */
+.componentWrapper .thumb_vid{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:block;
+	width:300px;
+	height:169px;
+}
+
+/* youtube thumb inside playlistThumb div */
+.componentWrapper .thumb_yt{
+	position:relative;
+	top:0px;
+	left:0px;
+	display:block;
+	width:300px;
+	height:169px;
+	
+	/* hide thumbs on beginning */
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+/* youtube iframe preview holder */
+.componentWrapper .youtubeIframePreview{
+	position:absolute;
+	top:0px;
+	left:0px;
+	/*size same as the playlist thumb!*/
+	width:300px;
+	height:169px;
+	opacity:0.01;/*safari fix*/
+}
+
+/* blocks click on yt iframe! */
+.componentWrapper .yt_overlay_blocker{
+	position:absolute;
+	top:0px;
+	left:0px;
+	/*size same as the playlist thumb!*/
+	width:300px;
+	height:169px;
+	/*background:green;*/
+	opacity:0;
+}
+
+.componentWrapper #flashPreviewHolder{
+	position:absolute;
+	top:0px;
+	left:0px;
+	/*size same as the playlist thumb!*/
+	width:300px;
+	height:169px;
+}
+
+.componentWrapper .thumbPreloader{
+	position:absolute;
+	width:16px;
+	height:11px;
+	top:50%;
+	left:50%;
+	margin-left:-8px;
+	margin-top:-6px;
+	display:none;
+}
+
+
+
+
+
+/* logo */
+.componentWrapper .playerLogo{
+	position:absolute;
+	width:86px;
+	height:40px;
+	top:10px;
+	left:10px;
+}
+
+
+
+/* prettyphoto content */
+.componentWrapper #inline-1,
+.componentWrapper #inline-2{
+	display:none;
+}
+
+
+
+
+
+
+/* public functions */	
+#publicFunctions{
+	position: absolute;
+	padding: 10px 25px 20px 20px;
+	background:#555;
+	left:50px;
+	top:50px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color:#fff;
+	list-style:circle;
+	
+	-moz-box-shadow: 2px 2px 5px #222;
+	-webkit-box-shadow: 2px 2px 5px #222;
+	box-shadow: 2px 2px 5px #222;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222');
+	
+	display:none;
+}
+
+#publicFunctions li a{
+	color:#fff;
+}
+
+#publicFunctions li a:hover, #publicFunctions li .current{
+	text-decoration: underline;
+}

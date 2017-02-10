@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>HTML5 Video Gallery With Live Playlist</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/videoGallery_widget.css" />
+        <!--[if lte IE 8 ]><link rel="stylesheet" type="text/css" href="css/ie_below_9.css" /><![endif]-->
+        
+        <script type="text/javascript" src="js/swfobject.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.dotdotdot-1.5.1.js"></script>
+        <script type="text/javascript" src="js/jquery.address.js"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="http://www.youtube.com/player_api"></script> 
+        <script type="text/javascript" src="js/jquery.apPlaylistManager.min.js"></script>
+        <script type="text/javascript" src="js/jquery.apYoutubePlayer.min.js"></script>
+        <script type="text/javascript" src="js/jquery.vg.settings_widget.js"></script>
+        <script type="text/javascript" src="js/jquery.func.js"></script>
+        <script type="text/javascript" src="js/jquery.vg.func.js"></script>
+		<script type="text/javascript" src="js/jquery.videoGallery.min.js"></script>
+	
+  </head>
+  <body>  
+  
+  		<div id="mainWrapper">
+  
+    	<div class="componentWrapper">
+        
+        	 <!-- player part -->
+             <div class="playerHolder">
+             	 <!-- local video holder -->
+                 <div class="mediaHolder"></div>
+                 
+                 <!-- youtube main iframe holder -->
+                 <div class="youtubeIframeMain"></div>
+                 
+                 <!-- flash local main --> 
+                 <div id="flashMain">
+                     <a href="http://www.adobe.com/go/getflashplayer">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                     </a>
+                 </div>
+                 
+                 <!-- preview image --> 
+                 <div class="mediaPreview"></div>
+                 
+                 <!-- preloader for local video -->
+                 <div class="preloader"></div> 
+                 
+                 <!-- player logo -->
+    	 		 <div class="playerLogo"><a href='http://www.flashtuning.net/' target='_blank'><img src="data/logo.png" alt="player_logo" width="86" height="40"/></a></div>
+                 
+                 <!-- big play button -->
+             	 <div class="big_play"><img src='data/icons/big_play3.png' width='76' height='76' alt='big_play'/></div>
+                 
+             </div>
+             <!-- playlist part -->
+             <div class="playlistHolder">
+            
+                 <div class="componentPlaylist">
+                 
+                 	 <!-- playlist items will be appended here! -->
+                     <div class="playlist_inner"><div class="playlist_content"></div></div>
+                     
+                     <!-- flash mini preview -->
+                     <div id="flashPreviewHolder">
+                         <div id="flashPreview">
+                             <a href="http://www.adobe.com/go/getflashplayer">
+                                <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                             </a>
+                         </div>
+                     </div>
+                    
+                     <!-- youtube iframe preview holder -->
+                     <div class="youtubeIframePreview"></div>
+                     
+                 </div>
+                 
+                 <div class="thumbBackward"></div>	
+            	 <div class="thumbForward"></div>
+                 
+             </div>
+             
+             <!-- advance btns --> 
+             <div class="player_adv">
+                 <div class="player_prev"><img src='data/icons/w_prev.png' width='29' height='21' alt='player_prev'/></div>
+                 <div class="player_next"><img src='data/icons/w_next.png' width='29' height='21' alt='player_next'/></div>
+             </div>
+             
+             <!-- this just holds the data, remains hidden! -->
+             <div class="playlistData">
+             
+             	  <!-- mixed playlist -->
+             	  <ul id='playlist0' data-address="playlist0">
+                     <li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/01.mp4' data-ogvPath='../media/video/1/main/01.ogv' data-webmPath='../media/video/1/main/01.webm' data-imagePath='../media/video/1/main/01.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Etiam fermentum luctus arcu. Curabitur vitae velit eget nisl ornare sollicitudin. Etiam vitae erat. Integer sapien. Vivamus non massa non est consequat pulvinar. Suspendisse accumsan interdum odio. Suspendisse egestas elit in metus. Nam faucibus. Aenean dictum. Nunc libero. Fusce tellus justo, sagittis sollicitudin, ultricies et, lacinia quis, diam. Vestibulum id nibh sed turpis laoreet blandit. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris consequat. Quisque leo erat, egestas quis, pellentesque eu, suscipit sit amet, sem. Proin dapibus enim id nibh. Fusce diam. Duis sagittis erat eget est. Nam pulvinar egestas elit. Quisque turpis nisl, ornare eu, ultrices eu, sodales sit amet, neque. Quisque id dui non mauris congue venenatis. Praesent cursus, ipsum sed hendrerit sollicitudin, lacus orci gravida orci, nec convallis tellus ligula vulputate risus. Phasellus arcu. Sed commodo sapien rutrum nulla. Donec dictum lectus vel purus. Cras massa nisi, ultrices nec, bibendum eu, mollis in, nibh. Fusce tempus, elit non egestas mattis, ligula neque tincidunt nisl, in aliquam neque dui ut diam. Pellentesque aliquam fermentum leo. Proin placerat sollicitudin nisi. Sed at diam eu nisl feugiat tempor. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/01.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     <li data-address="local2" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/02.mp4' data-ogvPath='../media/video/1/main/02.ogv' data-webmPath='../media/video/1/main/02.webm' data-imagePath='../media/video/1/main/02.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/02.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     
+                     <li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" ></li>
+                     <li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" ></li>
+
+					 <li data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PL18D7B402EBCEF582"></li> 
+                 </ul>
+
+				 <!-- local tracks -->
+                 <ul id='playlist1' data-address="playlist1">
+                     <li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/01.mp4' data-ogvPath='../media/video/1/main/01.ogv' data-webmPath='../media/video/1/main/01.webm' data-imagePath='../media/video/1/main/01.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Etiam fermentum luctus arcu. Curabitur vitae velit eget nisl ornare sollicitudin. Etiam vitae erat. Integer sapien. Vivamus non massa non est consequat pulvinar. Suspendisse accumsan interdum odio. Suspendisse egestas elit in metus. Nam faucibus. Aenean dictum. Nunc libero. Fusce tellus justo, sagittis sollicitudin, ultricies et, lacinia quis, diam. Vestibulum id nibh sed turpis laoreet blandit. Suspendisse porta, quam ac ultricies sagittis, libero nisi gravida sem, in convallis sem ante nec purus. Suspendisse in tellus vitae purus porttitor pharetra. Curabitur in ipsum. Fusce lobortis, ligula eu facilisis semper, arcu ipsum ornare lorem, ultricies tempor diam arcu vitae est. Aliquam non sapien. Phasellus quam. Praesent eu ligula id mauris tincidunt hendrerit. Fusce nec enim. Nam posuere. Morbi at ipsum vitae diam tempus mollis. Pellentesque sollicitudin condimentum neque. Sed auctor consequat lorem. Donec quis lacus fringilla augue venenatis vulputate. Duis lobortis consectetur libero. Aliquam erat volutpat. Etiam interdum bibendum purus. Vivamus id tellus et tellus dictum molestie. Nam sit amet arcu dictum mauris rhoncus tristique. Nunc rhoncus porta velit. 
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer tempor diam eu leo. Praesent leo. Morbi blandit, nulla non rhoncus dapibus, metus tellus posuere justo, et condimentum leo ante cursus libero. Vestibulum eu magna a metus pellentesque molestie. Nulla elementum iaculis velit. Nullam sit amet velit et sapien interdum accumsan. Vestibulum dapibus lectus quis orci. Mauris gravida sodales velit. Maecenas sollicitudin malesuada lacus. Morbi sollicitudin augue vel elit. Duis ipsum felis, fermentum id, iaculis id, fermentum et, velit. Ut ultricies. In nibh orci, euismod venenatis, vulputate ut, pharetra in, purus. Nam condimentum leo in nunc. Donec ut nisi vitae ante viverra imperdiet. Suspendisse in neque eu metus fermentum malesuada. Aliquam erat volutpat. Aenean nibh sem, varius vitae, facilisis sed, venenatis faucibus, neque. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris consequat. Quisque leo erat, egestas quis, pellentesque eu, suscipit sit amet, sem. Proin dapibus enim id nibh. Fusce diam. Duis sagittis erat eget est. Nam pulvinar egestas elit. Quisque turpis nisl, ornare eu, ultrices eu, sodales sit amet, neque. Quisque id dui non mauris congue venenatis. Praesent cursus, ipsum sed hendrerit sollicitudin, lacus orci gravida orci, nec convallis tellus ligula vulputate risus. Phasellus arcu. Sed commodo sapien rutrum nulla. Donec dictum lectus vel purus. Cras massa nisi, ultrices nec, bibendum eu, mollis in, nibh. Fusce tempus, elit non egestas mattis, ligula neque tincidunt nisl, in aliquam neque dui ut diam. Pellentesque aliquam fermentum leo. Proin placerat sollicitudin nisi. Sed at diam eu nisl feugiat tempor. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/01.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     <li data-address="local2" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/02.mp4' data-ogvPath='../media/video/1/main/02.ogv' data-webmPath='../media/video/1/main/02.webm' data-imagePath='../media/video/1/main/02.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/02.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     <li data-address="local3" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/03.mp4' data-ogvPath='../media/video/1/main/03.ogv' data-webmPath='../media/video/1/main/03.webm' data-imagePath='../media/video/1/main/03.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Mauris ullamcorper velit at metus. Aenean elementum malesuada neque. Vivamus urna. Duis auctor. Donec nec turpis nec sem volutpat pulvinar. Proin id dui sed mi dictum dictum. Aliquam erat volutpat. Nunc eget urna ut velit volutpat rhoncus. In blandit. Sed fermentum pharetra massa. Fusce imperdiet. Praesent consectetur, mauris vitae ultricies pretium, dui ante aliquam nibh, et molestie felis eros eu quam. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/03.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Sed commodo sapien rutrum nulla. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     <li data-address="local4" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/04.mp4' data-ogvPath='../media/video/1/main/04.ogv' data-webmPath='../media/video/1/main/04.webm' data-imagePath='../media/video/1/main/04.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Suspendisse ullamcorper tristique eros. Donec eros tellus, sagittis ac, mattis ac, aliquam quis, lacus. Sed risus risus, tristique id, fringilla suscipit, convallis eget, quam. Ut vel urna. Nullam vitae est. Sed ornare nisl eu ipsum. Maecenas sed sem. Duis lacus diam, mollis et, ornare et, bibendum quis, metus. Duis viverra. Donec mi purus, iaculis id, placerat congue, hendrerit nec, leo. Curabitur scelerisque nisl et mi aliquam rhoncus. Aliquam mollis tincidunt nulla. Vivamus at diam eu diam bibendum laoreet. In hac habitasse platea dictumst. Nunc vulputate est vitae lectus. Fusce quis massa eu sapien luctus vestibulum. Mauris pretium massa id quam. Proin hendrerit, arcu sed consequat egestas, diam nunc pretium urna, mollis commodo nisl erat eget neque. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/04.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Curabitur porta elementum arcu commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     <li data-address="local5" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/05.mp4' data-ogvPath='../media/video/1/main/05.ogv' data-webmPath='../media/video/1/main/05.webm' data-imagePath='../media/video/1/main/05.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/05.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Integer tellus justo, commodo in, tempor eu, urna. Nunc vulputate est vitae lectus.</span></p></div></li>
+                     <li data-address="local6" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/06.mp4' data-ogvPath='../media/video/1/main/06.ogv' data-webmPath='../media/video/1/main/06.webm' data-imagePath='../media/video/1/main/06.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/06.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Donec vel sapien ultrices lorem laoreet viverra. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     <li data-address="local7" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/07.mp4' data-ogvPath='../media/video/1/main/07.ogv' data-webmPath='../media/video/1/main/07.webm' data-imagePath='../media/video/1/main/07.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Suspendisse ullamcorper tristique eros. Donec eros tellus, sagittis ac, mattis ac, aliquam quis, lacus. Sed risus risus, tristique id, fringilla suscipit, convallis eget, quam. Ut vel urna. Nullam vitae est. Sed ornare nisl eu ipsum. Maecenas sed sem. Duis lacus diam, mollis et, ornare et, bibendum quis, metus. Duis viverra. Donec mi purus, iaculis id, placerat congue, hendrerit nec, leo. Curabitur scelerisque nisl et mi aliquam rhoncus. Aliquam mollis tincidunt nulla. Vivamus at diam eu diam bibendum laoreet. In hac habitasse platea dictumst. Nunc vulputate est vitae lectus. Fusce quis massa eu sapien luctus vestibulum. Mauris pretium massa id quam. Proin hendrerit, arcu sed consequat egestas, diam nunc pretium urna, mollis commodo nisl erat eget neque. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/07.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Maecenas eu erat condimentum neque molestie tincidunt. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                     <li data-address="local8" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/01.mp4' data-ogvPath='../media/video/1/main/01.ogv' data-webmPath='../media/video/1/main/01.webm' data-imagePath='../media/video/1/main/01.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/01.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</span></p></div></li>
+                     <li data-address="local9" class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/main/02.mp4' data-ogvPath='../media/video/1/main/02.ogv' data-webmPath='../media/video/1/main/02.webm' data-imagePath='../media/video/1/main/02.jpg' data-description="<span class='infoTitle'>Nulla mauris justo</span><br/><br/>Aenean egestas. Donec vel sapien ultrices lorem laoreet viverra. Curabitur molestie gravida nisi. Vivamus elementum scelerisque lectus. Etiam interdum, nisi vel adipiscing gravida, leo tortor placerat ipsum, a eleifend velit tortor id ligula. Etiam quis leo a velit mollis vestibulum. Morbi consequat, odio eget feugiat mollis, enim erat dignissim ipsum, eget vehicula sapien metus non massa. Aliquam aliquet sagittis ligula. Sed adipiscing sodales ipsum. Mauris orci ligula, commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum, gravida vitae, tristique sed, porttitor ac, ipsum. Maecenas elit lectus, elementum id, fermentum eget, accumsan ac, quam. Duis lacinia urna ac nisi. Cras bibendum. In hac habitasse platea dictumst. Morbi iaculis volutpat dui. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.flashtuning.net' target='_blank'>Link</a>"><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/02.jpg' width='120' height='68' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span><br><span class="playlistContent">Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.</span></p></div></li>
+                 </ul>
+                 
+                 <!-- single youtube tracks -->
+                 <ul id='playlist2' data-address="playlist2">
+                     <li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" ></li>
+                     <li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" ></li>
+                     <li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="NY-4XAQR_uk" ></li>
+                     <li data-address="youtube_single4" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="Ga3_ANRHoAI" ></li>
+                     <li data-address="youtube_single5" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="TmNEG8IFd_Y" ></li>
+                     <li data-address="youtube_single6" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="u8WQeJ2Ajes" ></li>
+                     <li data-address="youtube_single7" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="1jzApuEW0U4" ></li>
+                     <li data-address="youtube_single8" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="P3FKCwAL904" ></li>
+                     <li data-address="youtube_single9" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="ytuM8-09R-I" ></li>
+                 </ul>
+                 
+                 <!-- youtube playlist -->
+                 <ul id='playlist3' data-address="playlist3">
+                     <li data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PL18D7B402EBCEF582"></li> 
+                 </ul>
+                 
+                 <!-- local tracks xml -->
+                 <ul id='playlist4' data-address="playlist4">
+                     <li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/local.xml'/>
+                 </ul>
+                 
+                 <!-- single youtube tracks xml -->
+                 <ul id='playlist5' data-address="playlist5">
+                     <li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/youtube_single.xml'/>
+                 </ul>
+                 
+                 <!-- youtube playlist xml -->
+                 <ul id='playlist6' data-address="playlist6">
+                     <li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/youtube_playlist.xml'/>
+                 </ul>
+                 
+                 <!-- mixed playlist xml -->
+             	 <ul id='playlist7' data-address="playlist7">
+                     <li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/mixed.xml'/>
+                 </ul>
+                 
+                 <!-- folder playlist -->
+             	 <ul id='playlist8' data-address="playlist8">
+                     <li data-address="folder1_" class= "playlistNonSelected" data-type='folder' data-mp4Path='../media/video/1/'/>
+                 </ul>
+              
+             </div> 
+             </div>
+        </div>
+        
+        <!-- public api -->
+    	<div id='publicFunctions'>
+       		<p>PUBLIC METHODS</p><br/>
+            <ul>
+                <!-- play/stop active media -->
+                <li><a href='#' onClick="api_togglePlayback(); return false;">toggle playback</a></li>
+                
+                <!-- play next media -->
+                <li><a href='#' onClick="api_nextMedia(); return false;">Play next media</a></li>
+                
+                <!-- play previous media -->
+                <li><a href='#' onClick="api_previousMedia(); return false;">Play previous media</a></li>
+                
+                <!-- set volume (0-1) -->
+                <li><a href='#' onClick="api_setVolume(0.5); return false;">Set volume (0.5)</a></li>
+                
+                <!-- toggle playlist  -->
+                <li><a href='#' onClick="api_togglePlaylist(); return false;">toggle playlist</a></li>
+                
+                <!-- toggle description -->
+                <li><a href='#' onClick="api_toggleDescription(); return false;">toggle description</a></li>
+                
+                <!-- destroy media -->
+                <li><a href='#' onClick="api_destroyMedia(); return false;">destroy media</a></li>
+                
+                <!-- load media/playlist:
+                if useDeeplink: 
+                	pass deeplink url as string (single or two level).
+                    load playlist example (single level): jQuery.videoGallery.loadMedia('playlist0'), 
+                    load media example (two level): jQuery.videoGallery.loadMedia('playlist1/youtube_single1').
+                no Deeplink: 
+                	for media pass number, counting starts from 0,
+                    for playlist pass element 'id' attribute. 
+                    load playlist example: jQuery.videoGallery.loadMedia('playlist1'), 
+                    load media example: jQuery.videoGallery.loadMedia(3)-->
+                
+                <li><a href='#' onClick="api_loadMedia(1); return false;">load media 1</a></li>
+                <li><a href='#' onClick="api_loadMedia(2); return false;">load media 2</a></li>
+                <li><a href='#' onClick="api_loadMedia(3); return false;">load media 3</a></li>
+                <li><a href='#' onClick="api_loadMedia(4); return false;">load media 4</a></li>
+                <li><a href='#' onClick="api_loadMedia(5); return false;">load media 5</a></li>
+                
+                <li><a href='#' onClick="api_loadMedia('playlist1'); return false;">load playlist 1</a></li>
+                <li><a href='#' onClick="api_loadMedia('playlist2'); return false;">load playlist 2</a></li>
+                <li><a href='#' onClick="api_loadMedia('playlist3'); return false;">load playlist 3</a></li>
+                
+                <!-- if useLivePreview = true, call this to clean active preview item if needed -->
+                <li><a href='#' onClick="api_cleanPreviewVideo(); return false;">clean preview video</a></li>
+                
+            </ul>
+         </div>
+ 
+      </body>
+</html>

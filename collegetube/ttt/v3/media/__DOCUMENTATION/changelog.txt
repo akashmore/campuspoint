@@ -1,0 +1,66 @@
+HTML5 VIDEO GALLERY WITH LIVE PLAYLIST
+
+changelog:
+
+
+22.12.2013
+version 3.03
+changed autoplay to on after first play
+added click touch on video
+
+
+
+
+
+
+3.10.2013
+version 3.02
+<li>update to jquery 1.10.2</li>
+
+
+15.8.2013
+version 3.01
+<li>fixed youtube tooltip value</li>
+<li>playlist reordering and process important fix for mixed playlists</li>
+
+
+8.8.2013
+version 3.0
+<li>whole layouts made completely responsive</li>
+<li>other minor overall code imporvements</li>
+
+
+10.7.2013
+version 2.3
+<li>added XML playlist</li>
+<li>added folder playlist (automatically load videos from folders)</li>
+<li>added option to choose between ogv and webm video format</li>
+
+
+30.4.2013
+version 2.21
+<li>added youtube fullscreen button in all browsers</li>
+changes in apYoutubePlayer.js file:
+this.youtubeVideoIframe = $('<iframe/>', {
+		frameborder: 0,
+		src: videoIFrameSrc,
+		width: 100 + '%',
+		height: 100 + '%',
+		id: this._frameId,
+		webkitAllowFullScreen: true,
+		mozallowfullscreen: true,
+		allowFullScreen: true
+ });
+<li>added youtube option to play highest video quality available</li>
+changes in html page:
+/* useYoutubeHighestQuality: true/false (use highest available quality for youtube video, if false, then it set to default)  */
+useYoutubeHighestQuality:false,
+
+changes in videoGallery.js:
+var useYoutubeHighestQuality = settings.useYoutubeHighestQuality;
+
+var data={'autoPlay': yt_autoPlay, 'defaultVolume': defaultVolume, 
+'mediaPath': yt_mediaPath, 'youtubeHolder': youtubeHolder, 'youtubeChromeless': _youtubeChromeless, 
+'isMobile': isMobile, 'initialAutoplay': initialAutoplay, 'isIE':isIE, 'quality':useYoutubeHighestQuality};
+
+**************************************

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>HTML5 Video Gallery with Playlist</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/video.css">
+        
+        <script type="text/javascript" src="js/swfobject.js"></script>
+		<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+        <script type="text/javascript">jQuery.noConflict();</script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="js/jquery.videoGallery.min.js"></script>
+        <script type="text/javascript">
+		
+			var jsReady = false;//for flash/js communication
+		
+			// FLASH EMBED PART
+			var flashvars = {};
+			var params = {};
+			var attributes = {};
+			attributes.id = "flashPreview";
+			params.quality = "high";
+			params.scale = "noscale";
+			params.salign = "tl";
+			params.wmode = "transparent";
+			params.bgcolor = "#111";
+			params.devicefont = "false";
+			params.allowfullscreen = "true";
+			params.allowscriptaccess = "always";
+			swfobject.embedSWF("preview.swf", "flashPreview", "100%", "100%", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
+			
+			// FLASH EMBED PART
+			var flashvars2 = {};
+			var params2 = {};
+			var attributes2 = {};
+			attributes2.id = "flashMiniPreview";
+			params2.quality = "high";
+			params2.scale = "noscale";
+			params2.salign = "tl";
+			params2.wmode = "transparent";
+			params2.bgcolor = "#111";
+			params2.devicefont = "false";
+			params2.allowfullscreen = "true";
+			params2.allowscriptaccess = "always";
+			swfobject.embedSWF("preview2.swf", "flashMiniPreview", "100%", "100%", "9.0.0", "expressInstall.swf", flashvars2, params2, attributes2);
+			
+			//functions called from flash
+			function flashVideoEnd() {
+				jQuery.videoGallery.flashVideoEnd(); 
+			}
+			
+			function flashVideoStart() {
+				jQuery.videoGallery.flashVideoStart(); 
+			}
+			
+			function flashPreviewVideoStart() {
+				jQuery.videoGallery.flashPreviewVideoStart(); 
+			}
+			
+			function dataUpdateFlash(bl,bt,t,d) {
+				jQuery.videoGallery.dataUpdateFlash(bl,bt,t,d); 
+			}
+			
+			function toggleFlashPreview() {
+				jQuery.videoGallery.toggleFlashPreview(); 
+			}
+			
+			function flashVideoPause() {
+				jQuery.videoGallery.flashVideoPause(); 
+			}
+			
+			function flashVideoResume() {
+				jQuery.videoGallery.flashVideoResume(); 
+			}
+			
+			function isReady() {
+				return jsReady;
+			}
+			
+			function videoGallerySetupDone(){
+				//console.log('videoGallerySetupDone');
+			}
+			
+			function videoGalleryPlaylistEnd(){
+				//console.log('videoGalleryPlaylistEnd');
+			}
+			
+			// SETTINGS
+			var settings = {
+				/* activePlaylist: set active playlist that will be loaded on beginning (pass element 'id') */
+				activePlaylist: 'playlist1',
+				/*defaultVolume: 0-1 */
+				defaultVolume:0.7,
+				/*activeItem: 0 = first video, 1 = second video, 2 = third video etc... Enter -1 for none.  */
+				activeItem:0,
+				/*autoPlay: true/false */
+				autoPlay:false,
+				/*autoAdvanceToNextVideo: true/false */
+				autoAdvanceToNextVideo:false,
+				/*  autoHideControls: auto hide player controls on mouse out: true/false */
+				autoOpenDescription:false,
+				/*  useLivePreview: true/false (if thue, you need small videos for preview) */
+				useLivePreview: false,
+				/*  playlistOrientation: vertical/horizontal  */
+				playlistOrientation:'vertical',
+				/*  playlistType: line/grid  */
+				playlistType:'line',
+				/*  useRealFullscreen: true/false, otherwise 'full-window'.(html5 experimantal feature, still in development so it might change) */
+				useRealFullscreen:true,
+				
+				/*  special settings just for this file */
+				/*  innerPlaylist: true/false  */
+				innerPlaylist:true,
+				/*  togglePlaylistSide: */
+				togglePlaylistSide:'right',
+				/*  closePlaylistOnVideoSelect: true / false */
+				closePlaylistOnVideoSelect:true,
+				/*  autoOpenPlaylist: true/false  */
+				autoOpenPlaylist:false
+			};
+			
+			jQuery(window).load(function() {
+
+              jsReady = true;
+              jQuery.videoGallery('#componentWrapper', '#flashPreview', '#flashMiniPreview', settings);
+              settings = null;
+    	    });
+		
+        </script>
+	
+  </head>
+  <body>  
+  
+  <div class="holder">
+
+<div id="header">HTML5 Video Player with Playlist</div>
+
+ <div class="btn-holder"><a class="button" href="#">Vertical Playlist</a> <a  class="button" href="index2.html">Horizontal Playlist</a>  </div>
+  
+  		<!-- wrapper for the whole component -->
+    	<div id="componentWrapper">
+        
+
+        	 <!-- for video code -->
+             <div class="mediaWrapper">
+                 <div class="mediaHolder"></div>
+                   <!-- flash embed part --> 
+                 <div id="flashPreview">
+                     <a href="http://www.adobe.com/go/getflashplayer">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                     </a>
+                 </div>
+                 <!-- preview image --> 
+                 <div class="mediaPreview"></div>
+                      <div class="big_play">
+                        
+                      </div>
+                 
+                 <div class="playerControls">
+                      <a class="player_control player_play player_playControl">
+                        <span class="player_control_tooltip">Play / Pause</span>
+                      </a>
+                      <div class="seekbar player_seekbar">
+                          <div class="progress_bg seekbar_bg">
+                            <div class="load_level"></div>
+                            <div class="progress_level level"></div>
+                            
+                          </div>
+                      </div>
+                      <a class="player_control player_fullscreen">
+                        <span class="player_control_tooltip">Fullscreen</span>
+                      </a>
+                      <a class="player_control player_playlist">
+                        <span class="player_control_tooltip">Show Playlist</span>
+                      </a>
+                      <a class="player_control player_info">
+                        <span class="player_control_tooltip">Show Info</span>
+                      </a>
+                      <div class="player_control player_resolution">
+                        <a class="player_control resolution_hd inactive">
+                          <span class="player_control_tooltip">High Quality</span>
+                        </a>
+                        <a class="player_control resolution_sd active enabled">
+                          <span class="player_control_tooltip">Low Quality</span>
+                        </a>
+                      </div>
+                      <div class="player_control player_volume">
+                        <div class="volume_seekbar seekbar">
+                          <div class="volume_bg seekbar_bg">
+                            <div class="volume_level level"></div>
+                          </div>
+                        </div>
+                        <a class="player_volume_icon"></a>
+                        
+                      </div>
+                      <div class="player_mediaTime">0:00 / 0:00</div>
+                      <a class="player_control player_repeat">
+                        <span class="player_control_tooltip">Repeat</span>
+                      </a>
+                 </div>
+
+                 <!-- media description --> 
+             	 <div class="infoHolder"></div>
+                 
+                 <div class="playlistHolder">
+            
+                     <div class="componentPlaylist">
+                     
+<!--                         <div id="flashMiniPreview">
+                             <a href="http://www.adobe.com/go/getflashplayer">
+                                <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                             </a>
+                         </div>-->
+                     
+                         <!-- playlist_inner: container for scroll -->
+                         <div class="playlist_inner">
+                         
+                          <!--
+                          LIST OF PLAYLISTS. 
+                          All these playlist NEED to have 'display:none' in CSS on 'ul' element!
+                         
+                          data-width, data-height: width and height of video (OPTIONAL but recommended!)
+                           -->
+    
+                        <ul id='playlist1'>
+                                 <li class="playlistNonSelected"
+                                     data-path="media/1/main/01"
+                                     data-path-hd="media/1/main/01"
+                                     data-width="960"
+                                     data-height="536"
+                                     data-description="<span class='infoTitle'>Video Title 1</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"
+                                     >
+                                   <div class="playlistThumb">
+                                     <img class='thumb' src='media/1/thumb/01.jpg' width='32' height='32' alt=''/>
+                                   </div>
+                                   <div class='playlistTitle'>Video Title 1</div>
+                                   <div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div>
+                                 </li>
+                                 <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 2</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"> <div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 2</div>
+                                   <div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+								 
+								  <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 3</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 3</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+								  
+								    <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 4</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 4</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+                             
+							 		    <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 5</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 5</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+							 
+							 		    <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 6</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 6</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+								
+								 <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 7</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 7</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+								 
+								 <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 8</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 8</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+								 
+								 <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 9</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 9</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+								 
+								  <li class="playlistNonSelected" data-path="media/1/main/01" data-path-hd="media/1/main/01" data-width="960" data-height="536" data-description="<span class='infoTitle'>Video Title 10</span><br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.&nbsp;<a href='http://www.flashtuning.net' target='_blank'>hyperlink</a>"><div class="playlistThumb"><img class='thumb' src='media/1/thumb/01.jpg' width='120' height='76' alt=''/></div><div class='playlistTitle'>Video Title 10</div><div class="playlistContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum nibh sit amet libero adipiscing quis interdum magna rhoncus. Donec id mauris ligula, eu varius metus.</div></li>
+							 
+                             </ul>
+                            
+                           
+                         </div>
+                     </div>
+                 
+                 </div>
+                 
+             </div>
+
+        </div>
+
+
+  <div id="news">Latest news</div>
+		   <div class="row">
+		   <div class="hol">
+		   <div class="home-thumb">
+			<img src="img/n1.jpg"  alt="News" title="News" />	</div>
+			<h2 class="home-post-title">Feugiat lectus</h2>
+			<p>Sed blandit mattis nisi sit amet lobortis. Nulla mattis varius turpis, a feugiat lectus euismod et.</p>
+		   </div><!-- end hol -->
+		    <div class="hol">
+		   <div class="home-thumb">
+			<img src="img/n2.jpg"  alt="News" title="News" /></div>
+			<h2 class="home-post-title">Varius turpis</h2>
+			<p>Sed blandit mattis nisi sit amet lobortis. Nulla mattis varius turpis, a feugiat lectus euismod et.</p>
+		   </div><!-- end hol -->
+		    <div class="hol">
+		   <div class="home-thumb">
+			<img src="img/n3.jpg"  alt="News" title="News" /></div>
+			<h2 class="home-post-title">Nulla mattis</h2>
+			<p>Sed blandit mattis nisi sit amet lobortis. Nulla mattis varius turpis, a feugiat lectus euismod et. </p>
+		   </div><!-- end hol -->
+		    <div class="hol last">
+		   <div class="home-thumb">
+			<img src="img/n4.jpg"  alt="News" title="News" /></div>
+			<h2 class="home-post-title">Blandit mattis</h2>
+			<p>Sed blandit mattis nisi sit amet lobortis. Nulla mattis varius turpis, a feugiat lectus euismod et. </p>
+		   </div><!-- end hol -->
+		   </div>
+		   
+		   <div id="footer">
+		   <div id="copy">Copyright &copy; <a href="http://www.flashtuning.net">Flashtuning</a>. All rights reserved.</div>
+		   </div>
+
+</div><!--end holder-->
+   
+ 
+      </body>
+</html>

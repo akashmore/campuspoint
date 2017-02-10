@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>HTML5 Video Player with Playlist - Help</title>
+	<link rel="stylesheet" href="install.css" type="text/css" />
+</head>
+	
+	<body>
+   
+		<div class="wrapper">
+        <h1 id="top-title" style="text-align: center">HTML5 Video Player with Playlist - Help</h1>
+		<p style="text-align: center">by Flashtuning.net - <a href="http://www.flashtuning.net" title="Flashtuning">www.flashtuning.net</a></p>
+ 
+<p class="p-margin">Hi there,</p>
+<p>First of all, thank you for purchasing HTML5 Video Player with Playlist. Please take the time and read the instructions below. If you have any future question/problems send us an email at: <a href="mailto:contact@flashtuning.net">contact@flashtuning.net</a></p>
+
+<h1>Table of Contents</h1>
+<ol>
+<li>1. <a href="#p1">Getting Started</a></li>
+<li>2. <a href="#p2">Setup Video Player</a></li>
+</ol>
+
+<h1 id="p1">1. Getting Started</h1>
+<h3>Instalation</h3>
+<p>
+To start open index.html in any text editor. There are 2 sections (one in head tag and one in body tag) that you need to copy into your website. In the head tag you have links to stylesheets and javascript files, and the settings for the component. In the body part are the component elements.
+</p>
+<p>
+From both head and body section copy everything into your web page.
+</p>
+<h3>Edit jQuery file</h3>
+<p>
+If you need to edit the main jquery files (which hold javascript the code for the component), you will see it comes in 2 versions with the package: 'minified' and 'non-minified'.
+What this basically means is that minified version has all the empty spaces removed and some of the 'encryption' applied.
+Both is usefull in case someone takes your script from your online website, making it almost useless for any kind of editing at least.
+I suggest using minified version on your website.
+Ofcourse if you need to edit this file yourself, switch to non-minified version (from the source folder) and then when you finish editing you can minify the file yourself here:<a href="http://closure-compiler.appspot.com/home">http://closure-compiler.appspot.com/home</a>
+</p>
+<p>
+Its as simple as it gets, you just copy/paste content of the whole file in the left provided space, press 'COMPILE' and when its done copy/paste all content from the right window back to your file, overwritting all the content with the new (minified) one. You dont need to touch any of the options, just leave all default as it is.
+
+Minified files have .min extension in its name and non-minified dont!
+It doesnt have to be that way, its just a common practice, but its important note in case your paths get wrong. 
+</p>
+
+<h1 id="p2">2. Setup Video Player</h1>
+
+<strong>Playlist attributes</strong>
+<ul>
+<li> data-path: path to the main video (both mp4 and ogv files), main image preview (all these need to be named the same!)</li>
+<li> data-path-hd: in case you have a HD version insert it in this field</li>
+ <li> data-width: original width of the media</li>
+ <li>   data-height: original height of the media</li>
+<li>    data-description: media description (optional)</li>
+</ul>
+
+You will notice the paths to main video, and main video preview image do not have any extension! <strong>This is important.</strong>
+
+<p>
+Extension is added in the jquery code.
+Extension used for images (thumbnails or big images) is jpg.
+</p>
+<p>
+For videos you MUST have:
+</p>
+<ul>
+<li> video in mp4 format,</li>
+<li>video in ogv format,</li>
+<li>image with jpg extension.</li>
+</ul>
+
+<p><strong>and they all need to be called the same!</strong></p>
+
+So like this:
+<ul>
+<li>video_name.mp4</li>
+<li>video_name.ogv</li>
+<li>video_name.jpg</li>
+</ul>
+
+<p>Multiple video formats are neccesarry to cover all the browsers. Image is neccesarry for video autoplay off (mobile restrictions).
+<strong>Also make sure extensions are in lowercase!</strong>
+</p>
+<strong>'data-width' and 'data-height' attributtes are neccesarry for videos!</strong>
+
+
+</div> <!--end wrapper-->    

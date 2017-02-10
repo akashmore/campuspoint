@@ -1,0 +1,716 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:none;
+}
+
+a{ 
+	text-decoration: none; 
+}
+
+body {
+	background-color:#222;
+}
+
+#mainWrapper{
+}
+
+/* wrapper for component */
+.componentWrapper{
+	position:relative;
+	max-width:320px;
+	max-height:240px;
+}
+
+/* player holder */	
+.componentWrapper .playerHolder{
+	padding-top: 56.25%;
+	background:#111;
+}
+
+
+/* player holder fullscreen */
+.componentWrapper .playerHolder_fs{
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+	background:#111;
+} 
+
+
+/* media holders */	
+.componentWrapper .mediaHolder, 
+.componentWrapper .mediaPreview,
+.componentWrapper .youtubeIframeMain{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:none;
+}	
+
+/* flash main embed */
+.componentWrapper #flashMain{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	outline:none;
+	display:none;
+}	
+
+/* flash preview embed */
+.componentWrapper #flashPreview{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	outline:none;
+	display:none;
+}
+
+
+
+
+
+
+
+
+
+/* preloader for video */
+.componentWrapper .preloader{
+	position:absolute;
+	width:26px;
+	height:21px;
+	top:50%;
+	left:50%;
+	margin-left:-13px;
+	margin-top:-10px;
+	background: #111 url('../data/loading.gif') no-repeat center center; 
+    display: none;
+}
+
+
+
+
+
+/* player controls */
+.componentWrapper .playerControls{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	height:33px;
+	background-image: url('../data/bg.png'); 
+	background-repeat: repeat-x; 
+	display:none; 
+}
+
+/* pause,play */
+.componentWrapper .player_playControl{
+	position:absolute;
+	top:2px;
+	left:0px;
+	width:38px;
+	height:28px;
+	background:red;
+	margin-right:5px;
+}
+
+.componentWrapper .player_playControl img{
+	position:relative;
+	display:block;
+	top:6px;
+	left:18px;
+	width:12px;
+	height:14px;
+}
+
+/* player progress, serves as hit as well */
+.componentWrapper .player_seekbar{
+	position:absolute;
+	top:2px;
+	left:42px;
+	/* for hit */
+	width:375px;
+	height:28px;
+	background:green;
+	margin-right:5px;
+}
+
+.componentWrapper .progress_bg{
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:355px;
+	height:5px;
+	background:#333333;
+}
+
+.componentWrapper .load_level{
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:0px;
+	height:5px;
+	background:#ffffff;
+}
+
+.componentWrapper .progress_level{
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:0px;
+	height:5px;
+	background:#999;
+}
+
+/* progress tooltip */
+.componentWrapper .player_progress_tooltip{
+	position:absolute;
+	top:-15px;
+	width:75px;
+	height:18px;
+	background:#333;
+	display:none;
+	text-align:center;
+	
+	-moz-box-shadow: 1px 1px 1px #222;
+	-webkit-box-shadow: 1px 1px 1px #222;
+	box-shadow: 1px 1px 1px #222;
+}
+
+.componentWrapper .player_progress_tooltip p {
+    font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#ffffff;
+	margin:0;
+	line-height:18px;
+}
+
+/* media time */
+.componentWrapper .player_mediaTime{
+	position:absolute;
+	top:8px;
+	right:145px;
+	
+	color:#e5e5e5;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	
+	background:red;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+/* volume */
+.componentWrapper .player_volume{
+	position:absolute;
+	top:2px;
+	right:110px;
+	width:28px;
+	height:28px;
+	background:red;
+	margin-right:5px;
+}
+
+.componentWrapper .player_volume img{
+	position:relative;
+	display:block;
+	width:13px;
+	height:14px;
+	top:6px;
+	left:10px;
+}
+
+/* player volume, serves as hit as well */
+.componentWrapper .volume_seekbar{
+	position:absolute;
+	top:2px;
+	right:45px;
+	/* for hit */
+	width:60px;
+	height:28px;
+	background:green;
+	margin-right:5px;
+}
+
+.componentWrapper .volume_bg{
+	position:absolute;
+	top:10px;
+	left:5px;
+	width:50px;
+	height:5px;
+	background:#ffffff;
+}
+
+.componentWrapper .volume_level{
+	position:absolute;
+	top:10px;
+	left:5px;
+	width:0px;
+	height:5px;
+	background:#999;
+}
+
+/* volume tooltip */
+.componentWrapper .player_volume_tooltip{
+	position:absolute;
+	top:-15px;
+	width:35px;
+	height:18px;
+	background:#333;
+	display:none;
+	text-align:center;
+	
+	-moz-box-shadow: 1px 1px 1px #222;
+	-webkit-box-shadow: 1px 1px 1px #222;
+	box-shadow: 1px 1px 1px #222;
+}
+
+.componentWrapper .player_volume_tooltip p {
+    font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#ffffff;
+	margin:0;
+	line-height:18px;
+}
+
+
+
+
+/* fullscreen */
+.componentWrapper .player_fullscreen{
+	position:absolute;
+	top:2px;
+	right:0px;
+	width:36px;
+	height:28px;
+	background:red;
+}
+
+.componentWrapper .player_fullscreen img{
+	position:relative;
+	display:block;
+	width:12px;
+	height:12px;
+	top:7px;
+	left:8px;
+}
+
+
+/* Hide some elements in case of very small size */
+@media only screen and (max-width: 480px) {
+	.componentWrapper .player_mediaTime{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.componentWrapper .player_volume, .componentWrapper .volume_seekbar{
+		display: none;
+	}
+}
+
+
+
+
+
+
+
+
+/* big play btn for video */
+.componentWrapper .big_play{
+	position:absolute;
+	width:76px;
+	height:76px;
+	left:50%;
+	top:50%;
+	margin-left:-38px;
+	margin-top:-38px;
+	display:none;
+}
+
+.componentWrapper .big_play img{
+	display:block;
+	width:76px;
+	height:76px;
+}
+
+
+
+
+
+.componentWrapper .player_addon{
+	position:absolute;
+	bottom:60px;
+	left:10px;
+	width:40px;
+	/*background:red;*/
+	display:none;
+}
+
+.componentWrapper .playlist_toggle{
+	position:relative;
+	bottom:0px;
+	left:0px;
+	width:40px;
+	height:40px;
+	background-image: url('../data/bg2.png'); 
+	background-repeat: repeat; 
+	margin-top:7px;
+}
+
+/* description btn */
+.componentWrapper .info_toggle{
+	position:relative;
+	bottom:0px;
+	left:0px;
+	width:40px;
+	height:40px;
+	background-image: url('../data/bg2.png'); 
+	background-repeat: repeat; 
+	display:none;
+}
+
+
+.componentWrapper .infoHolder{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0px;
+	left:0px;
+	overflow:hidden;
+	display:none;
+}
+
+.componentWrapper .info_inner{
+	color:#ccc;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	padding:20px;
+	background:#111;
+}
+
+.componentWrapper .infoTitle{
+	color:#c66;
+	font-size:25px;
+}
+
+.componentWrapper .infoHolder a{
+	color:#FF6;
+}
+
+
+
+
+
+
+/* playlist holder */	
+.componentWrapper .playlistHolder{
+	position:absolute;
+	top:0px;
+	left:641px;
+	width:320px;
+	height:100%;
+	background:#111;
+	overflow:hidden;
+	display:none;
+}
+
+.componentWrapper .componentPlaylist{
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	/*background:#396;*/
+	overflow:hidden;
+}
+
+.componentWrapper .playlist_inner{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:100%;
+}
+
+.componentWrapper .playlist_content{
+}
+
+/* playlist data remains hidden! */
+.componentWrapper .playlistData{
+	display:none;
+}
+
+
+
+
+/* scroll buttons */
+.componentWrapper .thumbBackward{
+	position:absolute;
+	height:50px;
+	width:50px;
+	right:0px;
+	top:0px;
+	background: #111 url('../data/icons/prev_v.png') no-repeat center center;
+	display:none;
+}
+
+.componentWrapper .thumbForward{
+	position:absolute;
+	height:50px;
+	width:50px;
+	right:0px;
+	bottom:0px;
+	background: #111 url('../data/icons/next_v.png') no-repeat center center;
+	display:none;
+}
+
+
+
+
+/* playlist items */	
+.componentWrapper .playlistNonSelected{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:320px;
+	height:90px;
+	background:#181818;
+	margin-bottom:5px;
+	list-style:none;
+	overflow:hidden;
+}
+
+.componentWrapper .playlistSelected{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:320px;
+	height:90px;
+	background:#333;
+	margin-bottom:5px;
+	list-style:none;
+	overflow:hidden;
+}
+
+/* div which will hold the preview video. Also holds thumb image and preview video preloader. */
+.componentWrapper .playlistThumb {
+	position:relative;
+	top:8px;
+	left:8px;
+	width:120px;
+	height:68px;
+	float:left;
+	background:#222;
+	border: 3px solid #ddd;
+	overflow:hidden;
+}
+
+/* thumb image inside playlistThumb div. Needs to have class of thumb to distinguish between img preloader */
+.componentWrapper .playlistThumb .thumb{
+	position:relative;
+	top:0px;
+	left:0px;
+	display:block;
+	width:120px;
+	height:68px;
+	
+	/* hide thumbs on beginning */
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+/* video preview holder */
+.componentWrapper .playlistThumb .thumb_vid{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:120px;
+	height:68px;
+}
+
+/* youtube thumb inside playlistThumb div. 
+Youtube thumbnails are by default 640x480, which equals 120x90, and we want 120x68, so we move them up to simulate 16:9 */
+.componentWrapper .playlistThumb .thumb_yt{
+	position:relative;
+	top:-11px;
+	left:0px;
+	display:block;
+	width:120px;
+	height:90px;
+	
+	/* hide thumbs on beginning */
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+/* youtube iframe preview holder */
+.componentWrapper .youtubeIframePreview{
+	position:absolute;
+	top:0px;
+	left:0px;
+	/*size same as the playlist thumb!*/
+	width:120px;
+	height:68px;
+	opacity:0.01;/*safari fix*/
+}
+
+/* blocks click on yt iframe! */
+.componentWrapper .yt_overlay_blocker{
+	position:absolute;
+	top:0px;
+	left:0px;
+	/*size same as the playlist thumb!*/
+	width:120px;
+	height:68px;
+	background:#111;
+	opacity:0;
+}
+
+.componentWrapper #flashPreviewHolder{
+	position:absolute;
+	top:0px;
+	left:0px;
+	/* same size as the playlist thumb! */
+	width:120px;
+	height:68px;
+}
+
+.componentWrapper .thumbPreloader{
+	position:absolute;
+	width:16px;
+	height:11px;
+	top:50%;
+	left:50%;
+	margin-left:-8px;
+	margin-top:-6px;
+	display:none;
+}
+
+
+
+
+
+
+
+
+.componentWrapper .playlistInfo {
+	position:relative;
+	right:15px;
+	top:5px;
+	width:160px;
+	height:80px;
+	/*background:green;*/
+	overflow:hidden;
+	float:right;
+}
+
+/* playlist title */
+.componentWrapper .playlistTitle {
+	color:#c66;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	font-weight:700;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* playlist description */
+.componentWrapper .playlistContent {
+	color:#ffffff;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight: 400; 
+}
+
+
+
+
+.componentWrapper .player_adv{
+	position:absolute;
+	width:68px;
+	height:21px;
+	top:10px;
+	right:10px;
+}
+
+.componentWrapper .player_prev{
+	position:relative;
+	width:29px;
+	height:21px;
+	top:0px;
+	left:0px;
+	margin-right:10px;
+	float:left;
+}
+
+.componentWrapper .player_next{
+	position:relative;
+	width:29px;
+	height:21px;
+	top:0px;
+	left:0px;
+	float:left;
+}
+
+
+
+
+/* logo */
+.componentWrapper .playerLogo{
+	position:absolute;
+	width:86px;
+	height:40px;
+	top:10px;
+	left:10px;
+}
+
+
+
+
+
+
+/* public functions */	
+#publicFunctions{
+	position: absolute;
+	padding: 10px 25px 20px 20px;
+	background:#555;
+	left:50px;
+	top:50px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color:#fff;
+	list-style:circle;
+	
+	-moz-box-shadow: 2px 2px 5px #222;
+	-webkit-box-shadow: 2px 2px 5px #222;
+	box-shadow: 2px 2px 5px #222;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222');
+	
+	display:none;
+}
+
+#publicFunctions li a{
+	color:#fff;
+}
+
+#publicFunctions li a:hover, #publicFunctions li .current{
+	text-decoration: underline;
+}

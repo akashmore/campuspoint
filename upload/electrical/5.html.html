@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>java - Simple text editor class - Code Review Stack Exchange</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/codereview/img/favicon.ico?v=00b9e479193f">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/codereview/img/apple-touch-icon.png?v=dba5f391e3bb">
+    <link rel="search" type="application/opensearchdescription+xml" title="Code Review Stack Exchange" href="http://codereview.stackexchange.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@StackCodeReview">
+    <meta name="twitter:domain" content="codereview.stackexchange.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/codereview/img/apple-touch-icon@2.png?v=060c5939ecf4&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Simple text editor class">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have recently undertaken a project for programming practice based on a simple text editor. Normally this kind of thing wouldn't bother me, but ever since I completed a software architectures modu...">
+    <meta property="og:url" content="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class">
+    <link rel="canonical" href="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class">
+
+    
+    
+    <script src="5_files/quant.js" async=""></script><script src="5_files/beacon.js" async=""></script><script src="5_files/analytics.js" async=""></script><script src="5_files/ados.js" async="" type="text/javascript"></script><script src="5_files/jquery.js"></script>
+    <script src="5_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="5_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'Simple text editor class'" href="http://codereview.stackexchange.com/feeds/question/51175">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://codereview.stackexchange.com/questions/51175/simple-text-editor-class">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://codereview.stackexchange.com/questions/51175/simple-text-editor-class">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:3,shownCommentCount:3,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:51175});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('196', '51175');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+                <script type="text/x-mathjax-config;executed=true">
+                    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+                                        tex2jax: { inlineMath: [ ["\\$", "\\$"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+                                        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+                                        messageStyle: "none"
+                });
+                </script>        
+            <script src="5_files/MathJax.js"></script>  
+
+    <script>
+        StackExchange.ready(function () {
+            StackExchange.realtime.init('wss://qa.sockets.stackexchange.com,ws://qa.sockets.stackexchange.com');
+            StackExchange.realtime.subscribeToReputationNotifications('196');
+                StackExchange.realtime.subscribeToTopBarNotifications('196');
+        });
+    </script>
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1454324586,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Code Review Stack Exchange","description":"Q&A for peer programmer code reviews","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdsB7sSAAAAAAzjgEF_Hd8vXv-C42sa_KyofaGR","recaptchaAudioLang":"en","enableNewTagCreationWarning":false,"insertSpaceAfterNameTabCompletion":false,"id":196,"enableSocialMediaInSharePopup":true},"user":{"fkey":"1694e169975d4a7e70afd6eab116448c","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true},"realtime":{"newest":true,"active":true,"tagged":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"72ed6ced36af","js/moderator.en.js":"481e310df8f0","js/full-anon.en.js":"ef9d9700035c","js/full.en.js":"29116d259397","js/wmd.en.js":"7e593f04f138","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"54b998574be9","js/tageditor.en.js":"9a6504012242","js/tageditornew.en.js":"e988d08e49a4","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"82fcdf5bb6de","js/review.en.js":"3cd11576400b","js/tagsuggestions.en.js":"78eee7c19ab2","js/post-validation.en.js":"3c5f2f238cd6","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"12b8df2c974d","js/keyboard-shortcuts.en.js":"e79748fd0b4a","js/external-editor.en.js":"cf58cc6630ef","js/mathjax-editing.en.js":"5b715ce28069","js/external-editor.en.js":"cf58cc6630ef","js/snippet-javascript.en.js":"da37000d40f8","js/snippet-javascript-codemirror.en.js":"7515e4059d63"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+<script src="5_files/full-anon.js" async=""></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script src="5_files/snippet-javascript.js" async=""></script><script src="5_files/post-validation.js" async=""></script><script src="5_files/prettify-full.js" async=""></script><script src="5_files/external-editor.js" async=""></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Main; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?rev=2.6.0') format('opentype'); font-weight: bold}
+@font-face {font-family: MathJax_Main; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?rev=2.6.0') format('opentype'); font-style: italic}
+@font-face {font-family: MathJax_Math; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?rev=2.6.0') format('opentype'); font-style: italic}
+@font-face {font-family: MathJax_Caligraphic; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?rev=2.6.0') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body class="question-page new-topbar"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div style="display: none;" id="MathJax_Message"></div>
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://codereview.stackexchange.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackexchange.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+
+
+
+    <a href="http://codereview.stackexchange.com/" class="current-site-link site-link js-gps-track" data-id="196" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-codereview" title="Code Review"></div>
+        Code Review
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.codereview.stackexchange.com/" class="site-link js-gps-track" data-id="198" data-gps-track="
+            site.switch({ target_site:198, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-codereviewmeta" title="Code Review Meta"></div>
+        Code Review Meta
+    </a>
+
+                </li>
+                    </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://codereview.stackexchange.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fcodereview.stackexchange.com%2fquestions%2f51175%2fsimple-text-editor-class" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://codereview.stackexchange.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fcodereview.stackexchange.com%2fquestions%2f51175%2fsimple-text-editor-class" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#" class="topbar-icon icon-achievements yes-hover js-achievements-button " data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://codereview.stackexchange.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fcodereview.stackexchange.com%2fquestions%2f51175%2fsimple-text-editor-class" class="login-link">sign up</a>
+                                <a href="https://codereview.stackexchange.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fcodereview.stackexchange.com%2fquestions%2f51175%2fsimple-text-editor-class" class="login-link">log in</a>
+
+                        <a href="http://codereview.stackexchange.com/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://codereview.stackexchange.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://codereview.stackexchange.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.codereview.stackexchange.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="Search Q&amp;A" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://codereview.stackexchange.com/">
+                    Code Review
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://codereview.stackexchange.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://codereview.stackexchange.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://codereview.stackexchange.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://codereview.stackexchange.com/help/badges">Badges</a></li>
+                                                <li><a id="nav-unanswered" href="http://codereview.stackexchange.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://codereview.stackexchange.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/codereview/img/apple-touch-icon.png?v=dba5f391e3bb">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Code Review Stack Exchange is a question and answer site for
+ peer programmer code reviews. It's 100% free, no registration required.
+            <br>
+            <br>
+            <a href="http://codereview.stackexchange.com/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fcodereview.stackexchange.com%2fquestions%2f51175%2fsimple-text-editor-class" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Here's how it works:</b>
+            <ol id="hiw">
+                <li id="q">Anybody can ask a question
+                </li>
+                <li id="an">Anybody can answer
+                </li>
+                <li id="b">The best answers are voted up and rise to the top
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class" class="question-hyperlink">Simple text editor class</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="51175" id="question">
+
+        <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="51175" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>1</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have recently undertaken a project for programming practice based 
+on a simple text editor. Normally this kind of thing wouldn't bother me,
+ but ever since I completed a software architectures module in college, I
+ question everything about how my code is and should be formatted! 
+(probably a good thing?)</p>
+
+<p>I currently only have one class and while on the grand scale of 
+things, it is not huge.  I think it is maybe already too big considering
+ the size of the project I am doing. Basically, I have a window with a 
+text area and menu bar with a "File" and "Edit" menus on it with action 
+listeners to perform functions when clicked.</p>
+
+<p>To me the class just seems like it is very cluttered and has quite a lot of <code>if</code>-<code>else if</code> statements in the <code>actionPerformed</code>
+ method. I was just wondering what yer opinion on the class length might
+ be and if it can/should be broken into several other classes?</p>
+
+<pre style="" class="lang-java prettyprint prettyprinted"><code><span class="kwd">package</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">schongeproductions</span><span class="pun">.</span><span class="pln">texteditor</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="typ">BorderLayout</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="typ">Color</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="typ">Dimension</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="typ">Font</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="typ">Frame</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="pln">event</span><span class="pun">.</span><span class="typ">ActionEvent</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="pln">event</span><span class="pun">.</span><span class="typ">ActionListener</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="pln">print</span><span class="pun">.</span><span class="typ">PageFormat</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="pln">print</span><span class="pun">.</span><span class="typ">PrinterException</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="pln">print</span><span class="pun">.</span><span class="typ">PrinterJob</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">io</span><span class="pun">.</span><span class="typ">BufferedWriter</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">io</span><span class="pun">.</span><span class="typ">File</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">io</span><span class="pun">.</span><span class="typ">FileReader</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">io</span><span class="pun">.</span><span class="typ">FileWriter</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">io</span><span class="pun">.</span><span class="typ">IOException</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">BorderFactory</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JFileChooser</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JFrame</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JMenu</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JMenuBar</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JMenuItem</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JOptionPane</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JScrollPane</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="typ">JTextArea</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="pln">border</span><span class="pun">.</span><span class="typ">Border</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="pln">event</span><span class="pun">.</span><span class="typ">UndoableEditEvent</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="pln">event</span><span class="pun">.</span><span class="typ">UndoableEditListener</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="pln">undo</span><span class="pun">.</span><span class="typ">CannotUndoException</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.</span><span class="pln">undo</span><span class="pun">.</span><span class="typ">UndoManager</span><span class="pun">;</span><span class="pln">
+
+</span><span class="lit">@SuppressWarnings</span><span class="pun">(</span><span class="str">"serial"</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">EditorGUI</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">JFrame</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><span class="typ">ActionListener</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EditorGUI</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">//============================================</span><span class="pln">
+    </span><span class="com">// FIELDS</span><span class="pln">
+    </span><span class="com">//============================================</span><span class="pln">
+
+    </span><span class="com">// Menus</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pln"> fileMenu</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pln"> editMenu</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pln"> newFile</span><span class="pun">,</span><span class="pln"> openFile</span><span class="pun">,</span><span class="pln"> saveFile</span><span class="pun">,</span><span class="pln"> saveAsFile</span><span class="pun">,</span><span class="pln"> pageSetup</span><span class="pun">,</span><span class="pln"> printFile</span><span class="pun">,</span><span class="pln"> exit</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pln"> undoEdit</span><span class="pun">,</span><span class="pln"> redoEdit</span><span class="pun">,</span><span class="pln"> selectAll</span><span class="pun">,</span><span class="pln"> copy</span><span class="pun">,</span><span class="pln"> paste</span><span class="pun">,</span><span class="pln"> cut</span><span class="pun">;</span><span class="pln">
+
+
+    </span><span class="com">// Window</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JFrame</span><span class="pln"> editorWindow</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Text Area</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">Border</span><span class="pln"> textBorder</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JScrollPane</span><span class="pln"> scroll</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JTextArea</span><span class="pln"> textArea</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">Font</span><span class="pln"> textFont</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Window</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JFrame</span><span class="pln"> window</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Printing</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">PrinterJob</span><span class="pln"> job</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">PageFormat</span><span class="pln"> format</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Is File Saved/Opened</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">boolean</span><span class="pln"> opened </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">boolean</span><span class="pln"> saved </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Record Open File for quick saving</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">File</span><span class="pln"> openedFile</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Undo manager for managing the storage of the undos</span><span class="pln">
+    </span><span class="com">// so that the can be redone if requested</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">UndoManager</span><span class="pln"> undo</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">//============================================</span><span class="pln">
+    </span><span class="com">// CONSTRUCTOR</span><span class="pln">
+    </span><span class="com">//============================================</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">EditorGUI</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">super</span><span class="pun">(</span><span class="str">"JavaEdit"</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="com">// Create Menus</span><span class="pln">
+        fileMenu</span><span class="pun">();</span><span class="pln">
+        editMenu</span><span class="pun">();</span><span class="pln">
+
+        </span><span class="com">// Create Text Area</span><span class="pln">
+        createTextArea</span><span class="pun">();</span><span class="pln">
+
+        </span><span class="com">// Create Undo Manager for managing undo/redo commands</span><span class="pln">
+        undoMan</span><span class="pun">();</span><span class="pln">
+
+        </span><span class="com">// Create Window</span><span class="pln">
+        createEditorWindow</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JFrame</span><span class="pln"> createEditorWindow</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        editorWindow </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JFrame</span><span class="pun">(</span><span class="str">"JavaEdit"</span><span class="pun">);</span><span class="pln">
+        editorWindow</span><span class="pun">.</span><span class="pln">setVisible</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+        editorWindow</span><span class="pun">.</span><span class="pln">setExtendedState</span><span class="pun">(</span><span class="typ">Frame</span><span class="pun">.</span><span class="pln">MAXIMIZED_BOTH</span><span class="pun">);</span><span class="pln">
+        editorWindow</span><span class="pun">.</span><span class="pln">setDefaultCloseOperation</span><span class="pun">(</span><span class="pln">EXIT_ON_CLOSE</span><span class="pun">);</span><span class="pln">
+        </span><span class="com">// Create Menu Bar</span><span class="pln">
+        editorWindow</span><span class="pun">.</span><span class="pln">setJMenuBar</span><span class="pun">(</span><span class="pln">createMenuBar</span><span class="pun">());</span><span class="pln">
+        editorWindow</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">scroll</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BorderLayout</span><span class="pun">.</span><span class="pln">CENTER</span><span class="pun">);</span><span class="pln">
+        editorWindow</span><span class="pun">.</span><span class="pln">pack</span><span class="pun">();</span><span class="pln">
+        </span><span class="com">// Centers application on screen</span><span class="pln">
+        editorWindow</span><span class="pun">.</span><span class="pln">setLocationRelativeTo</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="kwd">return</span><span class="pln"> editorWindow</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JTextArea</span><span class="pln"> createTextArea</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        textBorder </span><span class="pun">=</span><span class="pln"> </span><span class="typ">BorderFactory</span><span class="pun">.</span><span class="pln">createBevelBorder</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Color</span><span class="pun">.</span><span class="pln">RED</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Color</span><span class="pun">.</span><span class="pln">RED</span><span class="pun">);</span><span class="pln">
+        textArea </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JTextArea</span><span class="pun">(</span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">50</span><span class="pun">);</span><span class="pln">
+        textArea</span><span class="pun">.</span><span class="pln">setEditable</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+        textArea</span><span class="pun">.</span><span class="pln">setBorder</span><span class="pun">(</span><span class="typ">BorderFactory</span><span class="pun">.</span><span class="pln">createCompoundBorder</span><span class="pun">(</span><span class="pln">textBorder</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BorderFactory</span><span class="pun">.</span><span class="pln">createEmptyBorder</span><span class="pun">(</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)));</span><span class="pln">
+
+        textFont </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Font</span><span class="pun">(</span><span class="str">"Verdana"</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">14</span><span class="pun">);</span><span class="pln">
+        textArea</span><span class="pun">.</span><span class="pln">setFont</span><span class="pun">(</span><span class="pln">textFont</span><span class="pun">);</span><span class="pln">
+
+        scroll </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JScrollPane</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">,</span><span class="pln"> </span><span class="typ">JScrollPane</span><span class="pun">.</span><span class="pln">VERTICAL_SCROLLBAR_ALWAYS</span><span class="pun">,</span><span class="pln"> </span><span class="typ">JScrollPane</span><span class="pun">.</span><span class="pln">HORIZONTAL_SCROLLBAR_ALWAYS</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="kwd">return</span><span class="pln"> textArea</span><span class="pun">;</span><span class="pln">        
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenuBar</span><span class="pln"> createMenuBar</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">JMenuBar</span><span class="pln"> menuBar </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuBar</span><span class="pun">();</span><span class="pln">
+        setJMenuBar</span><span class="pun">(</span><span class="pln">menuBar</span><span class="pun">);</span><span class="pln">
+        menuBar</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">fileMenu</span><span class="pun">);</span><span class="pln">
+        menuBar</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">editMenu</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="kwd">return</span><span class="pln"> menuBar</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">UndoManager</span><span class="pln"> undoMan</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">// Listener for undo and redo functions to document</span><span class="pln">
+        undo </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">UndoManager</span><span class="pun">();</span><span class="pln">
+        textArea</span><span class="pun">.</span><span class="pln">getDocument</span><span class="pun">().</span><span class="pln">addUndoableEditListener</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">UndoableEditListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+            </span><span class="lit">@Override</span><span class="pln">
+            </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> undoableEditHappened</span><span class="pun">(</span><span class="typ">UndoableEditEvent</span><span class="pln"> e</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                undo</span><span class="pun">.</span><span class="pln">addEdit</span><span class="pun">(</span><span class="pln">e</span><span class="pun">.</span><span class="pln">getEdit</span><span class="pun">());</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">});</span><span class="pln">
+
+        </span><span class="kwd">return</span><span class="pln"> undo</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> fileMenu</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">// Create File Menu</span><span class="pln">
+        fileMenu </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pun">(</span><span class="str">"File"</span><span class="pun">);</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">40</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+
+        </span><span class="com">// Add file menu items</span><span class="pln">
+        newFile </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"New"</span><span class="pun">);</span><span class="pln">
+        newFile</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        newFile</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        newFile</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        openFile </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Open..."</span><span class="pun">);</span><span class="pln">
+        openFile</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        openFile</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        openFile</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        saveFile </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Save"</span><span class="pun">);</span><span class="pln">
+        saveFile</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        saveFile</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        saveFile</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        saveAsFile </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Save As..."</span><span class="pun">);</span><span class="pln">
+        saveAsFile</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        saveAsFile</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        saveAsFile</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        pageSetup </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Page Setup..."</span><span class="pun">);</span><span class="pln">
+        pageSetup</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        pageSetup</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        pageSetup</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        printFile </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Print..."</span><span class="pun">);</span><span class="pln">
+        printFile</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        printFile</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        printFile</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        exit </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Exit"</span><span class="pun">);</span><span class="pln">
+        exit</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        exit</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        exit</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="com">// Add items to menu</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">newFile</span><span class="pun">);</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">openFile</span><span class="pun">);</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">saveFile</span><span class="pun">);</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">saveAsFile</span><span class="pun">);</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">pageSetup</span><span class="pun">);</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">printFile</span><span class="pun">);</span><span class="pln">
+        fileMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">exit</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> editMenu</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        editMenu </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pun">(</span><span class="str">"Edit"</span><span class="pun">);</span><span class="pln">
+        editMenu</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">40</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+
+        </span><span class="com">// Add file menu items</span><span class="pln">
+        undoEdit </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Undo"</span><span class="pun">);</span><span class="pln">
+        undoEdit</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        undoEdit</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        undoEdit</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        redoEdit </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Redo"</span><span class="pun">);</span><span class="pln">
+        redoEdit</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        redoEdit</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        redoEdit</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        selectAll </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Select All"</span><span class="pun">);</span><span class="pln">
+        selectAll</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        selectAll</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        selectAll</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        copy </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Copy"</span><span class="pun">);</span><span class="pln">
+        copy</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        copy</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        copy</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        paste </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Paste"</span><span class="pun">);</span><span class="pln">
+        paste</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        paste</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        paste</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        cut </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Cut"</span><span class="pun">);</span><span class="pln">
+        cut</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+        cut</span><span class="pun">.</span><span class="pln">setPreferredSize</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dimension</span><span class="pun">(</span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">));</span><span class="pln">
+        cut</span><span class="pun">.</span><span class="pln">setEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="com">// Add items to menu</span><span class="pln">
+        editMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">undoEdit</span><span class="pun">);</span><span class="pln">
+        editMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">redoEdit</span><span class="pun">);</span><span class="pln">
+        editMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">selectAll</span><span class="pun">);</span><span class="pln">
+        editMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">copy</span><span class="pun">);</span><span class="pln">
+        editMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">paste</span><span class="pun">);</span><span class="pln">
+        editMenu</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">cut</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">// Method for saving files - Removes duplication of code</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> saveFile</span><span class="pun">(</span><span class="typ">File</span><span class="pln"> filename</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">BufferedWriter</span><span class="pln"> writer </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BufferedWriter</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileWriter</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">));</span><span class="pln">
+            writer</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">.</span><span class="pln">getText</span><span class="pun">());</span><span class="pln">
+            writer</span><span class="pun">.</span><span class="pln">close</span><span class="pun">();</span><span class="pln">
+            saved </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+            window</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"JavaText - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> filename</span><span class="pun">.</span><span class="pln">getName</span><span class="pun">());</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">IOException</span><span class="pln"> err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            err</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">// Method for quick saving files</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> quickSave</span><span class="pun">(</span><span class="typ">File</span><span class="pln"> filename</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">BufferedWriter</span><span class="pln"> writer </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BufferedWriter</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileWriter</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">));</span><span class="pln">
+            writer</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">.</span><span class="pln">getText</span><span class="pun">());</span><span class="pln">
+            writer</span><span class="pun">.</span><span class="pln">close</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">IOException</span><span class="pln"> err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            err</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">// Method for opening files</span><span class="pln">
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> openingFiles</span><span class="pun">(</span><span class="typ">File</span><span class="pln"> filename</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            openedFile </span><span class="pun">=</span><span class="pln"> filename</span><span class="pun">;</span><span class="pln">
+            </span><span class="typ">FileReader</span><span class="pln"> reader </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileReader</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">);</span><span class="pln">
+            textArea</span><span class="pun">.</span><span class="pln">read</span><span class="pun">(</span><span class="pln">reader</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+            opened </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+            window</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"JavaEdit - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> filename</span><span class="pun">.</span><span class="pln">getName</span><span class="pun">());</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">IOException</span><span class="pln"> err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            err</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> actionPerformed</span><span class="pun">(</span><span class="typ">ActionEvent</span><span class="pln"> event</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> newFile</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">EditorGUI</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> openFile</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">JFileChooser</span><span class="pln"> open </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JFileChooser</span><span class="pun">();</span><span class="pln">
+            open</span><span class="pun">.</span><span class="pln">showOpenDialog</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+            </span><span class="typ">File</span><span class="pln"> file </span><span class="pun">=</span><span class="pln"> open</span><span class="pun">.</span><span class="pln">getSelectedFile</span><span class="pun">();</span><span class="pln">                
+            openingFiles</span><span class="pun">(</span><span class="pln">file</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> saveFile</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">JFileChooser</span><span class="pln"> save </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JFileChooser</span><span class="pun">();</span><span class="pln">
+            </span><span class="typ">File</span><span class="pln"> filename </span><span class="pun">=</span><span class="pln"> save</span><span class="pun">.</span><span class="pln">getSelectedFile</span><span class="pun">();</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">opened </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">false</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> saved </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                save</span><span class="pun">.</span><span class="pln">showSaveDialog</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+                </span><span class="kwd">int</span><span class="pln"> confirmationResult</span><span class="pun">;</span><span class="pln">
+                </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">.</span><span class="pln">exists</span><span class="pun">())</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    confirmationResult </span><span class="pun">=</span><span class="pln"> </span><span class="typ">JOptionPane</span><span class="pun">.</span><span class="pln">showConfirmDialog</span><span class="pun">(</span><span class="pln">saveFile</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Replace existing file?"</span><span class="pun">);</span><span class="pln">
+                    </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">confirmationResult </span><span class="pun">==</span><span class="pln"> </span><span class="typ">JOptionPane</span><span class="pun">.</span><span class="pln">YES_OPTION</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                        saveFile</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">);</span><span class="pln">                        
+                    </span><span class="pun">}</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    saveFile</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">);</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                quickSave</span><span class="pun">(</span><span class="pln">openedFile</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> saveAsFile</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">JFileChooser</span><span class="pln"> saveAs </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JFileChooser</span><span class="pun">();</span><span class="pln">
+            saveAs</span><span class="pun">.</span><span class="pln">showSaveDialog</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+            </span><span class="typ">File</span><span class="pln"> filename </span><span class="pun">=</span><span class="pln"> saveAs</span><span class="pun">.</span><span class="pln">getSelectedFile</span><span class="pun">();</span><span class="pln">
+            </span><span class="kwd">int</span><span class="pln"> confirmationResult</span><span class="pun">;</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">.</span><span class="pln">exists</span><span class="pun">())</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                confirmationResult </span><span class="pun">=</span><span class="pln"> </span><span class="typ">JOptionPane</span><span class="pun">.</span><span class="pln">showConfirmDialog</span><span class="pun">(</span><span class="pln">saveAsFile</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Replace existing file?"</span><span class="pun">);</span><span class="pln">
+                </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">confirmationResult </span><span class="pun">==</span><span class="pln"> </span><span class="typ">JOptionPane</span><span class="pun">.</span><span class="pln">YES_OPTION</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    saveFile</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">);</span><span class="pln">                        
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                saveFile</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> pageSetup</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            job </span><span class="pun">=</span><span class="pln"> </span><span class="typ">PrinterJob</span><span class="pun">.</span><span class="pln">getPrinterJob</span><span class="pun">();</span><span class="pln">
+            format </span><span class="pun">=</span><span class="pln"> job</span><span class="pun">.</span><span class="pln">pageDialog</span><span class="pun">(</span><span class="pln">job</span><span class="pun">.</span><span class="pln">defaultPage</span><span class="pun">());</span><span class="pln">    
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> printFile</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            job </span><span class="pun">=</span><span class="pln"> </span><span class="typ">PrinterJob</span><span class="pun">.</span><span class="pln">getPrinterJob</span><span class="pun">();</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">job</span><span class="pun">.</span><span class="pln">printDialog</span><span class="pun">())</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    job</span><span class="pun">.</span><span class="pln">print</span><span class="pun">();</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">PrinterException</span><span class="pln"> err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    err</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> exit</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">System</span><span class="pun">.</span><span class="pln">exit</span><span class="pun">(</span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> undoEdit</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                undo</span><span class="pun">.</span><span class="pln">undo</span><span class="pun">();</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="typ">CannotUndoException</span><span class="pln"> cu</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                cu</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> redoEdit</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                undo</span><span class="pun">.</span><span class="pln">redo</span><span class="pun">();</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="typ">CannotUndoException</span><span class="pln"> cur</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                cur</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> selectAll</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            textArea</span><span class="pun">.</span><span class="pln">selectAll</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">  </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> copy</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            textArea</span><span class="pun">.</span><span class="pln">copy</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> paste</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            textArea</span><span class="pun">.</span><span class="pln">paste</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">event</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> cut</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            textArea</span><span class="pun">.</span><span class="pln">cut</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">//============================================</span><span class="pln">
+    </span><span class="com">// GETTERS AND SETTERS</span><span class="pln">
+    </span><span class="com">//============================================</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">JTextArea</span><span class="pln"> getTextArea</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> textArea</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> setTextArea</span><span class="pun">(</span><span class="typ">JTextArea</span><span class="pln"> text</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        textArea </span><span class="pun">=</span><span class="pln"> text</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <div class="post-taglist">
+        <a href="http://codereview.stackexchange.com/questions/tagged/java" class="post-tag js-gps-track" title="show questions tagged 'java'" rel="tag">java</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://codereview.stackexchange.com/q/51175" title="short permalink to this question" class="short-link" id="link-post-51175">share</a><span class="lsep">|</span><a href="http://codereview.stackexchange.com/posts/51175/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://codereview.stackexchange.com/posts/51175/revisions" title="show all edits to this post">edited <span title="2014-05-20 00:41:11Z" class="relativetime">May 20 '14 at 0:41</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://codereview.stackexchange.com/users/22222/jamal"><div class="gravatar-wrapper-32"><img src="5_files/LI1za.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://codereview.stackexchange.com/users/22222/jamal">Jamal</a><span class="mod-flair" title="moderator">♦</span>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 27097" dir="ltr">27.1k</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="98 silver badges"><span class="badge2"></span><span class="badgecount">98</span></span><span title="203 bronze badges"><span class="badge3"></span><span class="badgecount">203</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2014-05-20 00:32:44Z" class="relativetime">May 20 '14 at 0:32</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://codereview.stackexchange.com/users/42798/schonge"><div class="gravatar-wrapper-32"><img src="5_files/259736fdb98343caddd0f941e71ffa3b.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://codereview.stackexchange.com/users/42798/schonge">Schonge</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">38</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-51175" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-141867" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">hey man, thanks for the code. May I use this code in my project? I'll assume the answer is yes until you explicitly say no.</span>
+                    –&nbsp;<a href="http://codereview.stackexchange.com/users/63589/monir" title="101 reputation" class="comment-user">Monir</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment141867_51175"><span title="2015-01-22 17:16:51Z" class="relativetime-clean">Jan 22 '15 at 17:16</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-141973" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I will post the improved/modified version once I'm done with it.</span>
+                    –&nbsp;<a href="http://codereview.stackexchange.com/users/63589/monir" title="101 reputation" class="comment-user">Monir</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment141973_51175"><span title="2015-01-23 02:00:41Z" class="relativetime-clean">Jan 23 '15 at 2:00</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-143961" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Sure...go nuts!</span>
+                    –&nbsp;<a href="http://codereview.stackexchange.com/users/42798/schonge" title="38 reputation" class="comment-user owner">Schonge</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment143961_51175"><span title="2015-02-04 06:48:18Z" class="relativetime-clean">Feb 4 '15 at 6:48</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-51175" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								2 Answers
+                                <span style="display:none;" itemprop="answerCount">2</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="51201"></a>
+<div id="answer-51201" class="answer accepted-answer" data-answerid="51201" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="51201" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">8</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<ol>
+<li><p>You do a <code>editorWindow.setDefaultCloseOperation(EXIT_ON_CLOSE);</code>
+which means if I open multiple windows using <strong>New</strong> menu item and
+close any one of the windows program exits. This is because 
+you do not differentiate between a window and an application instance.
+you should separate your window code from your application instance
+your application instance should manage its open windows.
+A window should inform the application instance when it is closed
+and the application should exit when its last window is closed.
+If you do not exit at the first window-closed event, you should release
+memory, file handles,  (network, db connectionsin the future?) etc whatever
+resources associated with the window. </p></li>
+<li><p>You get the file name before you show the file chooser you get a
+<code>NullPointerException</code>, which you do not catch and swing prints it
+to console, provided you run the program from console.</p>
+
+<pre style="" class="lang-java prettyprint prettyprinted"><code><span class="typ">JFileChooser</span><span class="pln"> save </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JFileChooser</span><span class="pun">();</span><span class="pln">
+</span><span class="typ">File</span><span class="pln"> filename </span><span class="pun">=</span><span class="pln"> save</span><span class="pun">.</span><span class="pln">getSelectedFile</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">if</span><span class="pun">(</span><span class="pln">opened </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">false</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> saved </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    save</span><span class="pun">.</span><span class="pln">showSaveDialog</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span></code></pre></li>
+<li><p>In your file I/O operation you do this:</p>
+
+<pre style="" class="lang-java prettyprint prettyprinted"><code><span class="com">// Method for opening files</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> openingFiles</span><span class="pun">(</span><span class="typ">File</span><span class="pln"> filename</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        openedFile </span><span class="pun">=</span><span class="pln"> filename</span><span class="pun">;</span><span class="pln">
+        </span><span class="typ">FileReader</span><span class="pln"> reader </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileReader</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">);</span><span class="pln">
+        textArea</span><span class="pun">.</span><span class="pln">read</span><span class="pun">(</span><span class="pln">reader</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+        opened </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+        window</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"JavaEdit - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> filename</span><span class="pun">.</span><span class="pln">getName</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">IOException</span><span class="pln"> err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        err</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>Apart from possible resource leaks, as <a href="http://codereview.stackexchange.com/a/51176/20251">previously pointed out</a>,
+you give the user no indication whether his command completed
+successfully or not. Probably when you try to save a file you would
+expect the editor to give some indication of the result: if successful a "file
+saved" notification in the status bar, the star indicating the file
+is modified to disappear etc. If unsuccessful you would want even
+more obvious indication, such as a message box, saying "File is
+open by another process" or at least "Could not save buffer".</p></li>
+<li><p>Your event handling code seems very AWT, with a single 
+<code>if/else if</code> block. A better way is 
+to use <code>Action</code>s instead. Check out the <a href="http://docs.oracle.com/javase/tutorial/uiswing/misc/action.html">swing Action tutorial</a>; 
+it also has a demo, although not perfect, shows how a single action can 
+be associated with a menu item, toolbar button, a keyboard shortcut etc.</p></li>
+</ol>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://codereview.stackexchange.com/a/51201" title="short permalink to this answer" class="short-link" id="link-post-51201">share</a><span class="lsep">|</span><a href="http://codereview.stackexchange.com/posts/51201/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-05-20 09:26:32Z" class="relativetime">May 20 '14 at 9:26</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://codereview.stackexchange.com/users/20251/abuzittin-gillifirca"><div class="gravatar-wrapper-32"><img src="5_files/1353629d9c77e721c3ae3c9de3db039d.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://codereview.stackexchange.com/users/20251/abuzittin-gillifirca">abuzittin gillifirca</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">5,220</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="23 bronze badges"><span class="badge3"></span><span class="badgecount">23</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-51201" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-51201" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="51176"></a>
+<div id="answer-51176" class="answer" data-answerid="51176" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="51176" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The only thing that sticks out to me is in your save methods your not
+ calling finally, and that is where your close call should be. This way 
+if the <code>IOException</code> happens before close gets called your possibly holding a file handler open somewhere.</p>
+
+<pre style="" class="lang-java prettyprint prettyprinted"><code><span class="com">// Method for saving files - Removes duplication of code</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> saveFile</span><span class="pun">(</span><span class="typ">File</span><span class="pln"> filename</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">BufferedWriter</span><span class="pln"> writer </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BufferedWriter</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileWriter</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">));</span><span class="pln">
+        writer</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">.</span><span class="pln">getText</span><span class="pun">());</span><span class="pln">
+        saved </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+        window</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"JavaText - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> filename</span><span class="pun">.</span><span class="pln">getName</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">IOException</span><span class="pln"> err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        err</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">finally</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+          writer</span><span class="pun">.</span><span class="pln">close</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// Method for quick saving files</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> quickSave</span><span class="pun">(</span><span class="typ">File</span><span class="pln"> filename</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">BufferedWriter</span><span class="pln"> writer </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BufferedWriter</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileWriter</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">));</span><span class="pln">
+        writer</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">.</span><span class="pln">getText</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">IOException</span><span class="pln"> err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        err</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">finally</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+         writer</span><span class="pun">.</span><span class="pln">close</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>See <a href="http://docs.oracle.com/javase/tutorial/essential/exceptions/finally.html" rel="nofollow">"The <code>finally</code> Block"</a></p>
+
+<p>Do the same for your <code>FileReader</code>s as well.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://codereview.stackexchange.com/a/51176" title="short permalink to this answer" class="short-link" id="link-post-51176">share</a><span class="lsep">|</span><a href="http://codereview.stackexchange.com/posts/51176/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://codereview.stackexchange.com/posts/51176/revisions" title="show all edits to this post">edited <span title="2015-11-18 05:54:26Z" class="relativetime">Nov 18 '15 at 5:54</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://codereview.stackexchange.com/users/22222/jamal"><div class="gravatar-wrapper-32"><img src="5_files/LI1za.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://codereview.stackexchange.com/users/22222/jamal">Jamal</a><span class="mod-flair" title="moderator">♦</span>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 27097" dir="ltr">27.1k</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="98 silver badges"><span class="badge2"></span><span class="badgecount">98</span></span><span title="203 bronze badges"><span class="badge3"></span><span class="badgecount">203</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-05-20 03:52:49Z" class="relativetime">May 20 '14 at 3:52</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://codereview.stackexchange.com/users/42800/ndrone"><div class="gravatar-wrapper-32"><img src="5_files/Oqyf0.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://codereview.stackexchange.com/users/42800/ndrone">ndrone</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">181</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-51176" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-51176" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="/questions/51175/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="51175" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="https://www.google.co.in" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+        <script>
+            StackExchange.ifUsing("editor", function () {
+                return StackExchange.using("mathjaxEditing", function () {
+                    StackExchange.MarkdownEditor.creationCallbacks.add(function (editor, postfix) {
+                        StackExchange.mathjaxEditing.prepareWmdForMathJax(editor, postfix, [["\\$", "\\$"]]);
+                    });
+                });
+            }, "mathjax-editing");
+        </script>
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: false,
+                reputationToPostImages: null,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li style="left: 0px;" class="wmd-button" id="wmd-bold-button"><span style="background-position: 0px -20px;"></span></li><li style="left: 25px;" class="wmd-button" id="wmd-italic-button"><span style="background-position: -20px -20px;"></span></li><li style="left: 50px;" class="wmd-spacer" id="wmd-spacer1"><span style="background-position: -40px -20px;"></span></li><li style="left: 75px;" class="wmd-button" id="wmd-link-button"><span style="background-position: -40px -20px;"></span></li><li style="left: 100px;" class="wmd-button" id="wmd-quote-button"><span style="background-position: -60px -20px;"></span></li><li style="left: 125px;" class="wmd-button" id="wmd-code-button"><span style="background-position: -80px -20px;"></span></li><li style="left: 150px;" class="wmd-button" id="wmd-image-button"><span style="background-position: -100px -20px;"></span></li><li style="left: 175px;" class="wmd-spacer" id="wmd-spacer2"><span style="background-position: -120px -20px;"></span></li><li style="left: 200px;" class="wmd-button" id="wmd-olist-button"><span style="background-position: -120px -20px;"></span></li><li style="left: 225px;" class="wmd-button" id="wmd-ulist-button"><span style="background-position: -140px -20px;"></span></li><li style="left: 250px;" class="wmd-button" id="wmd-heading-button"><span style="background-position: -160px -20px;"></span></li><li style="left: 275px;" class="wmd-button" id="wmd-hr-button"><span style="background-position: -180px -20px;"></span></li><li style="left: 300px;" class="wmd-spacer" id="wmd-spacer3"><span style="background-position: -200px -20px;"></span></li><li style="left: 325px;" class="wmd-button" id="wmd-undo-button"><span style="background-position: -200px -20px;"></span></li><li style="left: 350px;" class="wmd-button" id="wmd-redo-button"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="1694e169975d4a7e70afd6eab116448c" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://codereview.stackexchange.com/users/login?ssrc=question_page&amp;returnurl=http%3a%2f%2fcodereview.stackexchange.com%2fquestions%2f51175%2fsimple-text-editor-class%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display:none" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fcodereview.stackexchange.com%2fquestions%2f51175%2fsimple-text-editor-class%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://codereview.stackexchange.com/questions/tagged/java" class="post-tag" title="show questions tagged 'java'" rel="tag">java</a>  or <a href="http://codereview.stackexchange.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-05-20 00:32:44Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>8491 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://codereview.stackexchange.com/questions/51175/simple-text-editor-class?lastactivity" class="lastactivity-link" title="2016-02-01 06:49:16Z">today</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<style type="text/css">
+    .ads { margin-left: 60px; }
+    .ad-container { width: 300px; height: 250px; margin-right: 20px; margin-bottom: 20px; }
+    .ad-container .ad { height: 250px; }
+    .ad-container .footer-container { overflow: hidden; height: 30px; position: relative; top: -30px; }
+    .ad-container .footer-container .footer { font-family: Arial,Helvetic,Sans-Serif; font-size: 12px; text-align: center; padding-top: 9px; background-color: #000; color: #EFF; opacity: 0.9; filter: alpha(opacity=90); top: 30px; height: 30px; position: relative; }
+    .ad-container a:hover { text-decoration: underline; }
+    #adzerk2 { height: 250px; }
+</style>
+<script>
+    StackExchange.ready(function () {
+        $(".ad-container").hover(
+            function () {
+                $(".ad-container .footer-container .footer").stop(true, true).animate({ top: "0px" }, "fast");
+            },
+            function () {
+                $(".ad-container .footer-container .footer").animate({ top: "30px" }, "fast");
+            });
+    });
+</script>
+    <script>
+        var ados = ados || {};ados.run = ados.run || [];
+        ados.run.push(function () { ados_add_placement(22, 12057, "adcm2", [5,17]).setZone(76); });
+    </script>
+    <div class="everyonelovesstackoverflow" id="adcm2">
+    </div> 
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('python,python-2.7,homework,file,x-host-codereview.stackexchange.com');; ados_load();
+    });         
+</script>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/15885?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">7
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/15885/class-representing-a-text-file?rq=1" class="question-hyperlink">Class representing a text file</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/16371?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">5
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/16371/a-simple-arraylist-class-in-java?rq=1" class="question-hyperlink">A simple ArrayList class in Java</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/38401?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/38401/simple-class-to-represent-progress?rq=1" class="question-hyperlink">Simple class to represent progress</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/46032?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">7
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/46032/class-for-printing-class-hierarchy-as-text?rq=1" class="question-hyperlink">Class for printing class hierarchy as text</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/63318?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">5
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/63318/simple-text-database?rq=1" class="question-hyperlink">Simple text DataBase</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/63646?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/63646/builder-for-a-simple-observer-class?rq=1" class="question-hyperlink">Builder for a simple observer class</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/68515?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/68515/simple-interface-and-class-for-holding-text-to-be-analyzed?rq=1" class="question-hyperlink">Simple interface and class for holding text to be analyzed</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/72210?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">20
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/72210/simple-battle-class?rq=1" class="question-hyperlink">Simple battle class</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/84887?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">10
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/84887/beginner-text-editor?rq=1" class="question-hyperlink">Beginner text editor</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://codereview.stackexchange.com/q/90526?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="http://codereview.stackexchange.com/questions/90526/simple-bloomfilter-class?rq=1" class="question-hyperlink">Simple BloomFilter Class</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-raspberrypi" title="Raspberry Pi Stack Exchange"></div><a href="http://raspberrypi.stackexchange.com/questions/41952/i-need-to-control-8-leds-but-i-can-only-control-3-helpful-pictures-attached" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:447 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I need to control 8 LED's but I can only control 3? [helpful pictures attached]
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/62580/balancing-between-theory-and-application-in-early-career" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Balancing Between Theory and Application in Early Career
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1633790/what-is-the-order-when-doing-xyz-and-why" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the order when doing x^y^z and why?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/116896/what-actually-is-arithmancy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What actually is Arithmancy?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46993/does-1957s-12-angry-men-consist-of-only-one-cut" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does 1957's 12 Angry Men consist of only one cut?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/303080/is-there-a-similar-english-phrase-for-this-tamil-proverb-lavish-outside-home" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a similar English phrase for this Tamil proverb - "Lavish outside home yet starving inside of it"?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/62540/grounds-for-an-ethics-complaint-uk-math-prof-publicly-misrepresenting-results" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Grounds for an ethics complaint? UK math prof. publicly misrepresenting results from an unrelated discipline
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1633704/the-length-of-toilet-roll" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The length of toilet roll
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/44526/why-does-shaking-a-match-put-the-fire-out" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does shaking a match put the fire out?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/303615/what-does-baking-tradition-mean" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does "baking tradition" mean?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/47033/why-do-people-bleed-in-real-world-when-they-are-hurt-or-killed-in-the-matrix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do people bleed in real world when they are hurt or killed in The Matrix?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/74036/pacifying-touch-requires-a-touch-attack" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Pacifying touch requires a touch attack?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-webapps" title="Web Applications Stack Exchange"></div><a href="http://webapps.stackexchange.com/questions/89342/prevent-browser-tab-from-playing-youtube-video-automatically" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:34 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Prevent browser tab from playing YouTube video automatically?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/107349/unable-to-get-code-coverage-for-my-apex-trigger" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    unable to get code coverage for my apex trigger
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/70657/translate-a-glypho-program" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Translate a Glypho program
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/35124550/animating-an-svg-on-hover" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Animating an SVG on hover
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/70615/the-rats-sequence" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The RATS sequence
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/127639/why-does-adding-a-top-1-dramatically-worsen-performance" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does adding a TOP 1 dramatically worsen performance?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="http://space.stackexchange.com/questions/13825/how-to-obtain-utc-of-the-epoch-time-in-a-satellite-tle-two-line-element" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to obtain UTC of the epoch time in a satellite TLE (two line element)?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/728161/what-does-this-printf-command-do" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does this "printf" command do?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/34802/could-a-world-where-two-neigbouring-countries-only-one-of-which-uses-magic-e" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Could a world where two neigbouring countries, only one of which uses 'magic', exist?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/112313/what-is-the-current-security-status-of-diffie-hellman-key-exchange" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the current security status of Diffie-Hellman key exchange?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/112312/verifying-android-application-integrity-from-server-side" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Verifying android application integrity from server side
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/214436/why-do-i-have-to-use-an-additional-resistor-with-a-photoresistor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do I have to use an additional resistor with a photoresistor?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://codereview.stackexchange.com/feeds/question/51175" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/51175/ivc/7165');});
+</script>
+<noscript>
+    <div><img src="/posts/51175/ivc/7165" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://codereview.stackexchange.com/tour">tour</a>
+                    <a href="http://codereview.stackexchange.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackexchange.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://codereview.stackexchange.com/contact">contact us</a></b>
+                        <b><a href="http://meta.codereview.stackexchange.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.29.3224
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Code Review Stack Exchange works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-24', {'cookieDomain': 'stackexchange.com'});
+                        ga('set', 'dimension2', '|java|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px none; margin: 0px;"><div style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px none; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-size-adjust: none; font-family: MathJax_Size1,monospace;" id="MathJax_Font_Test"></div></div></body></html>

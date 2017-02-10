@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>HTML5 Video Gallery With Live Playlist</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="all" />
+        <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.selectbox.css" />
+		<link rel="stylesheet" type="text/css" href="css/videoGallery_wall.css" />
+        <!--[if lte IE 8 ]><link rel="stylesheet" type="text/css" href="css/ie_below_9.css" /><![endif]-->
+        
+        <script type="text/javascript" src="js/swfobject.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.prettyPhoto.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jquery.dotdotdot-1.5.1.js"></script>
+        <script type="text/javascript" src="js/jquery.address.js"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="js/jquery.selectbox-0.2.js"></script>
+        <script type="text/javascript" src="http://www.youtube.com/player_api"></script>
+        <script type="text/javascript" src="js/jquery.apPlaylistManager.min.js"></script>
+        <script type="text/javascript" src="js/jquery.apYoutubePlayer.min.js"></script>
+        <script type="text/javascript" src="js/jquery.vg.settings_wall.js"></script>
+        <script type="text/javascript" src="js/jquery.func.js"></script>
+        <script type="text/javascript" src="js/jquery.vg.func.js"></script>
+		<script type="text/javascript" src="js/jquery.videoGallery.min.js"></script>
+	
+  </head>
+  <body>  
+  
+ 	    <!-- playlist selector: http://www.bulgaria-web-developers.com/projects/javascript/selectbox/
+        option 'value' must be playlist id attribute, or data-address if deeplink is used (in this case playlist1, playlist2 ) -->
+  		<select name="lp_playlist" id="lp_playlist" tabindex="1">
+			<option value="playlist1">Local videos</option>
+			<option value="playlist2">Youtube singles</option>
+		</select>
+  
+    	<div class="componentWrapper">
+    
+             <!-- playlist part -->
+             <div class="playlistHolder">
+            
+                 <div class="componentPlaylist">
+                 
+                     <!-- playlist items will be appended here! -->
+                     <div class="playlist_inner"><div class="playlist_content"></div></div>
+                     
+                     <!-- flash mini preview -->
+                     <div id="flashPreviewHolder">
+                         <div id="flashPreview">
+                             <a href="http://www.adobe.com/go/getflashplayer">
+                                <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                             </a>
+                         </div>
+                     </div>
+                     
+                     <!-- youtube iframe preview holder -->
+                     <div class="youtubeIframePreview"></div>
+
+                 </div>
+                     
+             </div> 
+             
+             <!-- this just holds the data, remains hidden! -->
+             <div class="playlistData">
+
+				 <!-- local tracks -->
+				 <ul id='playlist1' data-address="playlist1">
+                     <li data-hook='prettyPhoto[gallery1]' data-link='http://vimeo.com/14665315' class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/01.mp4' data-ogvPath='../media/video/1/wall/01.ogv' data-webmPath='../media/video/1/wall/01.webm' data-description="Sed at diam eu nisl feugiat tempor."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/01.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>A vimeo video from envato</span></p></div></li>
+                     <li data-hook='prettyPhoto[gallery1]' data-link='http://www.youtube.com/watch?v=F08U2yCxbYg' class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/02.mp4' data-ogvPath='../media/video/1/wall/02.ogv' data-webmPath='../media/video/1/wall/02.webm' data-description="Nunc auctor gravida odio."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/02.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Some youtube video</span></p></div></li>
+                     <li data-link='http://www.flashtuning.net' class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/03.mp4' data-ogvPath='../media/video/1/wall/03.ogv' data-webmPath='../media/video/1/wall/03.webm' data-description="Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/03.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>A simple link</span></p></div></li>
+                     <li class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/04.mp4' data-ogvPath='../media/video/1/wall/04.ogv' data-webmPath='../media/video/1/wall/04.webm' data-description="Sed ac ante viverra dolor suscipit gravida."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/04.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>A vimeo video from envato</span></p></div></li>
+                     <li data-hook='prettyPhoto[gallery1]' data-link='&#35;inline-1' class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/05.mp4' data-ogvPath='../media/video/1/wall/05.ogv' data-webmPath='../media/video/1/wall/05.webm' data-description="Porttitor varius odio."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/05.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Inline content in Prettyphoto</span></p></div></li>
+                     <li data-hook='prettyPhoto[gallery1]' data-link='http://vimeo.com/35386989' class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/06.mp4' data-ogvPath='../media/video/1/wall/06.ogv' data-webmPath='../media/video/1/wall/06.webm' data-description="Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/06.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>A vimeo video from envato</span></p></div></li>
+                     <li class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/07.mp4' data-ogvPath='../media/video/1/wall/07.ogv' data-webmPath='../media/video/1/wall/07.webm' data-description="Maecenas porttitor varius odio. Nunc auctor gravida odio."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/07.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Video title goes here</span></p></div></li>
+                     <li data-hook='prettyPhoto[gallery1]' data-link='../media/video/xhr_response.html?ajax=true&width=325&height=185' class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/01.mp4' data-ogvPath='../media/video/1/wall/01.ogv' data-webmPath='../media/video/1/wall/01.webm' data-description="Pellentesque non leo."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/01.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>Content loaded with ajax</span></p></div></li>
+                     <li data-link='http://www.flashtuning.net/portfolio' class="playlistNonSelected" data-type='local' data-mp4Path='../media/video/1/wall/02.mp4' data-ogvPath='../media/video/1/wall/02.ogv' data-webmPath='../media/video/1/wall/02.webm' data-description="<Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo."><div class="playlistThumb"><img class='thumb' src='../media/video/1/preview/02.jpg' width='300' height='169' alt=''/></div><div class='playlistInfo'><p><span class='playlistTitle'>A simple link</span></p></div></li>
+                     
+                     <li id="inline-1">
+                        <p>This is inline content opened in prettyPhoto.</p>
+                        <p>Wall Layout is a new feature in this player. Organize videos with own css in any form you want, like line or grid. Built in feature is Pretyphoto which opens on video click, so you can do everything Pretyphoto can do, also supported are simple links, plus custom settings which leaves video click actions empty, and includes function which returns video number on click, leaving you the choice to execute your own actions on video click.</p>
+                     </li>
+                 </ul>
+                 
+                 <!-- single youtube tracks -->
+                 <ul id='playlist2' data-address="playlist2">
+                     <li data-hook='prettyPhoto[gallery2]' data-link='http://vimeo.com/14665315' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="u8WQeJ2Ajes" ></li>
+                     <li data-hook='prettyPhoto[gallery2]' data-link='http://www.youtube.com/watch?v=F08U2yCxbYg' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" ></li>
+                     <li data-link='http://www.flashtuning.net' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" ></li>
+                     <li class='playlistNonSelected' data-type='youtube_single' data-mp4Path="NY-4XAQR_uk" ></li>
+                     <li data-hook='prettyPhoto[gallery2]' data-link='http://vimeo.com/35386989' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="ytuM8-09R-I" ></li>
+                     <li data-hook='prettyPhoto[gallery2]' data-link='&#35;inline-2' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="juzkbmuQEc4" ></li>
+                     <li class='playlistNonSelected' data-type='youtube_single' data-mp4Path="sMLu2odYzhI" ></li>
+                     <li data-hook='prettyPhoto[gallery2]' data-link='../media/video/xhr_response.html?ajax=true&width=325&height=185' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="1jzApuEW0U4" ></li>
+                     <li data-link='http://www.flashtuning.net/portfolio' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="P3FKCwAL904" ></li>
+                     
+                     <li id="inline-2">
+                        <p>This is inline content opened in prettyPhoto.</p>
+                        <p>Wall Layout is a new feature in this player. Organize videos with own css in any form you want, like line or grid. Built in feature is Pretyphoto which opens on video click, so you can do everything Pretyphoto can do, also supported are simple links, plus custom settings which leaves video click actions empty, and includes function which returns video number on click, leaving you the choice to execute your own actions on video click.</p>
+                     </li>
+                 </ul>
+                 
+                 <!-- local tracks xml -->
+                 <ul id='playlist3' data-address="playlist3">
+                     <li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/wall1.xml'/>
+                 </ul>
+                 
+                 <!-- single youtube tracks xml -->
+                 <ul id='playlist4' data-address="playlist4">
+                     <li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/wall2.xml'/>
+                 </ul>
+                 
+                 <!-- folder playlist -->
+             	 <ul id='playlist5' data-address="playlist5">
+                     <li data-address="folder1_" class= "playlistNonSelected" data-type='folder' data-mp4Path='../media/video/1/'/>
+                 </ul>
+                
+             </div> 
+             
+        </div>
+        
+        <!-- public api -->
+    	<div id='publicFunctions'>
+       		<p>PUBLIC METHODS</p><br/>
+            <ul>
+                <!-- play/stop active media -->
+                <li><a href='#' onClick="api_togglePlayback(); return false;">toggle playback</a></li>
+                
+                <!-- play next media -->
+                <li><a href='#' onClick="api_nextMedia(); return false;">Play next media</a></li>
+                
+                <!-- play previous media -->
+                <li><a href='#' onClick="api_previousMedia(); return false;">Play previous media</a></li>
+                
+                <!-- set volume (0-1) -->
+                <li><a href='#' onClick="api_setVolume(0.5); return false;">Set volume (0.5)</a></li>
+                
+                <!-- toggle playlist  -->
+                <li><a href='#' onClick="api_togglePlaylist(); return false;">toggle playlist</a></li>
+                
+                <!-- toggle description -->
+                <li><a href='#' onClick="api_toggleDescription(); return false;">toggle description</a></li>
+                
+                <!-- destroy media -->
+                <li><a href='#' onClick="api_destroyMedia(); return false;">destroy media</a></li>
+                
+                <!-- load media/playlist:
+                if useDeeplink: 
+                	pass deeplink url as string (single or two level).
+                    load playlist example (single level): jQuery.videoGallery.loadMedia('playlist0'), 
+                    load media example (two level): jQuery.videoGallery.loadMedia('playlist1/youtube_single1').
+                no Deeplink: 
+                	for media pass number, counting starts from 0,
+                    for playlist pass element 'id' attribute. 
+                    load playlist example: jQuery.videoGallery.loadMedia('playlist1'), 
+                    load media example: jQuery.videoGallery.loadMedia(3)-->
+                
+                <li><a href='#' onClick="api_loadMedia(1); return false;">load media 1</a></li>
+                <li><a href='#' onClick="api_loadMedia(2); return false;">load media 2</a></li>
+                <li><a href='#' onClick="api_loadMedia(3); return false;">load media 3</a></li>
+                <li><a href='#' onClick="api_loadMedia(4); return false;">load media 4</a></li>
+                <li><a href='#' onClick="api_loadMedia(5); return false;">load media 5</a></li>
+                
+                <li><a href='#' onClick="api_loadMedia('playlist1'); return false;">load playlist 1</a></li>
+                <li><a href='#' onClick="api_loadMedia('playlist2'); return false;">load playlist 2</a></li>
+                <li><a href='#' onClick="api_loadMedia('playlist3'); return false;">load playlist 3</a></li>
+                
+                <!-- if useLivePreview = true, call this to clean active preview item if needed -->
+                <li><a href='#' onClick="api_cleanPreviewVideo(); return false;">clean preview video</a></li>
+                
+            </ul>
+         </div>
+ 
+      </body>
+</html>

@@ -1,0 +1,118 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+	<style>
+	#nav {
+    line-height:30px;
+    background-color:white;
+    height:1000px;
+    width:50px;
+    float:left;
+    padding:2px; 
+}
+</style>
+	  <link rel="shortcut icon" href="images/logo1.png"/>
+		<title>College Tune</title>
+		 <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="../css/bootstrap.min.css">
+   		<link rel="stylesheet" href="css/style.css">
+		
+			
+     <script src="../js/bootstrap.min.js"></script>
+     <script src="../js/jquery.js"></script>
+	 <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  
+  <div class="container-fluid">
+    <div class="navbar-header">
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><span><i class="glyphicon glyphicon-education"></i> CampusPoint</span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+         <li><a href="../index.html"><span ><i class="glyphicon glyphicon-home"></i> Home</span></a></li>
+		<li><a href="../1page.html"><span ><i class="glyphicon glyphicon-th"></i> QuickAccess</span></a></li>
+        <li><a href="../departments.html"><span ><i class="glyphicon glyphicon-star"></i> Departments</span></a></li>
+        <li><a href="../clubs.html"><span ><i class="glyphicon glyphicon-asterisk"></i> Clubs</span></a></li>
+        <li><a href="../collegetube/ttt/v3/_deploy/index.html"><span ><i class="glyphicon glyphicon-play-circle"></i> CollegeTube</span></a></li>
+        <li><a href="../collegetune/index.html"><span ><i class="glyphicon glyphicon-headphones"></i> CollegeTune</span></a></li>
+		<li><a href="../contact.html"><span ><i class="glyphicon glyphicon-envelope"></i> Contact</span></a></li>
+		<li><a href="../login.php"><span ><i class="glyphicon glyphicon-user"></i> Login</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+	
+	
+		
+		<div id="container">
+			<div id="audio-img">
+				<img class="cover">
+			</div>
+			<div id="audio-player">
+				<div id="audio-info">
+					<span class="artist"></span> -  <span class="title"></span>
+				</div>
+				<input id="volume" type="range" min="0" max="10" value="5"></input>
+				<br>
+				<div id="audio-buttons">
+					<button id="prev"></button>
+					<button id="play"></button>
+					<button id="pause"></button>
+					<button id="stop"></button>
+					<button id="next"></button>
+
+				
+				</div>
+				<div class="clearfix"></div>
+				<div id="tracker">
+					<div class="progressbar" style="display:block;">
+					<!--<div class="player_playcontrol" style="cursor:pointer;"></div>
+					<div class="player_seekbar" style="cursor:pointer;width:396px;"></div>
+					<div class="player_mediatime">
+					<p>00:03 | 04:04</p>
+					</div>
+					
+					<div class="player_progress_tooltip" style="left:42px;">
+					<p>0:00 | 0:00</p>-->
+						<span id="progress"></span>
+						<!--<input id="progress" type="range" min="0" max="10" value="5"></input>-->
+						
+					</div>
+					<span id="duration"></span>
+				</div>
+				<div class="clearfix"></div>
+				<ul id="playlist">
+					<!--<li id="one" song="song1.mp3" cover="cover1.gif" artist="Arijit Singh">tu chale.mp3</li>
+					<li id="two" song="song2.mp3" cover="cover2.gif" artist="Shekhar Ravjavni">Gehra ishq.mp3</li>
+					<li id="three" song="song3.mp3" cover="cover3.gif" artist="Mustafa Zahid">Tere bina.mp3</li>
+					<li id="four" song="song4.mp3" cover="cover4.gif" artist="Badshah and Neha kakkar">Kar gayi chull.mp3</li>
+					<li id="five" song="song5.mp3" cover="cover5.gif" artist="Shreya Ghoshal">Rehnuma.mp3</li>
+					<li id="six" song="song6.mp3" cover="cover6.gif" artist="Arijit Singh">O soniye.mp3</li>
+					<li id="seven" song="song7.mp3" cover="cover7.gif" artist="Mohit chouhan">Matargashti.mp3</li>
+					<li id="eight" song="song8.mp3" cover="cover8.gif" artist="Himesh reshmiya">Teri yaad.mp3</li>
+				-->
+				</ul>
+				
+			</div>
+		</div>
+			<script src="js/jquery.js"></script>
+		<script src="js/main.js"></script>
+
+
+	</body>
+</html>

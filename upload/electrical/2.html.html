@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>Java Swing Text Editor - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Java Swing Text Editor">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="
+  Possible Duplicate:
+  What components should I use for building a Java WYSIWYG HTML editor  
+
+
+
+
+I'm a total newbie in Java programming. I have to do text editor in Swing/AWT and I have one ques...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/14115263/java-swing-text-editor">
+    <link rel="canonical" href="http://stackoverflow.com/questions/14115263/java-swing-text-editor">
+
+    
+    
+    <script src="2_files/ados_002.js" async="" type="text/javascript"></script><script src="2_files/quant.js" async=""></script><script src="2_files/beacon.js" async=""></script><script src="2_files/analytics.js" async=""></script><script src="2_files/ados.js" async="" type="text/javascript"></script><script src="2_files/jquery.js"></script>
+    <script src="2_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="2_files/all.css">
+
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/14115263/java-swing-text-editor">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/14115263/java-swing-text-editor">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/14115263/java-swing-text-editor">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:5,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:14115263});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '14115263');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1454324416,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"1694e169975d4a7e70afd6eab116448c","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"72ed6ced36af","js/moderator.en.js":"481e310df8f0","js/full-anon.en.js":"ef9d9700035c","js/full.en.js":"29116d259397","js/wmd.en.js":"7e593f04f138","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"54b998574be9","js/tageditor.en.js":"9a6504012242","js/tageditornew.en.js":"e988d08e49a4","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"82fcdf5bb6de","js/review.en.js":"3cd11576400b","js/tagsuggestions.en.js":"78eee7c19ab2","js/post-validation.en.js":"3c5f2f238cd6","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"12b8df2c974d","js/keyboard-shortcuts.en.js":"e79748fd0b4a","js/external-editor.en.js":"cf58cc6630ef","js/external-editor.en.js":"cf58cc6630ef","js/snippet-javascript.en.js":"da37000d40f8","js/snippet-javascript-codemirror.en.js":"7515e4059d63"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+<script src="2_files/full-anon.js" async=""></script><script src="2_files/snippet-javascript.js" async=""></script><script src="2_files/post-validation.js" async=""></script><script src="2_files/prettify-full.js" async=""></script><script src="2_files/adFeedback.js" type="text/javascript"></script><link href="2_files/adFeedback.css" rel="stylesheet"><link href="2_files/jobs.css" rel="stylesheet" type="text/css"></head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track" href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider" data-gps-track="site_switcher.click({ item_type:9 })">
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f14115263%2fjava-swing-text-editor" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f14115263%2fjava-swing-text-editor" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#" class="topbar-icon icon-achievements yes-hover js-achievements-button " data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f14115263%2fjava-swing-text-editor" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f14115263%2fjava-swing-text-editor" class="login-link">log in</a>
+
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="Search Q&amp;A" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="http://stackoverflow.com/jobs">Jobs</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br>
+                <br>Join them; it only takes a minute:<br>
+            <br>
+            <a href="http://stackoverflow.com/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f14115263%2fjava-swing-text-editor" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/14115263/java-swing-text-editor" class="question-hyperlink">Java Swing Text Editor [duplicate]</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="14115263" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk34002027",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk34002027"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjozMjI1MTQsImNoIjoxMTc4LCJjayI6e30sImNyIjoxMTk1Nzc4LCJkaSI6IjNmMjdjYzk0Yzc3NjQxNDg4MDhmNGUzZmZjZjE4NmJlIiwiZG0iOjEsImZjIjoxMjY5MTM3LCJmbCI6ODY0MjI1LCJpcCI6IjExMi4xMzMuMjQzLjI0MiIsImt3IjoiamF2YSxzd2luZyxhd3QsdGV4dC1lZGl0b3Isc3R5bGVkdGV4dCIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmluIiwic3QiOjgyNzcsInVrIjoidWUxLWMyNTcxMDg5MTAyOTRiYWFhZmE4ZTMxM2JmODA0MjJiIiwiem4iOjQzLCJ0cyI6MTQ1NDMyNDQxOTM1MCwiYmYiOnRydWUsInBuIjoiYWR6ZXJrMzQwMDIwMjciLCJ1ciI6Imh0dHA6Ly9jYXJlZXJzLnN0YWNrb3ZlcmZsb3cuY29tL3Byb2R1Y3RzP3V0bV9zb3VyY2U9c3RhY2tvdmVyZmxvdy5jb20mdXRtX21lZGl1bT1hZCZ1dG1fY2FtcGFpZ249ZW1wbG95ZXJzLWJlc3Qtd2F5JnV0bV9jb250ZW50PWxiLXVzZSJ9&amp;s=BXukOmCTM85Qfnj3WajAM84gRzk" rel="nofollow" target="_blank" title=""><img class="ovrgajiicgatvcdfgyxw" src="2_files/5fa811fa1a3e40f1a3435478bd1364a0.png" title="" alt="" height="90" border="0" width="728"></a><img class="ovrgajiicgatvcdfgyxw" src="2_files/i_002.gif" style="position:absolute;" height="0px" border="0" width="0px"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="14115263" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>4</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<blockquote>
+  <p><strong>Possible Duplicate:</strong><br>
+  <a href="http://stackoverflow.com/questions/3156809/what-components-should-i-use-for-building-a-java-wysiwyg-html-editor">What components should I use for building a Java WYSIWYG HTML editor</a>  </p>
+</blockquote>
+
+
+
+<p>I'm a total newbie in Java programming. I have to do text editor in 
+Swing/AWT and I have one question about it. How can I edit one selected 
+word, for example change its color? Which component and which functions 
+should I use?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/java" class="post-tag js-gps-track" title="show questions tagged 'java'" rel="tag">java</a> <a href="http://stackoverflow.com/questions/tagged/swing" class="post-tag js-gps-track" title="show questions tagged 'swing'" rel="tag">swing</a> <a href="http://stackoverflow.com/questions/tagged/awt" class="post-tag js-gps-track" title="show questions tagged 'awt'" rel="tag">awt</a> <a href="http://stackoverflow.com/questions/tagged/text-editor" class="post-tag js-gps-track" title="show questions tagged 'text-editor'" rel="tag">text-editor</a> <a href="http://stackoverflow.com/questions/tagged/styledtext" class="post-tag js-gps-track" title="show questions tagged 'styledtext'" rel="tag">styledtext</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/14115263" title="short permalink to this question" class="short-link" id="link-post-14115263">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/14115263/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/14115263/revisions" title="show all edits to this post">edited <span title="2013-01-02 02:24:40Z" class="relativetime">Jan 2 '13 at 2:24</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/418556/andrew-thompson"><div class="gravatar-wrapper-32"><img src="2_files/yOfDr.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/418556/andrew-thompson">Andrew Thompson</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 129491" dir="ltr">129k</span><span title="16 gold badges"><span class="badge1"></span><span class="badgecount">16</span></span><span title="115 silver badges"><span class="badge2"></span><span class="badgecount">115</span></span><span title="230 bronze badges"><span class="badge3"></span><span class="badgecount">230</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-01-01 23:33:52Z" class="relativetime">Jan 1 '13 at 23:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1812094/pawe%c5%82-reszka"><div class="gravatar-wrapper-32"><img src="2_files/2c81a59ef08a9d10b1df1a2734b227ee.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1812094/pawe%c5%82-reszka">Paweł Reszka</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">858</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="10 silver badges"><span class="badge2"></span><span class="badgecount">10</span></span><span title="32 bronze badges"><span class="badge3"></span><span class="badgecount">32</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    <tr>
+            <td class="special-status" colspan="2">
+                <div class="question-status">
+        <h2>                    <b>marked</b> as duplicate by <a href="http://stackoverflow.com/users/230513/trashgod">trashgod</a>, <a href="http://stackoverflow.com/users/1442874/chris-gerken">Chris Gerken</a>, <a href="http://stackoverflow.com/users/992484/madprogrammer">MadProgrammer</a>, <a href="http://stackoverflow.com/users/15187/yanchenko">yanchenko</a>, <a href="http://stackoverflow.com/users/3834/graviton">Graviton</a> <span dir="ltr"><span title="2013-01-04 06:32:35Z" class="relativetime">Jan 4 '13 at 6:32</span></span>
+</h2>
+        <p>This question has been asked before and already has an answer. If those answers do not fully address your question, please <a href="http://stackoverflow.com/questions/ask">ask a new question</a>.</p>
+    </div>
+            </td>
+        </tr>
+    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-14115263" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-19535022" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Take a look at this tutorial: <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/editorpane.html" rel="nofollow">docs.oracle.com/javase/tutorial/uiswing/components/…</a></span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1933512/aly" title="438 reputation" class="comment-user">aly</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment19535022_14115263"><span title="2013-01-01 23:36:45Z" class="relativetime-clean">Jan 1 '13 at 23:36</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-19535234" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">See also <a href="http://stackoverflow.com/q/853071/230513"><i>WYSIWYG text editor in Java</i></a>.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/230513/trashgod" title="159030 reputation" class="comment-user">trashgod</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment19535234_14115263"><span title="2013-01-01 23:58:18Z" class="relativetime-clean">Jan 1 '13 at 23:58</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-19536896" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The AWT does not offer any components that support formatted text, so this might as well be considered 'Swing'.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/418556/andrew-thompson" title="129491 reputation" class="comment-user">Andrew Thompson</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment19536896_14115263"><span title="2013-01-02 02:24:03Z" class="relativetime-clean">Jan 2 '13 at 2:24</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-19537068" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You can also take a look at <a href="http://stackoverflow.com/questions/13448558/highlight-a-word-in-jeditorpane/13449000#13449000">this</a> - It uses highlighting to highlight search words, but the concept is the same</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/992484/madprogrammer" title="233659 reputation" class="comment-user">MadProgrammer</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment19537068_14115263"><span title="2013-01-02 02:40:37Z" class="relativetime-clean">Jan 2 '13 at 2:40</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-19546034" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hope this thread <a href="http://stackoverflow.com/q/9650992/1057230"><b>how to change text color in the JTextArea</b></a>, might be of some interest to you :-)</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1057230/nice-cow" title="19134 reputation" class="comment-user">nIcE cOw</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment19546034_14115263"><span title="2013-01-02 11:39:57Z" class="relativetime-clean">Jan 2 '13 at 11:39</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-14115263" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/14115263/java-swing-text-editor?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="http://stackoverflow.com/questions/14115263/java-swing-text-editor?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/14115263/java-swing-text-editor?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="14117773"></a>
+<div id="answer-14117773" class="answer accepted-answer" data-answerid="14117773" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="14117773" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For a beginner to Java Swing, try to keep this project simple. To 
+show multiple colors and multiple sizes in the same document requires a 
+lot of complex coding and rendering html.</p>
+
+<p>Try to just provide the basic copy,cut,paste features because they are easier to implement.</p>
+
+<p>To provide those features, a JTextArea is sufficient.</p>
+
+<p>Try this. It's a pretty simple text editor</p>
+
+<pre style="" class="lang-java prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="pln">event</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.*;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Document</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">JFrame</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><span class="typ">ActionListener</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JTextArea</span><span class="pln"> ta</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> count</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenuBar</span><span class="pln"> menuBar</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pln"> fileM</span><span class="pun">,</span><span class="pln">editM</span><span class="pun">,</span><span class="pln">viewM</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JScrollPane</span><span class="pln"> scpane</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pln"> exitI</span><span class="pun">,</span><span class="pln">cutI</span><span class="pun">,</span><span class="pln">copyI</span><span class="pun">,</span><span class="pln">pasteI</span><span class="pun">,</span><span class="pln">selectI</span><span class="pun">,</span><span class="pln">saveI</span><span class="pun">,</span><span class="pln">loadI</span><span class="pun">,</span><span class="pln">statusI</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> pad</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">JToolBar</span><span class="pln"> toolBar</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Document</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">(</span><span class="str">"Document"</span><span class="pun">);</span><span class="pln">
+    setSize</span><span class="pun">(</span><span class="lit">600</span><span class="pun">,</span><span class="pln"> </span><span class="lit">600</span><span class="pun">);</span><span class="pln">
+    setLocationRelativeTo</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+    setDefaultCloseOperation</span><span class="pun">(</span><span class="typ">JFrame</span><span class="pun">.</span><span class="pln">EXIT_ON_CLOSE</span><span class="pun">);</span><span class="pln">
+    </span><span class="typ">Container</span><span class="pln"> pane </span><span class="pun">=</span><span class="pln"> getContentPane</span><span class="pun">();</span><span class="pln">
+    pane</span><span class="pun">.</span><span class="pln">setLayout</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BorderLayout</span><span class="pun">());</span><span class="pln">
+
+    count </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+    pad </span><span class="pun">=</span><span class="pln"> </span><span class="str">" "</span><span class="pun">;</span><span class="pln">
+    ta </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JTextArea</span><span class="pun">();</span><span class="pln"> </span><span class="com">//textarea</span><span class="pln">
+    menuBar </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuBar</span><span class="pun">();</span><span class="pln"> </span><span class="com">//menubar</span><span class="pln">
+    fileM </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pun">(</span><span class="str">"File"</span><span class="pun">);</span><span class="pln"> </span><span class="com">//file menu</span><span class="pln">
+    editM </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pun">(</span><span class="str">"Edit"</span><span class="pun">);</span><span class="pln"> </span><span class="com">//edit menu</span><span class="pln">
+    viewM </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenu</span><span class="pun">(</span><span class="str">"View"</span><span class="pun">);</span><span class="pln"> </span><span class="com">//edit menu</span><span class="pln">
+    scpane </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JScrollPane</span><span class="pun">(</span><span class="pln">ta</span><span class="pun">);</span><span class="pln"> </span><span class="com">//scrollpane  and add textarea to scrollpane</span><span class="pln">
+    exitI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Exit"</span><span class="pun">);</span><span class="pln">
+    cutI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Cut"</span><span class="pun">);</span><span class="pln">
+    copyI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Copy"</span><span class="pun">);</span><span class="pln">
+    pasteI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Paste"</span><span class="pun">);</span><span class="pln">
+    selectI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Select All"</span><span class="pun">);</span><span class="pln"> </span><span class="com">//menuitems</span><span class="pln">
+    saveI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Save"</span><span class="pun">);</span><span class="pln"> </span><span class="com">//menuitems</span><span class="pln">
+    loadI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Load"</span><span class="pun">);</span><span class="pln"> </span><span class="com">//menuitems</span><span class="pln">
+    statusI </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JMenuItem</span><span class="pun">(</span><span class="str">"Status"</span><span class="pun">);</span><span class="pln"> </span><span class="com">//menuitems</span><span class="pln">
+    toolBar </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JToolBar</span><span class="pun">();</span><span class="pln">
+
+    ta</span><span class="pun">.</span><span class="pln">setLineWrap</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+    ta</span><span class="pun">.</span><span class="pln">setWrapStyleWord</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+    setJMenuBar</span><span class="pun">(</span><span class="pln">menuBar</span><span class="pun">);</span><span class="pln">
+    menuBar</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">fileM</span><span class="pun">);</span><span class="pln">
+    menuBar</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">editM</span><span class="pun">);</span><span class="pln">
+    menuBar</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">viewM</span><span class="pun">);</span><span class="pln">
+
+    fileM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">saveI</span><span class="pun">);</span><span class="pln">
+    fileM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">loadI</span><span class="pun">);</span><span class="pln">
+    fileM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">exitI</span><span class="pun">);</span><span class="pln">
+
+    editM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">cutI</span><span class="pun">);</span><span class="pln">
+    editM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">copyI</span><span class="pun">);</span><span class="pln">
+    editM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">pasteI</span><span class="pun">);</span><span class="pln">        
+    editM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">selectI</span><span class="pun">);</span><span class="pln">
+
+    viewM</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">statusI</span><span class="pun">);</span><span class="pln">
+
+    saveI</span><span class="pun">.</span><span class="pln">setAccelerator</span><span class="pun">(</span><span class="typ">KeyStroke</span><span class="pun">.</span><span class="pln">getKeyStroke</span><span class="pun">(</span><span class="typ">KeyEvent</span><span class="pun">.</span><span class="pln">VK_S</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ActionEvent</span><span class="pun">.</span><span class="pln">CTRL_MASK</span><span class="pun">));</span><span class="pln">
+    loadI</span><span class="pun">.</span><span class="pln">setAccelerator</span><span class="pun">(</span><span class="typ">KeyStroke</span><span class="pun">.</span><span class="pln">getKeyStroke</span><span class="pun">(</span><span class="typ">KeyEvent</span><span class="pun">.</span><span class="pln">VK_L</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ActionEvent</span><span class="pun">.</span><span class="pln">CTRL_MASK</span><span class="pun">));</span><span class="pln">
+    cutI</span><span class="pun">.</span><span class="pln">setAccelerator</span><span class="pun">(</span><span class="typ">KeyStroke</span><span class="pun">.</span><span class="pln">getKeyStroke</span><span class="pun">(</span><span class="typ">KeyEvent</span><span class="pun">.</span><span class="pln">VK_X</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ActionEvent</span><span class="pun">.</span><span class="pln">CTRL_MASK</span><span class="pun">));</span><span class="pln">
+    copyI</span><span class="pun">.</span><span class="pln">setAccelerator</span><span class="pun">(</span><span class="typ">KeyStroke</span><span class="pun">.</span><span class="pln">getKeyStroke</span><span class="pun">(</span><span class="typ">KeyEvent</span><span class="pun">.</span><span class="pln">VK_C</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ActionEvent</span><span class="pun">.</span><span class="pln">CTRL_MASK</span><span class="pun">));</span><span class="pln">
+    pasteI</span><span class="pun">.</span><span class="pln">setAccelerator</span><span class="pun">(</span><span class="typ">KeyStroke</span><span class="pun">.</span><span class="pln">getKeyStroke</span><span class="pun">(</span><span class="typ">KeyEvent</span><span class="pun">.</span><span class="pln">VK_V</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ActionEvent</span><span class="pun">.</span><span class="pln">CTRL_MASK</span><span class="pun">));</span><span class="pln">
+    selectI</span><span class="pun">.</span><span class="pln">setAccelerator</span><span class="pun">(</span><span class="typ">KeyStroke</span><span class="pun">.</span><span class="pln">getKeyStroke</span><span class="pun">(</span><span class="typ">KeyEvent</span><span class="pun">.</span><span class="pln">VK_A</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ActionEvent</span><span class="pun">.</span><span class="pln">CTRL_MASK</span><span class="pun">));</span><span class="pln">
+
+    pane</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">scpane</span><span class="pun">,</span><span class="typ">BorderLayout</span><span class="pun">.</span><span class="pln">CENTER</span><span class="pun">);</span><span class="pln">
+    pane</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">toolBar</span><span class="pun">,</span><span class="typ">BorderLayout</span><span class="pun">.</span><span class="pln">SOUTH</span><span class="pun">);</span><span class="pln">
+
+    saveI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    loadI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    exitI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    cutI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    copyI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    pasteI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    selectI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    statusI</span><span class="pun">.</span><span class="pln">addActionListener</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+
+    setVisible</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> actionPerformed</span><span class="pun">(</span><span class="typ">ActionEvent</span><span class="pln"> e</span><span class="pun">)</span><span class="pln"> 
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">JMenuItem</span><span class="pln"> choice </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">JMenuItem</span><span class="pun">)</span><span class="pln"> e</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">choice </span><span class="pun">==</span><span class="pln"> saveI</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">//not yet implmented</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">choice </span><span class="pun">==</span><span class="pln"> exitI</span><span class="pun">)</span><span class="pln">
+        </span><span class="typ">System</span><span class="pun">.</span><span class="pln">exit</span><span class="pun">(</span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">choice </span><span class="pun">==</span><span class="pln"> cutI</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        pad </span><span class="pun">=</span><span class="pln"> ta</span><span class="pun">.</span><span class="pln">getSelectedText</span><span class="pun">();</span><span class="pln">
+        ta</span><span class="pun">.</span><span class="pln">replaceRange</span><span class="pun">(</span><span class="str">""</span><span class="pun">,</span><span class="pln"> ta</span><span class="pun">.</span><span class="pln">getSelectionStart</span><span class="pun">(),</span><span class="pln"> ta</span><span class="pun">.</span><span class="pln">getSelectionEnd</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">choice </span><span class="pun">==</span><span class="pln"> copyI</span><span class="pun">)</span><span class="pln">
+        pad </span><span class="pun">=</span><span class="pln"> ta</span><span class="pun">.</span><span class="pln">getSelectedText</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">choice </span><span class="pun">==</span><span class="pln"> pasteI</span><span class="pun">)</span><span class="pln">
+        ta</span><span class="pun">.</span><span class="pln">insert</span><span class="pun">(</span><span class="pln">pad</span><span class="pun">,</span><span class="pln"> ta</span><span class="pun">.</span><span class="pln">getCaretPosition</span><span class="pun">());</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">choice </span><span class="pun">==</span><span class="pln"> selectI</span><span class="pun">)</span><span class="pln">
+        ta</span><span class="pun">.</span><span class="pln">selectAll</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">e</span><span class="pun">.</span><span class="pln">getSource</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> statusI</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">//not yet implmented</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> 
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Document</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/14117773" title="short permalink to this answer" class="short-link" id="link-post-14117773">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/14117773/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-01-02 06:28:43Z" class="relativetime">Jan 2 '13 at 6:28</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1941489/xiaoerge"><div class="gravatar-wrapper-32"><img src="2_files/f8b9cff114bae0ef923a831d8d6e4bb3.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1941489/xiaoerge">Xiaoerge</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">160</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-14117773" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-14117773" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+				
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/java" class="post-tag" title="show questions tagged 'java'" rel="tag">java</a> <a href="http://stackoverflow.com/questions/tagged/swing" class="post-tag" title="show questions tagged 'swing'" rel="tag">swing</a> <a href="http://stackoverflow.com/questions/tagged/awt" class="post-tag" title="show questions tagged 'awt'" rel="tag">awt</a> <a href="http://stackoverflow.com/questions/tagged/text-editor" class="post-tag" title="show questions tagged 'text-editor'" rel="tag">text-editor</a> <a href="http://stackoverflow.com/questions/tagged/styledtext" class="post-tag" title="show questions tagged 'styledtext'" rel="tag">styledtext</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-01-01 23:33:52Z"><b>3 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>11589 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/14115263/java-swing-text-editor?lastactivity" class="lastactivity-link" title="2013-01-02 06:28:43Z">3 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1463273419",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1463273419"><div id="careersadsdoublehigh" style="display:none;"></div><img class="ovrgajiicgatvcdfgyxw" src="2_files/i_003.gif" style="position:absolute;" height="0px" border="0" width="0px"></div>
+        <div class=" orange looking tagged" id="hireme"><a href="http://stackoverflow.com/jobs" target="_blank" data-tz="1" data-ti="0" class="top"><span>Looking for a job?</span></a><div class="middle"><ul class="jobs"><li><a data-at="0" data-tz="3" data-ti="193593" href="http://stackoverflow.com/jobs/107680/big-data-technical-leads-architects-datametica-solutions-pvt-ltd" target="_blank" title="Big-Data Technical Leads / Architects at Datametica Solutions Pvt. Ltd.. Click to learn more.">Big-Data Technical Leads / Architects<br><div class="company">Datametica Solutions Pvt. Ltd.</div><div class="location" title="Pune, India">Pune, India</div><span class="post-tag">hadoop</span><span class="post-tag">pig</span></a></li><li><a data-at="0" data-tz="3" data-ti="186718" href="http://stackoverflow.com/jobs/100771/cassandra-superstar-100-remote-position-crossover" target="_blank" title="Cassandra Superstar, 100% remote position at Crossover. Click to learn more.">Cassandra Superstar, 100% remote position<br><div class="company">Crossover</div><div class="location" title="Bengaluru, India / remote">Bengaluru, India / remote</div><span class="post-tag">cassandra</span><span class="post-tag">java</span></a></li><li><a data-at="0" data-tz="3" data-ti="181613" href="http://stackoverflow.com/jobs/95635/principal-ui-development-engineer-numerify" target="_blank" title="Principal UI Development Engineer at Numerify. Click to learn more.">Principal UI Development Engineer<br><div class="company">Numerify</div><div class="location" title="Bengaluru, India">Bengaluru, India</div><span class="post-tag">java</span><span class="post-tag">javascript</span></a></li><li><a data-at="0" data-tz="3" data-ti="186758" href="http://stackoverflow.com/jobs/100811/application-developer-full-stack-bangalore-sahaj-software-solutions-pvt" target="_blank" title="Application Developer (Full Stack) - Bangalore / Chennai at Sahaj Software Solutions Pvt Ltd. Click to learn more.">Application Developer (Full Stack) - Bangalore / Chennai<br><div class="company">Sahaj Software Solutions Pvt Ltd</div><div class="location" title="Bengaluru, India">Bengaluru, India</div><span class="post-tag">java</span><span class="post-tag">ruby</span></a></li></ul></div><img class="impression" src="2_files/i.gif" style="display:none;"></div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/3156809?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/3156809/what-components-should-i-use-for-building-a-java-wysiwyg-html-editor?lq=1" class="question-hyperlink">What components should I use for building a Java WYSIWYG HTML editor</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/853071?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">44</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/853071/wysiwyg-text-editor-in-java?lq=1" class="question-hyperlink">WYSIWYG text editor in Java</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/9650992?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">13</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/9650992/how-to-change-text-color-in-the-jtextarea?lq=1" class="question-hyperlink">How to change text color in the JtextArea?</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/13448558?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/13448558/highlight-a-word-in-jeditorpane?lq=1" class="question-hyperlink">Highlight a word in JEditorPane</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/159521?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted extra-large">1023
+    </div>
+</a><a href="http://stackoverflow.com/questions/159521/text-editor-to-open-big-giant-huge-large-text-files?rq=1" class="question-hyperlink">Text editor to open big (giant, huge, large) text files</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/3168818?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="http://stackoverflow.com/questions/3168818/genome-browser-built-in-java-swing-and-awt-or-swing-and-processing?rq=1" class="question-hyperlink">Genome browser built in java: Swing and awt or Swing and Processing?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/7358775?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes large">230
+    </div>
+</a><a href="http://stackoverflow.com/questions/7358775/java-gui-frameworks-what-to-choose-swing-swt-awt-swingx-jgoodies-javafx?rq=1" class="question-hyperlink">Java GUI frameworks. What to choose? Swing, SWT, AWT, SwingX, JGoodies, JavaFX, Apache Pivot?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/9589404?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/9589404/is-that-possible-to-built-a-simple-text-editor-in-java-without-using-jtextarea?rq=1" class="question-hyperlink">is that possible to built a simple text editor in java without using JTextArea?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/12659056?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/12659056/java-swing-extending-jcomponent-class-to-create-text-editor-component?rq=1" class="question-hyperlink">java Swing - Extending JComponent class to create text editor component</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/13801827?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/13801827/changing-the-colour-of-text-in-drawstring?rq=1" class="question-hyperlink">Changing the colour of text in drawstring()</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/18235359?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/18235359/changing-font-in-jtextarea-for-new-text-only?rq=1" class="question-hyperlink">Changing Font in JTextArea for new text only</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/18918424?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/18918424/mixing-awt-and-swing-in-gui-programming-using-java?rq=1" class="question-hyperlink">mixing awt and swing in GUI programming using Java</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/19474947?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/19474947/how-to-color-keywords-in-a-java-text-editor?rq=1" class="question-hyperlink">How to color keywords in a Java text editor?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/20635470?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/20635470/text-editor-java-swing-actionlistener-save-file?rq=1" class="question-hyperlink">Text Editor java Swing actionListener save file</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="http://space.stackexchange.com/questions/13825/how-to-obtain-utc-of-the-epoch-time-in-a-satellite-tle-two-line-element" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to obtain UTC of the epoch time in a satellite TLE (two line element)?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-webmasters" title="Webmasters Stack Exchange"></div><a href="http://webmasters.stackexchange.com/questions/89395/robots-txt-should-be-in-the-root-directory-or-can-be-in-sub-directory" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:45 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Robots.txt should be in the root-directory or can be in sub-directory?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/127639/why-does-adding-a-top-1-dramatically-worsen-performance" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does adding a TOP 1 dramatically worsen performance?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/62111/why-do-some-hostels-only-allow-international-visitors" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do some hostels only allow international visitors?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/47033/why-do-people-bleed-in-real-world-when-they-are-hurt-or-killed-in-the-matrix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do people bleed in real world when they are hurt or killed in The Matrix?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/61355/is-my-managers-attitude-discriminatory" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is my manager's attitude discriminatory?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/117013/short-story-with-an-intergalactic-zoo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Short story with an intergalactic zoo
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div><a href="http://bicycles.stackexchange.com/questions/36882/safely-switch-bicycles-before-a-century" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:126 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Safely Switch Bicycles before a Century?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/34602/i-duplicate-the-u-s-president-what-happens" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I duplicate the U.S. President. What happens?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/112319/making-a-blacklist-of-filetypes-to-protect-php-application" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Making a Blacklist of filetypes to protect PHP application
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/214553/is-it-possible-to-eliminate-output-ripple-of-smpss-by-using-two-parallel-smpss" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible to eliminate output ripple of SMPS's 
+by using two parallel SMPS's to produce outphase outputs to each other?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-raspberrypi" title="Raspberry Pi Stack Exchange"></div><a href="http://raspberrypi.stackexchange.com/questions/41952/i-need-to-control-8-leds-but-i-can-only-control-3-helpful-pictures-attached" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:447 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I need to control 8 LED's but I can only control 3? [helpful pictures attached]
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-outdoors" title="The Great Outdoors Stack Exchange"></div><a href="http://outdoors.stackexchange.com/questions/10754/what-would-cause-sudsy-surf" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:395 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would cause sudsy surf?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/44526/why-does-shaking-a-match-put-the-fire-out" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does shaking a match put the fire out?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/214610/what-does-v-a-mean-in-datasheet-dimensions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does "V.A." mean in datasheet dimensions?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/258931/difference-between-cat-and-cat" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Difference between "cat" and "cat &lt;"
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/257598/how-does-a-segmentation-fault-work-under-the-hood" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does a Segmentation Fault work under-the-hood?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/70638/help-me-open-the-box" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Help me Open the Box
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/112312/verifying-android-application-integrity-from-server-side" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Verifying android application integrity from server side
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/214604/in-ti-reference-design-why-the-gnd1-and-gnd2-of-isolater-connect-with-a-cap" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    In TI reference design, why the gnd1 and gnd2 of isolater connect with a cap?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/80355/at-vs-in-the-hospital-what-is-different" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    at vs in (the hospital) - What is different?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/105327/detecting-x-or-o-in-a-small-image" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Detecting X or O in a small image
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/70531/distance-between-two-points-in-n-dimensional-space" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Distance between two points in n-dimensional space
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-craftcms" title="Craft CMS Stack Exchange"></div><a href="http://craftcms.stackexchange.com/questions/13487/store-a-redirect-uri-for-use-after-login" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:563 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Store a redirect URI for use after login
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" class="show-more js-show-more js-gps-track" data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+		<script>
+StackExchange.ready(function(){$.get('/posts/14115263/ivc/7165');});
+</script>
+<noscript>
+    <div><img src="/posts/14115263/ivc/7165" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.29.3224
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('java,swing,awt,text-editor,styledtext');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|java|swing|awt|text-editor|styledtext|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    
+<script src="2_files/p.js" async=""></script></body></html>

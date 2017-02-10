@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Help Documentation</title>
+    
+        <style type="text/css">
+        
+            body {
+                margin: 0px;
+                padding: 0px;
+                font-family: Verdana, Helvetica, sans-serif;
+                font-size: 14px;
+                color: #333;
+            }
+                    
+            #navigation {
+                width: 300px;
+                background-color: #333;
+                position: fixed;
+                height: 100%;
+                left: 0px;
+				z-index:100;
+            }
+			        
+            #menu {
+				position:absolute;
+				top:90px;
+				left:30px;
+                line-height: 16px;
+            }
+                    
+            #menu ul {
+                margin: 0px;
+                padding: 0px;
+            }
+                    
+            #menu ul li {
+                display: block;
+                margin: 0px;
+                padding: 0px;
+                list-style-type: none;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+                    
+            #menu ul li a {
+                color: #333;
+                font-size: 12px;
+                text-decoration: none;
+                display: inline-block;
+                padding: 3px;
+                background-color: #ddd;
+                outline: none;
+            }
+                    
+            #menu ul li a:visited {
+                color: #333333;
+            }
+                  
+				  
+				    
+            #content {
+                padding: 40px;
+                line-height: 22px;
+				background-color: #fff;
+			}
+                    
+            #content img {
+                border: 1px solid #DDDDDD;
+            }
+                    
+            #content .page h2 {
+                margin: 0px;
+                padding: 12px;
+                background-color: #EEEEEE;
+                display: inline-block;
+                font-size: 18px;
+                color: #999999;
+				margin-bottom:20px;
+				margin-top:50px;
+            }
+                    
+            #content .page h3 {
+                margin: 0px;
+                font-size: 18px;
+                padding: 20px 0 0 20px;
+                color: #999999;
+            }
+                    
+            #content .page h4 {
+                font-size: 14px;
+                color: #999999;
+            }
+                    
+            #content .page {
+                position: absolute;
+                top: 40px;
+                left: 340px;
+                padding-bottom: 80px;
+				padding-right: 40px;
+            }
+                    
+            #content .page ul {
+                margin: 12px;
+            }
+                    
+            #content .page ul li {
+                padding-right: 40px;
+                margin-bottom: 12px;
+                font-size: 14px;
+            }
+                    
+            #content .page p {
+				margin:0px;
+            }
+			
+			#content .page p img {
+				margin-top: 5px;
+			}
+            
+            .setting {
+				display: inline-block;
+				background-color: #FFC;
+				border: 1px solid #EEE;
+				padding: 8px;
+				font-size: 13px;
+				margin:5px 0 5px 0;
+            }
+			
+			#productTitle{
+				position:fixed;
+				top:0px;
+				left:0px;
+				width:100%;
+				font-size: 25px;
+                color: #fff;
+				background:#111;
+				display:inline-block;
+				padding:10px;
+				z-index:101;
+            }
+			
+			#productTitle a{
+				font-size: 25px;
+                color: #fff;
+				text-decoration:none;
+            }
+			
+			.code {
+				
+				font-family:Arial, Helvetica, sans-serif;
+				font-size: 15px;
+				display: inline-block;
+				background-color:#FFFFE5;
+				border: 1px solid #EEE;
+				padding: 20px;
+				
+			}
+			
+			pre {
+				 white-space: pre-wrap;       /* css-3 */
+				 white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+				 white-space: -pre-wrap;      /* Opera 4-6 */
+				 white-space: -o-pre-wrap;    /* Opera 7 */
+				 word-wrap: break-word;       /* Internet Explorer 5.5+ */
+			}
+        
+        </style>
+        
+        <script src="assets/jquery-1.7.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+                
+            var pageContent = [], len;
+                
+            $(document).ready(function() {
+				var content=$("#menu ul li a");
+				len=content.length;
+				//console.log(len);
+				var _item;
+				for(var i = 0; i < len; i++) {
+					_item=$(content[i]);
+					_item.attr("id", i);
+                    _item.bind('click',changePage);
+                }
+				i=0;
+				content= $(".page");
+				for(i; i < len; i++) {
+					_item=$(content[i]);
+					_item.attr("id", i);
+                    pageContent[i] =_item;
+					_item.css("display", "none");
+					//console.log(_item.html());
+                }
+				//load first page
+				pageContent[0].css("display", "block");
+            });
+                
+            function changePage() {
+                var id = parseInt($(this).attr("id"),10);
+				//console.log('changePage ', id);
+                for(var i = 0; i < len; i++) {
+					//console.log(pageContent[i]);
+                    if(id == i) {
+                        pageContent[i].css("display", "block");
+                    }else {
+                        pageContent[i].css("display", "none");
+                    }
+                }
+				window.scroll(0,0);
+				return false;
+            }
+			changePage(0);
+        
+        </script>
+    
+    </head>
+    <body>
+    
+        <div id="navigation">
+        
+            <div id="menu">
+                <ul>
+                    <li><a href="#"><font style="color:red; font-weight:bold;">Important step!</font></a></li>
+                    <li><a href="#">Installation</a></li>
+                    <li><a href="#">HTML settings</a></li>
+                    <li><a href="#">Thumbnail navigation</a></li>
+                    <li><a href="#">Thumbnail description</a></li>
+                    
+                    <li><a href="#">Layout</a></li>
+                    <li><a href="#">Deeplinking</a></li>
+                    
+                    <li><a href="#">Using local video</a></li>
+                    <li><a href="#">Using Youtube</a></li>
+                    
+                    <li><a href="#">XML Playlist</a></li>
+                    <li><a href="#">Reading files from folder</a></li>
+                    
+                    <li><a href="#">Wall layout</a></li>
+                    
+                    <li><a href="#">Using playlists</a></li>
+                    <li><a href="#">Possible video issues</a></li>
+                     
+                    <li><a href="#">Callbacks</a></li>
+                    <li><a href="#">Public methods</a></li>
+                    <li><a href="#">Debugging</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="content">
+             
+            <div class="page">
+                
+                <h2>Important step</h2><br/>
+                
+                <p>
+                
+                In order to use html5 audio and video, you need to set up your server appropriatelly.<br/><br/>
+                
+                <strong>This has nothing to do with my player</strong>, it has go to do with <strong>MIME TYPES:</strong><br/><br/>
+                
+                Check this articles which include sections on <strong>importance of MIME types</strong> on your server.<br/><br/>
+                
+                <a href="http://www.html5rocks.com/en/tutorials/video/basics/" target='_blank'>http://www.html5rocks.com/en/tutorials/video/basics/</a><br/>
+                
+                <a href='http://voice.firefallpro.com/2012/03/html5-audio-video-mime-types.html' target='_blank'>http://voice.firefallpro.com/2012/03/html5-audio-video-mime-types.html</a><br/>
+                
+                <a href='http://wiki.joyent.com/display/gen/Configuring+MIME+Types+in+.htaccess' target='_blank'> http://wiki.joyent.com/display/gen/Configuring+MIME+Types+in+.htaccess</a><br/><br/>
+                
+                Google for 'html5 video/audio MIME types' for additional guidance if necessary.<br/><br/>
+                
+              	To start do this:<br/><br/>
+                
+                In the package there ia a folder called <strong>'_video_test'</strong>.<br/><br/>
+                
+                Take this folder (with its content inside) and upload it to your server!<br/><br/>
+                
+                Then run <strong>index.html</strong> page in all desktop browsers one by one to make sure video plays (<font style="color:red;">and open browser developer console!</font>).<br/><br/>
+              
+               For firefox I suggest using <strong>firebug</strong>:<br/><br/>
+
+               <a href='http://getfirebug.com/' target='_blank'>http://getfirebug.com/</a><br/><br/>
+               
+               Chrome and Safari have good developer console as well implemented directly into browser.<br/><br/>
+                
+               <font style="color:red; font-weight:bold;">If you get an errors in console similar to these:</font><br/><br/>
+                
+               <strong>Specified "type" of "video/mp4" is not supported. Load of media resource movie.mp4 failed.</strong><br>
+               <strong>Specified "type" of "video/ogv" is not supported. Load of media resource movie.ogv failed.</strong><br><br>
+
+               This is telling you that its a mime type problem.<br/><br/>
+               
+               Basically, what you need to do is add these lines in your .htaccess file on your server and video will work for all browsers. <br/><br/>
+                
+               AddType video/ogg .ogv<br/>
+               AddType video/mp4 .mp4<br/>
+               AddType video/webm .webm<br/><br/>
+               
+               Browsers video support currently goes as follows:<br/><br/> 
+               
+               firefox, opera - ogv<br/>
+               safari, ie9 - mp4<br/>
+               chrome - mp4, ogv <br/>
+               ie&lt;9 - mp4 (flash)<br/><br/>
+               
+               So when you sort 'ogv', it should work on firefox and opera, when you sort 'mp4' it should work on all others.<br/><br/>
+
+               <font style="color:red; font-weight:bold;">NEW UPDATE!</font><br/>
+               New version of firefox 20+, is starting to support mp4 of now as it now looks like:<br/>
+               <a href='http://www.webmonkey.com/2013/01/mozilla-brings-native-h-264-to-firefox-nightly/' target='_blank'>http://www.webmonkey.com/2013/01/mozilla-brings-native-h-264-to-firefox-nightly/</a><br/><br/>
+               
+               There is also a <strong>webm</strong> format, however, browsers that currently support <strong>webm</strong> are:<br/><br/>
+               
+               firefox, opera, chrome.<br/><br/>
+               
+               Safari and IE9 do not support <strong>webm</strong>, neither the IE&lt;9.<br/><br/>
+               
+               You can test video format supports for different browsers with this:<br/><br/>
+               
+<div class="code"><pre><code>var mp4Support = canPlayMP4();
+var vorbisSupport = canPlayVorbis();
+var webmSupport = canPlayWebM();
+//console.log("vorbisSupport = " + vorbisSupport, ", mp4Support = " + mp4Support, ", webmSupport = " + webmSupport);
+        
+function canPlayVorbis() {
+    var v = document.createElement('video');
+    return !!(v.canPlayType && v.canPlayType('video/ogg; codecs="theora, vorbis"').replace(/no/, ''));
+}
+
+function canPlayMP4() {
+    var v = document.createElement('video');
+    return !!(v.canPlayType && v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
+}
+
+function canPlayWebM() {
+    var v = document.createElement('video');
+    return !!(v.canPlayType && v.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/no/, ''));
+}</pre></code></div><br/><br/>
+               
+               
+               
+               <strong>So currently there is no way to have only one video format on all browsers.</strong><br/><br/>
+               
+               Although I am currently 'forcing' <strong>mp4</strong> and <strong>ogv</strong> in my code, you can also play <strong>webm</strong> instead <strong>ogv</strong>.<br/><br/>
+               
+               The use webm instead of ogv video format check this option settings:<br/><br/>
+               
+<div class="code"><pre><code>/*useWebmVideoFormat: true/false (Browser support for html5 video requires minimum of 2 video formats to cover all browsers, mp4 and ogv being preffered. Use web video format instead of a ogv.) */
+useWebmVideoFormat:false,</pre></code></div><br/><br/><br/><br/><br/><br/>     
+
+
+
+
+
+      
+               <strong>Video converting</strong><br/><br/>
+               
+               I recomend using <a href='http://handbrake.fr/' target='_blank'>Handbrake</a> (open-source) for generating the mp4 file for your video files. <br/><br/>
+               
+               For the ogv or webm conversion, you can (for example) use a free online service called Video-online-convert:<br/><br/>
+               
+               <a href='http://video.online-convert.com/convert-to-ogg' target='_blank'>http://video.online-convert.com/convert-to-ogg</a><br/>
+               <a href='http://video.online-convert.com/convert-to-webm' target='_blank'>http://video.online-convert.com/convert-to-webm</a><br/><br/>
+               
+               You just have to upload your mp4 and it will process it and offer a ogv/webm download.<br/><br/> 
+            
+                </p>
+                
+            </div>   
+            
+            <div class="page">
+                
+                <h2>Installation</h2><br/>
+                
+                <p>
+                
+                You have 2 folders (deploy and source). <strong>You only need deploy folder on your server</strong>. Source folder holds spare javascript files (non minified versions) and help.<br/><br/>
+                <font style="color:red; font-weight:bold;">Please dont place non-minified javascript files on your server.</font><br/><br/>
+                
+                To start open index.html in any text editor (Dreamweaver is good if you have it, but any plain text editor will do).<br/>There are 2 sections (one in head tag and one in body tag) that you need to copy into your website.<br/>In the head tag you have links to stylesheets and javascript files, and all the settings for the component. In the body part are all the component elements.<br/><br/>
+
+Make sure you copy everything from both head and body tags into your web page at appropriate places.<br/><br/>All except public functions (on the bottom of html) is needed, (public functions are optional).<br/><br/><br/><br/>
+
+<strong>Be carefull</strong> when inserting various bits from my index page into yours.<br/><br/>
+
+<font style="color:red; font-weight:bold;">One of the most common errors</font> is duplicating jquery script for example:<br/><br/>
+
+<div class="code"><pre><code><font style="color:red; font-weight:bold;">&lt;script type="text/javascript" src="js/jquery-1.8.1.min.js">&lt;/script&gt;</font>
+&lt;script type="text/javascript" src="js/jquery.mousewheel.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/soundmanager2-nodebug-jsmin.js" &gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/jquery.videoGallery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/jquery.apPlaylistManager.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/jquery.apTextScroller.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;</pre></code></div><br/><br/>
+
+If your web page already includes link to jquery as shown above, then <strong>DO NOT</strong> include it twice, even if you use different version!<br/><br/>
+
+Obviously make sure your jquery is up to date.<br/><br/>
+
+The same goes for other scripts as well, maybe for example, you already have jScrollPane in your webpage and you have included a script for that.<br/><br/><br/><br/>
+
+
+
+                
+                <strong>Editing jQuery file</strong><br/><br/>
+                
+                If you need to edit the main jquery files (which hold javascript code for the component), you will see it comes in 2 versions with the package: <strong>'minified'</strong> and <strong>'non-minified'</strong>.<br/><br/>What this basically means is that minified version has all the empty spaces removed and some of the 'encryption' applied. <br/>Both is usefull in case someone takes your script from your online website, making it almost useless for any kind of editing at least. <br/>I suggest using minified version on your website.<br/>Ofcourse if you need to edit this file yourself, switch to non-minified version (from the source folder) and then when you finish editing you can minify the file yourself here:<br/>
+                    <a href='http://closure-compiler.appspot.com/home' target='_blank'>http://closure-compiler.appspot.com/home</a><br/><br/>Its as simple as it gets, you just copy/paste content of the whole file in the left provided space, press 'COMPILE' and when its done copy/paste all content from the right window back to your file, overwritting all the content with the new (minified) one. You dont need to touch any of the minify options, just leave all default as it is (Optimization: simple).<br/><br/>
+                    Minified files usually have <strong>.min</strong> extension in its name and non-minified dont! <br/>
+                    It doesnt have to be that way, its just a common practice, but its important note in case your web paths get wrong.
+                </p>
+                
+                
+            </div>
+            
+            <div class="page">
+            
+               <h2>HTML settings</h2><br/>
+
+                <p>
+                
+                Html page containes following settings (settings for different layouts may differ slightly):<br/><br/>
+                
+<div class="code"><pre><code>var vplp_settings = {
+	
+	/* playlistHolder: dom elements which holds list of playlists */
+	playlistHolder: '.playlistData',
+	
+	/* useDeeplink: true, false */
+	useDeeplink:true,
+	/*activePlaylist: Active playlist to start with. If no deeplink is used, enter element 'id' attribute, or if deeplink is used enter deeplink string like 'playlist1'.  */
+	activePlaylist:'playlist1',
+	/*activeItem: Active video to start with. If no deeplink is used, enter number, -1 = no video loaded, 0 = first video, 1 = second video etc, or if deeplink is used enter deeplink string like 'video01'.  */
+	activeItem:'local1',
+	
+	/* GENERAL SETTINGS */
+	/*autoHideControls: auto hide player controls on mouse out: true/false. Defaults to false on mobile. */
+	autoHideControls:false,
+	/*defaultVolume: 0-1 */
+	defaultVolume:0.5,
+	/*autoPlay: true/false (defaults to false on mobile)*/
+	autoPlay:true,
+	/*randomPlay: true/false */
+	randomPlay:false,
+	/* loopingOn: on playlist end rewind to beginning (last item in playlist) */
+	loopingOn: true,
+	/*autoAdvanceToNextVideo: true/false (use this to loop video) */
+	autoAdvanceToNextVideo:true,
+	/*autoOpenDescription: true/false  */
+	autoOpenDescription:false,
+	/*useLivePreview: true/false (if true, you need small videos for preview for local videos, otherwise thumbnails). Defaults to false on mobile. */
+	useLivePreview:true,
+	/*useWebmVideoFormat: true/false (Browser support for html5 video requires minimum of 2 video formats to cover all browsers, mp4 and ogv being preffered. Use web video format instead of a ogv.) */
+	useWebmVideoFormat:false,
+	/*aspectRatio: video aspect ratio (0 = original, 1 = fit inside, 2 = fit outside). */
+	aspectRatio: 2,
+	
+	/*closePlaylistOnVideoSelect: true/false (close playlist when video is selected) */
+	closePlaylistOnVideoSelect:false,
+	/*playlistOrientation: vertical/horizontal  */
+	playlistOrientation:'vertical',
+	/*playlistHidden: true/false (leaves css display none on 'playlistHolder' element) */
+	playlistHidden:false,
+	/*playlistType: list/wall  */
+	playlistType:'list',
+	/*scrollType: scroll/buttons  */
+	scrollType:'buttons',
+	/* outputPlaylistData: console.log out playlist data */
+	outputPlaylistData:false,
+	
+	/* YOUTUBE SETTINGS */
+	/*autoMakePlaylistThumb: true/false (auto make thumb for each video) */
+	autoMakePlaylistThumb:true,
+	/*autoMakePlaylistInfo: true/false (auto make title and description for each video) */
+	autoMakePlaylistInfo:true,
+	/* useYoutubeHighestQuality: true/false (use highest available quality for youtube video, if false, then it set to default)  */
+	useYoutubeHighestQuality:false,
+	
+	/*flashPreview: id of the flash preview movie (for playlist) */
+	flashPreview:'#flashPreview',
+	/*flashMain: id of the flash main movie (for video) */
+	flashMain:'#flashMain',
+	
+	/*previewPath: folder replacement path for the preview data */
+	previewPath:'/preview/',
+	/*wallPath: folder replacement path for the wall data */
+	wallPath:'/wall/'
+};</pre></code></div><br/><br/><br/>
+
+<font style="color:red; font-weight:bold;">Important bits:</font><br/><br/>
+
+             
+   You set starting playlist and video here:<br/><br/>   
+   
+<div class="code"><pre><code>/* useDeeplink: true, false */
+useDeeplink:true,
+/*activePlaylist: Active playlist to start with. If no deeplink is used, enter element 'id' attribute, or if deeplink is used enter deeplink string like 'playlist1'.  */
+activePlaylist:'playlist1',
+/*activeItem: Active video to start with. If no deeplink is used, enter number, -1 = no video loaded, 0 = first video, 1 = second video etc, or if deeplink is used enter deeplink string like 'video01'.  */
+activeItem:'local1',
+</pre></code></div><br/><br/><br/>
+          
+   If you <strong>use deeplink</strong>:<br/><br/>   
+   
+   activePlaylist is a string you set in here:<br/><br/>         
+             
+<div class="code"><pre><code>&lt;ul id='playlist1' <font style="color:red; font-weight:bold;">data-address="playlist1"</font>&gt;
+     &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' data-description="Mauris consequat."&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+ &lt;/ul&gt;</pre></code></div><br/><br/> 
+ 
+    activeItem is a string you set in here:<br/><br/>         
+             
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+     &lt;li <font style="color:red; font-weight:bold;">data-address="local1"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' data-description="Mauris consequat."&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+ &lt;/ul&gt;</pre></code></div><br/><br/> 
+ 
+ 
+ So for this example, two level deeplink address would be:<br/><br/>
+ 
+ <div class="code"><pre><code>/* useDeeplink: true, false */
+useDeeplink:true,
+/*activePlaylist: Active playlist to start with. If no deeplink is used, enter element 'id' attribute, or if deeplink is used enter deeplink string like 'playlist1'.  */
+activePlaylist:'playlist1',
+/*activeItem: Active video to start with. If no deeplink is used, enter number, -1 = no video loaded, 0 = first video, 1 = second video etc, or if deeplink is used enter deeplink string like 'video01'.  */
+activeItem:'local1',
+</pre></code></div><br/><br/><br/>
+
+ If we wanted just to load a playlist, without loading any video, a single level deeplink address would be (notice activeItem is empty):<br/><br/>
+ 
+ <div class="code"><pre><code>/* useDeeplink: true, false */
+useDeeplink:true,
+/*activePlaylist: Active playlist to start with. If no deeplink is used, enter element 'id' attribute, or if deeplink is used enter deeplink string like 'playlist1'.  */
+activePlaylist:'playlist1',
+/*activeItem: Active video to start with. If no deeplink is used, enter number, -1 = no video loaded, 0 = first video, 1 = second video etc, or if deeplink is used enter deeplink string like 'video01'.  */
+activeItem:'',
+</pre></code></div><br/><br/><br/>
+ 
+
+If you <strong>dont use deeplink</strong>:<br/><br/>   
+
+    activePlaylist is an element 'id' attribute you set in here:<br/><br/>         
+             
+<div class="code"><pre><code>&lt;ul <font style="color:red; font-weight:bold;">id='playlist1'</font>&gt;
+     &lt;li class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' data-description="Mauris consequat."&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+ &lt;/ul&gt;</pre></code></div><br/><br/> 
+ 
+    activeItem is a number, -1 = no video loaded, 0 = first video, 1 = second video, 2 = third video etc...   
+
+ So for this example, to load playlist with first video would be:<br/><br/>
+ 
+ <div class="code"><pre><code>/* useDeeplink: true, false */
+useDeeplink:false,
+/*activePlaylist: Active playlist to start with. If no deeplink is used, enter element 'id' attribute, or if deeplink is used enter deeplink string like 'playlist1'.  */
+activePlaylist:'playlist1',
+/*activeItem: Active video to start with. If no deeplink is used, enter number, -1 = no video loaded, 0 = first video, 1 = second video etc, or if deeplink is used enter deeplink string like 'video01'.  */
+activeItem:0,
+</pre></code></div><br/><br/><br/>
+
+ If we wanted just to load a playlist, without loading any video, it would be (notice activeItem is -1):<br/><br/>
+ 
+ <div class="code"><pre><code>/* useDeeplink: true, false */
+useDeeplink:false,
+/*activePlaylist: Active playlist to start with. If no deeplink is used, enter element 'id' attribute, or if deeplink is used enter deeplink string like 'playlist1'.  */
+activePlaylist:'playlist1',
+/*activeItem: Active video to start with. If no deeplink is used, enter number, -1 = no video loaded, 0 = first video, 1 = second video etc, or if deeplink is used enter deeplink string like 'video01'.  */
+activeItem:-1,
+</pre></code></div><br/><br/><br/>
+
+<br/><br/>  <br/><br/>  <br/><br/>  
+
+
+
+
+
+<strong>Default volume</strong> is irrelevant on mobile IOS (iPad, iPhone, Ipod), because you cannot set volume with javascript on mobile, you need to use physical button on the actual phone.<br/>
+<a href='http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/' target='_blank'>http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/</a><br/>  
+This may be true for some other mobile phones as well!<br/><br/>                   
+<div class="code"><pre><code>/*defaultVolume: 0-1 */
+defaultVolume:0.5,
+</pre></code></div><br/><br/><br/><br/>
+
+
+<strong>Autoplay</strong> defaults to false on mobile, for mobile IOS (iPad, iPhone, Ipod), autoplay cannot be forced (this works for both video and audio):<br/> 
+<a href='http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html' target='_blank'>http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html</a><br/>User Control of Downloads Over Cellular Networks)<br/>
+<a href='http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/' target='_blank'>http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/</a><br/><br/>
+
+<div class="code"><pre><code>/*autoPlay: true/false (video autoplay). Default false on mobile. */
+autoPlay:false,
+</pre></code></div><br/><br/>
+
+My jquery code detects mobile and automatically sets autoplay off, but this is only for the first time, once you click play on first video, every video afterwards plays automatically.<br/><br/>
+
+Code in jquery.videoGallery.js:<br/><br/>
+
+<div class="code"><pre><code>if(isMobile){
+    autoPlay =false;
+    yt_autoPlay = false;
+}</pre></code></div><br/><br/>
+
+Autoplay may work on some other mobiles but its safer to use autoplay off. Trying to force autoplay may potentially broke video on mobile since html5 video is still in development.<br/><br/>                      
+
+<font style="color:red; font-weight:bold;">Update:</font> it seems IOS6 supports autoplay now, but previous versions definitelly dont. And as far as I know new Android OS supports autoplay as well. Its up to you how you set to but dont forget to test all properly.<br/><br/><br/><br/><br/><br/>
+
+
+
+This is an option which you may find usefull:<br/><br/>
+<div class="code"><pre><code>/* outputPlaylistData: console.log out playlist data */
+    outputPlaylistData:true,</pre></code></div><br/><br/>
+
+					Open browser console (firebug in firefox or chrome developer console for example) and (re)launch your website.<br/>
+                    
+                    After you load each playlist, it will output the data for that playlist, deeplinks for every video, so you can more easily find deeplink to a certain item (try it out).<br/>
+                    
+                    You can use this even if the deeplinking is off.<br/><br/>
+                    
+                    Code in jquery.videoGallery.js:<br/><br/>
+                    
+<div class="code"><pre><code>if(this.outputPlaylistData){
+  try{ 
+      console.log(this.deeplinkData);	
+  }catch(e){}}</pre></code></div><br/><br/>
+
+<div class="code"><pre><code>if(outputPlaylistData){
+    if(_item.type == 'local'){
+        if(mp4Support){
+            loc_path = _item.mp4Path + '.mp4';
+        }else if(vorbisSupport){
+            loc_path = _item.mp4Path + '.ogv';
+        }
+        if(loc_path.lastIndexOf('/')){
+            loc_name = loc_path.substr(loc_path.lastIndexOf('/')+1);
+        }else{
+            loc_name = loc_path;
+        }
+        deeplinkData.push({'id': playlistLength, 'name': loc_name, 'type':_item.type ,'video-id': loc_path, 'deeplink': useDeeplink ? dlink+_item.deeplink : 'undefined'});
+    }else{
+        li.attr('data-title', _item.title);
+        deeplinkData.push({'id': playlistLength, 'name': _item.title, 'type':_item.type ,'video-id': _item.id, 'deeplink': useDeeplink ? dlink+_item.deeplink : 'undefined'});
+    }
+}
+</pre></code></div><br/><br/>
+
+
+            
+                </p>
+                    
+            </div>
+            
+            <div class="page">
+                
+               <h2>Thumbnail navigation</h2><br/>
+               
+               <p>
+               
+               Examples:<br/><br/>
+               
+               <strong>index_buttons.html</strong><br/>
+               <strong>index_buttons2.html</strong><br/><br/>
+               
+               use <strong>buttons</strong> for navigating thumbnails in playlist.<br/><br/>
+               
+               Examples:<br/><br/>
+               
+               <strong>index_scroll.html</strong><br/>
+               <strong>index_scroll2.html</strong><br/><br/>
+               
+               use <strong>scroll</strong> for navigating thumbnails in playlist.<br/><br/><br/><br/>
+               
+                Scrollbar used is jScrollPane:
+                <a href='http://jscrollpane.kelvinluck.com/' target='_blank'>http://jscrollpane.kelvinluck.com/</a><br/><br/>
+                
+                Code in jquery.videoGallery.js:<br/><br/>
+                
+<div class="code"><pre><code>if(playlistType == 'line'){
+    if(!scrollPane){
+        scrollPane = playlist_inner;
+        scrollPane.jScrollPane();
+        scrollPaneApi = scrollPane.data('jsp');
+        
+        scrollPane.bind('jsp-initialised',function(event, isScrollable){
+            //console.log('Handle jsp-initialised', this,'isScrollable=', isScrollable);
+        }).bind('jsp-scroll-y',function(event, scrollPositionY, isAtTop, isAtBottom){
+        /*console.log('Handle jsp-scroll-y', this,
+                    'scrollPositionY=', scrollPositionY,
+                    'isAtTop=', isAtTop,
+                    'isAtBottom=', isAtBottom);*/
+                    //SAFARI FIX, (when video is opened, and only in vertical playlist orientation)
+                    if(isSafari && useLivePreview && playlistOrientation=='vertical')resizeComponent2();//safari render fix
+        });
+        
+        if(playlistOrientation == 'horizontal'){
+            if(!isMobile)playlist_inner.bind('mousewheel', horizontalMouseWheel);
+        }
+        
+    }else{
+        
+        scrollPaneApi.reinitialise();
+        if(playlistOrientation == 'vertical'){
+            scrollPaneApi.scrollToY(0);
+        }else{
+            scrollPaneApi.scrollToX(0);
+        }
+    }
+}</pre></code></div><br/><br/><br/><br/>
+
+jScrollPane is also used in video description:<br/><br/>
+
+<img src='assets/scroll.jpg' width='500' height='334' alt=''/><br/><br/>
+
+Code in jquery.videoGallery.js:<br/><br/>
+                
+<div class="code"><pre><code>if(!info_scrollPaneApi){
+    info_scrollPaneApi = infoHolder.jScrollPane().data().jsp;
+    infoHolder.bind('jsp-initialised',function(event, isScrollable){
+        //console.log('Handle jsp-initialised', ' isScrollable=', isScrollable);
+    });
+    infoHolder.jScrollPane({
+        verticalDragMinHeight: 50,
+        verticalDragMaxHeight: 70
+    });
+}else{
+    info_scrollPaneApi.reinitialise();
+    info_scrollPaneApi.scrollToY(0);
+}</pre></code></div><br/><br/><br/><br/>
+
+
+                
+                </p>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Thumbnail description</h2><br/>
+               
+               <p>
+               
+               You will see that some playlist nodes that have more text than fits have '...' applied.<br/><br/>
+               
+               <img src='assets/dot.jpg' width='431' height='428' alt=''/><br/><br/>
+               
+               This is especially usefull for youtube if you are using automatically generated description for the video, where you cannot control the amount of description text.<br/><br/>
+               
+               This plugin is used for this feature:<br/>
+               
+               <a href='http://dotdotdot.frebsite.nl/' target='_blank'>http://dotdotdot.frebsite.nl/</a><br/><br/><br/>
+               
+               Code in jquery.videoGallery.js:<br/><br/>
+                    
+<div class="code"><pre><code>$('.playlistInfo').dotdotdot();
+</pre></code></div><br/><br/><br/><br/><br/><br/><br/><br/>
+                
+                </p>
+                
+            </div>
+            
+            <div class="page">
+               
+                <h2>Layout</h2><br/>
+               
+                <p>
+
+                
+               1.<br/>
+                
+               <font style="color:red; font-weight:bold;"> There are some issues with video and mobile phones out there which can make layouts complicated!</font><br/><br/>
+               
+               Android phones work fine (most of the time), and fortunately Apple iPad as well, but the problem is with iPhone and iPod.
+               
+               On <strong>iPhone</strong> and <strong>iPod</strong> (iPod not iPad), video (any kind of html5 video, youtube, vimeo... etc) plays in Apple UIWebView, which is their native video player, and it looks like this:<br/><br/>
+               
+               <img src='assets/01.jpg' alt=''/><br/><br/>
+               
+               <strong>This is something that cannot be changed with javascript</strong>, only applicatons which are coded in native C language for the IOS have access to this.<br/><br/>
+               
+               The problem related to this, is that you cannot have any buttons, thumbnails or any other interactive content directly above the video, once you start the playback, all this would be obscured with this UIWebView, and even when you close it down (click <strong>Done</strong> button), and return back all this area where the video initally was is now blocked and all touch events are captured by the UIWebView video player.<br/><br/>
+               
+               So for example, if you had some buttons or thumbnails over the video area, you couldnt use them any more.<br/><br/>
+               
+               The reason why elements above video work on <strong>iPad</strong>, is because <strong>inline</strong> video playback is supported there.<br/><br/><br/><br/>
+               
+               You can test this yourself.<br/><br/>
+               
+               Take html5 video tag which looks like this <a href='http://www.w3schools.com/html/html5_video.asp' target='_blank'>http://www.w3schools.com/html/html5_video.asp</a>:<br/><br/>
+               
+<div class="code"><pre><code>&lt;video controls="controls" autoplay&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.ogv" type="video/ogv"&gt;
+  Your browser does not support the video element.
+&lt;/video&gt;</pre></code></div><br/><br/>
+
+or take youtube iframe embed method which looks like this <a href='https://developers.google.com/youtube/player_parameters' target='_blank'>https://developers.google.com/youtube/player_parameters</a>:<br/><br/>
+               
+<div class="code"><pre><code>&lt;iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/VIDEO_ID" allowfullscreen frameborder="0"&gt;&lt;/iframe&gt;</pre></code></div><br/><br/>
+
+or take vimeo iframe embed method which looks like this <a href='http://developer.vimeo.com/player/embedding' target='_blank'>http://developer.vimeo.com/player/embedding</a>:<br/><br/>
+               
+<div class="code"><pre><code>&lt;iframe src="http://player.vimeo.com/video/VIDEO_ID" width="WIDTH" height="HEIGHT" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;</pre></code></div><br/><br/>
+
+			   And put it in an empty website, place a button above the video, attach a click to the button with alert so you can see it working, then open it on iphone, test the button first (before starting the video), it will work, then start the video and you will no longer be able to trigger your button afterwards.<br/><br/><br/><br/>
+         
+               
+              The point of all this is when you load the player on iphone/ipod, if you care at all, you need to make some kind of changes if you want to make it usable by visitors.<br/><br/>
+              
+              This is what I do in my code if loaded on iphone/ipod:<br/><br/>
+              
+              Remove player controls, info, and toggle playlist button:<br/><br/>
+              
+              Code in jquery.videoGallery.js:<br/><br/>
+              
+<div class="code"><pre><code>if(isiPhoneIpod){
+    aspectRatio=1;//no elements above video!
+    //remove elements above video since we cant use them
+    infoHolder.remove();
+    playerControls.remove();
+    player_addon.remove();
+}</pre></code></div><br/><br/>
+              
+               Push the playlist down below the video area:<br/><br/>
+               
+               Code in jquery.videoGallery.js:<br/><br/>
+               
+<div class="code"><pre><code>if(!isiPhoneIpod){ 
+    if(w < wp + wpl){
+        //console.log(1);
+        playlistHolder.css({
+            position:'absolute',
+            left:wp - wpl+'px'
+        });
+    }else{
+        //console.log(2);
+        playlistHolder.css({
+            position:'absolute',
+            left:wp+'px'
+        });
+    }
+}else{//iphone, ipod fix!! //let playlist fall below video area in this case! important!!
+    playlistHolder.css({
+        position:'relative',
+        left:0+'px',
+        height:250+'px',
+        'float':'right',
+        clear:'both'
+    });
+}</pre></code></div><br/><br/>               
+              
+               So if you are making some big layout changes, you should keep this in mind!<br/><br/><br/><br/> 
+               
+               
+             
+                
+            
+                </p>
+                
+            </div>
+
+            <div class="page">
+                
+               <h2>Deeplinking</h2><br/>
+                
+                <p>
+                
+                	Script support deeplinking using jquery address:
+                    <a href='http://www.asual.com/jquery/address/' target='_blank'>http://www.asual.com/jquery/address/</a><br/><br/>
+                    
+                    You can still use the script without deeplinking, you adjust this in html settings:<br/><br/>
+                    
+<div class="code"><pre><code>/* useDeeplink: true, false */
+useDeeplink:true,
+/*activePlaylist: Active playlist to start with. If no deeplink is used, enter element 'id' attribute, or if deeplink is used enter deeplink string like 'playlist1'.  */
+activePlaylist:'playlist1',
+/*activeItem: Active video to start with. If no deeplink is used, enter number, -1 = no video loaded, 0 = first video, 1 = second video etc, or if deeplink is used enter deeplink string like 'video01'.  */
+activeItem:'local1',</pre></code></div><br/><br/>
+                    
+                   Deeplinking is <strong>two level</strong> in this gallery.<br/><br/>
+                   
+                   <font style="color:red;">First level equals category deeplink (or playlist deeplink):</font><br/><br/>
+
+<div class="code"><pre><code>&lt;ul id='playlist1' <font style="color:red; font-weight:bold;">data-address="playlist1"</font>&gt;
+    &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul"&gt;
+
+&lt;ul id='playlist2' <font style="color:red; font-weight:bold;">data-address="playlist2"</font>&gt;
+    &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-path="wd8ZWLDextA" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-path="xTZjaQanUzI" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-path="WXQcwcjsZYE" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single4" class='playlistNonSelected' data-type='youtube_single' data-path="pAAo_dVib2Q" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single5" class='playlistNonSelected' data-type='youtube_single' data-path="Ga3_ANRHoAI" &gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul id='playlist3' <font style="color:red; font-weight:bold;">data-address="playlist3"</font>&gt;
+    &lt;li data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-path="B6A13A6BB4D58A72" &gt;&lt;/li&gt; 
+&lt;/ul&gt;</pre></code></div><br/><br/>
+                  
+                  
+                  <font style="color:red; font-weight:bold;">Note:</font><br/><br/>
+                  1.<br/>You will notice that <strong>'id'</strong> attributte and <strong>'data-address'</strong> attributte are the same on the 'ul' node:<br/><br/>
+                  <div class="code"><pre><code>&lt;ul id='playlist1' <font style="color:red; font-weight:bold;">data-address="playlist1"</font>&gt;</pre></code></div><br/><br/>
+                  <strong>This is just for convenience, this doesnt have to be the same!</strong><br/>
+                  ('id' attributte is used for non deeplinking, while 'data-address' attributte is used for deeplinking).<br/><br/>
+                  
+                  2.<br/>If you dont use deeplinking, you dont need these 'data-address' attributtes.<br/><br/><br/><br/>
+                   
+                  
+                  <font style="color:red;">Second level equals video deeplink:</font><br/><br/>
+                  
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local1"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul"&gt;
+
+&lt;ul id='playlist2' data-address="playlist2"</font>&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single1"</font> class='playlistNonSelected' data-type='youtube_single' data-path="wd8ZWLDextA" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single2"</font> class='playlistNonSelected' data-type='youtube_single' data-path="xTZjaQanUzI" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single3"</font> class='playlistNonSelected' data-type='youtube_single' data-path="WXQcwcjsZYE" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single4"</font> class='playlistNonSelected' data-type='youtube_single' data-path="pAAo_dVib2Q" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single5"</font> class='playlistNonSelected' data-type='youtube_single' data-path="Ga3_ANRHoAI" &gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul id='playlist3' data-address="playlist3"&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_playlist"</font> class= "playlistNonSelected" data-type='youtube_playlist' data-path="B6A13A6BB4D58A72" &gt;&lt;/li&gt; 
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+
+
+
+                  
+                    <strong>To set up a deeplink url</strong>, append 'data-address' from playlist and 'data-address' from video: '#/data-address/data-address' to your website url.<br/><br/>
+                    
+                     <strong>Couple of deeplinking examples:</strong><br/><br/>
+                    
+                    http://www.yourWebsite.com/index.html#/playlist1/local1<br/>
+                    (loads video under 'local1' deeplink, inside playlist under 'playlist1' deeplink.)<br/><br/>
+                    
+                    http://www.yourWebsite.com/index.html#/playlist1/local3<br/>
+                    (loads video under 'local3' deeplink, inside playlist under 'playlist1' deeplink.)<br/><br/>
+                    
+                    You can also load first level url, which will just open that playlist <strong>without loading any video</strong>:<br/><br/>
+                    
+                    http://www.yourWebsite.com/index.html#/playlist1<br/>
+                    (loads playlist under 'playlist1' deeplink.)<br/><br/>
+                    
+                    <font style="color:red; font-weight:bold;">This is where is gets little bit tricky:</font><br/><br/>
+                    
+                    http://www.yourWebsite.com/index.html#/playlist3/youtube_playlist1<br/>
+                    (loads video under 'youtube_playlist1' deeplink, inside playlist under 'playlist3' deeplink.)<br/><br/>
+                    
+<div class="code"><pre><code>&lt;ul id='playlist3' data-address="playlist3"&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_playlist"</font> class= "playlistNonSelected" data-type='youtube_playlist' data-path="B6A13A6BB4D58A72"&gt;&lt;/li&gt; 
+&lt;/ul&gt;
+</pre></code></div><br/><br/>
+                    
+                    Above example is a playlist from Youtube. <br/><br/>
+                    
+                    So my code will append numbers (starting from 1) for every video inside this playlist to a current deeplink, so if the playlist has 5 videos for example, deeplinks will look like this:<br/><br/>
+                    
+                    http://www.yourWebsite.com/index.html#/playlist3/youtube_playlist1<br/>
+                    http://www.yourWebsite.com/index.html#/playlist3/youtube_playlist2<br/>
+                    http://www.yourWebsite.com/index.html#/playlist3/youtube_playlist3<br/>
+                    http://www.yourWebsite.com/index.html#/playlist3/youtube_playlist4<br/>
+                    http://www.yourWebsite.com/index.html#/playlist3/youtube_playlist5<br/><br/>
+                    
+                    <font style="color:red; font-weight:bold;"> The same rule applied for every deeplink inside this gallery that point to multiple videos!</font><br/><br/>
+                    <br/><br/>
+                    
+                   <font style="color:blue; font-weight:bold;"> There is an option in the code which you may find usefull:</font><br/><br/>
+                    
+                    In the html settings find this and set it to true:<br/><br/>
+                    
+<div class="code"><pre><code>/* outputPlaylistData: console.log out playlist deeplink data */
+outputPlaylistData:true,</pre></code></div><br/><br/>
+
+					Then open browser console (firebug in firefox for example) and (re)launch your website.<br/><br/>
+                    
+                    After you load each playlist, it will output the data for that playlist, deeplinks for every video, so you can more easily find deeplink to a certain item  (try it out).<br/><br/>
+                    
+                    You can use this even if the deeplinking is off.<br/><br/>
+                    
+                    Code in jquery.videoGallery.js:<br/><br/>
+                    
+<div class="code"><pre><code>if(this.outputPlaylistData){
+  try{ 
+      console.log(this.deeplinkData);	
+  }catch(e){}}</pre></code></div><br/><br/>
+
+<div class="code"><pre><code>if(outputPlaylistData){
+    if(_item.type == 'local'){
+        if(mp4Support){
+            loc_path = _item.mp4Path + '.mp4';
+        }else if(vorbisSupport){
+            loc_path = _item.mp4Path + '.ogv';
+        }
+        if(loc_path.lastIndexOf('/')){
+            loc_name = loc_path.substr(loc_path.lastIndexOf('/')+1);
+        }else{
+            loc_name = loc_path;
+        }
+        deeplinkData.push({'id': playlistLength, 'name': loc_name, 'type':_item.type ,'video-id': loc_path, 'deeplink': useDeeplink ? dlink+_item.deeplink : 'undefined'});
+    }else{
+        li.attr('data-title', _item.title);
+        deeplinkData.push({'id': playlistLength, 'name': _item.title, 'type':_item.type ,'video-id': _item.id, 'deeplink': useDeeplink ? dlink+_item.deeplink : 'undefined'});
+    }
+}
+</pre></code></div><br/><br/><br/><br/><br/>
+                    
+                    
+                    
+                    <h2>ALLOWED CHARACTERS!</h2><br/>
+                    
+                    Deeplink only works with basic latin characters: <strong>lowercase a-z</strong>, and <strong>numbers 0-9</strong>. Other allowed characters are <strong>underscore(_)</strong>, and <strong>hyphen(-)</strong>.<br/><br/>
+                    
+                    No spaces allowed or other special characters.<br/><br/>
+                    
+                    If you use any other characters my jquery code will strip that (jquery.videoGallery.js):<br/><br/>
+                    
+<div class="code"><pre><code>function filterAllowedChars(str) {
+    var allowedChars = "_-";
+    var n = str.length;
+    var returnStr = "";
+    var i = 0;
+    var _char;
+    var z;
+    for (i; i < n; i++) {
+        _char = str.charAt(i).toLowerCase(); //convert to lowercase
+        if (_char == "\\") _char = "/";
+        z = getCharCode(_char);			
+        if ((z >= getCharCode("a") && z <= getCharCode("z")) || (z >= getCharCode("0") && z <= getCharCode("9")) || allowedChars.indexOf(_char) >= 0) {
+            //only accepted characters (this will remove the spaces as well)
+            returnStr += _char;
+        }
+    }
+    return returnStr;
+}</pre></code></div><br/><br/>
+                    
+                    Deeplink will still work, however you have to remember that other characters have been removed if you want to create a link to point to some picture.<br/><br/>
+                 
+                 <font style="color:red; font-weight:bold;">Keep this in mind when constructing deeplinks for 'data-address' attributtes!</font><br/><br/><br/><br/>
+                 
+                 
+                 
+                 <h2>NO REPETITIONS!</h2><br/>
+                 
+                 <font style="color:red; font-weight:bold;">You should not have any repetitions when naming your deeplinks!</font><br/><br/>
+                 
+                 I used 'should' because even in case you do, the code will probably still work, but since deeplinking 'search & find' goes from top to bottom , it will possibly target unwanted item.<br/><br/>
+                 
+                 On the <strong>first</strong> level:<br/><br/>
+                 
+                 <font style="color:green; font-weight:bold;">CORRECT:</font><br/><br/>
+                 
+<div class="code"><pre><code>&lt;ul id='playlist1' <font style="color:red; font-weight:bold;">data-address="playlist1"</font>&gt;
+    &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul"&gt;
+
+&lt;ul id='playlist2' <font style="color:red; font-weight:bold;">data-address="playlist2"</font>&gt;
+    &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-path="wd8ZWLDextA" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-path="xTZjaQanUzI" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-path="WXQcwcjsZYE" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single4" class='playlistNonSelected' data-type='youtube_single' data-path="pAAo_dVib2Q" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single5" class='playlistNonSelected' data-type='youtube_single' data-path="Ga3_ANRHoAI" &gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul id='playlist3' <font style="color:red; font-weight:bold;">data-address="playlist3"</font>&gt;
+    &lt;li data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-path="B6A13A6BB4D58A72" &gt;&lt;/li&gt; 
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+<font style="color:red; font-weight:bold;">WRONG:</font><br/><br/>
+                 
+<div class="code"><pre><code>&lt;ul id='playlist1' <font style="color:red; font-weight:bold;">data-address="playlist1"</font>&gt;
+    &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul id='playlist1' <font style="color:red; font-weight:bold;">data-address="playlist1"</font>&gt;
+    &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-path="wd8ZWLDextA" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-path="xTZjaQanUzI" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-path="WXQcwcjsZYE" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single4" class='playlistNonSelected' data-type='youtube_single' data-path="pAAo_dVib2Q" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single5" class='playlistNonSelected' data-type='youtube_single' data-path="Ga3_ANRHoAI" &gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul id='playlist3' <font style="color:red; font-weight:bold;">data-address="playlist3"</font>&gt;
+    &lt;li data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-path="B6A13A6BB4D58A72" &gt;&lt;/li&gt; 
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+As you can see 'playlist1' is repeating twice on the same level, so this is not good.<br/><br/><br/><br/>
+                 
+                 
+                 On the <strong>second</strong> level:<br/><br/>
+                 
+                 <font style="color:green; font-weight:bold;">CORRECT:</font><br/><br/>
+                 
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local1"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul"&gt;
+
+&lt;ul id='playlist2' data-address="playlist2"&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single1"</font> class='playlistNonSelected' data-type='youtube_single' data-path="wd8ZWLDextA"  &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single2"</font> class='playlistNonSelected' data-type='youtube_single' data-path="xTZjaQanUzI"  &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single3"</font> class='playlistNonSelected' data-type='youtube_single' data-path="WXQcwcjsZYE"  &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single4"</font> class='playlistNonSelected' data-type='youtube_single' data-path="pAAo_dVib2Q"  &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single5"</font> class='playlistNonSelected' data-type='youtube_single' data-path="Ga3_ANRHoAI"  &gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul id='playlist3' data-address="playlist3"&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_playlist"</font> class= "playlistNonSelected" data-type='youtube_playlist' data-path="B6A13A6BB4D58A72" &gt;&lt;/li&gt; 
+&lt;/ul&gt;</pre></code></div><br/><br/><br/><br/>
+
+<font style="color:red; font-weight:bold;">WRONG:</font><br/><br/>
+                 
+<div class="code"><pre><code>&lt;ul id='playlist2' data-address="playlist2"&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single1"</font> class='playlistNonSelected' data-type='youtube_single' data-path="wd8ZWLDextA" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single2"</font> class='playlistNonSelected' data-type='youtube_single' data-path="xTZjaQanUzI" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single1"</font> class='playlistNonSelected' data-type='youtube_single' data-path="WXQcwcjsZYE" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single4"</font> class='playlistNonSelected' data-type='youtube_single' data-path="pAAo_dVib2Q" &gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="youtube_single5"</font> class='playlistNonSelected' data-type='youtube_single' data-path="Ga3_ANRHoAI" &gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre></code></div><br/><br/>
+
+As you can see 'youtube_single1' is repeating twice on the same level, so this is not good.<br/><br/>
+
+
+<font style="color:green; font-weight:bold;">CORRECT:</font><br/><br/>
+                 
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1" &gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local1"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local2"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/02.mp4' data-ogvPath='media/1/main/02.ogv' data-webmPath='media/1/main/02.webm' data-imagePath='media/1/main/02.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/02.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local3"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/03.mp4' data-ogvPath='media/1/main/03.ogv' data-webmPath='media/1/main/03.webm' data-imagePath='media/1/main/03.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/03.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt
+&lt;/ul&gt;
+&lt;ul id='playlist2' data-address="playlist2" &gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local1"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local2"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/02.mp4' data-ogvPath='media/1/main/02.ogv' data-webmPath='media/1/main/02.webm' data-imagePath='media/1/main/02.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/02.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local3"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/03.mp4' data-ogvPath='media/1/main/03.ogv' data-webmPath='media/1/main/03.webm' data-imagePath='media/1/main/03.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/03.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt
+&lt;/ul&gt;
+</pre></code></div><br/><br/>
+
+This is correct, because even if the deeplinks repeat on the second level, their first level deeplink are different.<br/><br/><br/><br/>
+
+
+
+Technically, repeatance can happen on first and second level, but you should avoid that as well.<br/><br/>
+
+<div class="code"><pre><code>&lt;ul id='playlist1' <font style="color:red; font-weight:bold;">data-address="local1"</font> &gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local1"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local2"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/02.mp4' data-ogvPath='media/1/main/02.ogv' data-webmPath='media/1/main/02.webm' data-imagePath='media/1/main/02.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/02.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt
+    &lt;li <font style="color:red; font-weight:bold;">data-address="local3"</font> class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/03.mp4' data-ogvPath='media/1/main/03.ogv' data-webmPath='media/1/main/03.webm' data-imagePath='media/1/main/03.jpg'&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/03.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt
+&lt;/ul&gt;
+</pre></code></div><br/><br/>
+
+This example would still work, but you should avoid that.<br/><br/>
+                 
+                </p>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Using local video</h2><br/>
+                
+                1.
+                You need to have every video encoded in both <strong>mp4</strong> and <strong>ogv</strong> video format (or webm instead of ogv is webm is used in settings).<br/>
+                Thats because some browsers play 'mp4' while other 'ogv' video format.<br/><br/>
+                
+                2.
+                You also need preview image for autoplay off.<br/>
+                (even if you set autoplay on, for some mobiles (like mobile IOS) autoplay is disabled by default)<br/>
+                <a href='http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html' target='_blank'>http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html</a><br/><br/>
+                
+                3.
+                You need either thumbnails for local videos in the playlist or small videos if you are using <strong>'Live preview'</strong> feature.<br/><br/>
+                
+<div class="code"><pre><code>/*useLivePreview: true/false (if true, you need small videos for preview for local videos, otherwise thumbnails). Defaults to false on mobile. */
+useLivePreview:true, </pre></code></div><br/><br/> 
+                
+                Example of local playlist (3 items in the playlist):<br/><br/>
+                
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+ &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' data-description="Vestibulum id nibh sed turpis laoreet blandit."&gt;
+     &lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;
+     &lt;div class='playlistInfo'&gt;
+         &lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;
+     &lt;/div&gt;
+     &lt;/li&gt;
+ &lt;li data-address="local2" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/02.mp4' data-ogvPath='media/1/main/02.ogv' data-webmPath='media/1/main/02.webm' data-imagePath='media/1/main/02.jpg' data-description="Mauris blandit mollis eros."&gt;
+     &lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/02.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;
+     &lt;div class='playlistInfo'&gt;
+         &lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;
+     &lt;/div&gt;
+ &lt;/li&gt;
+ &lt;li data-address="local3" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/03.mp4' data-ogvPath='media/1/main/03.ogv' data-webmPath='media/1/main/03.webm' data-imagePath='media/1/main/03.jpg' data-description="Donec nec turpis nec sem volutpat pulvinar."&gt;
+     &lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/03.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;
+     &lt;div class='playlistInfo'&gt;
+         &lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Sed commodo sapien rutrum nulla. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;
+     &lt;/div&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+<strong>Attributes:</strong><br/><br/>
+
+<strong>data-address</strong>: used for juqery deeplinking (unique string within this playlist ul node!)<br/>
+<strong>data-type</strong>: local/youtube_single/youtube_playlist<br/><br/>
+
+ - main videos:<br/>
+<strong>data-mp4Path</strong>: path to the main mp4 file <br/>
+<strong>data-ogvPath</strong>: path to the main ogv file <br/>
+<strong>data-webmPath</strong>: path to the main webm file (optional) <br/>
+ - preview image:<br/>
+<strong>data-imagePath</strong>: path to the preview image for autoplay off<br/><br/>
+    
+<strong>data-description</strong>: optional description<br/><br/><br/><br/>
+
+
+<strong>'main'</strong> videos are big (large) videos for the player itself. <br/><br/> 
+
+There is also a playlist. So playlist can also have small videos, if <strong>'Live Preview'</strong> options is used:<br/><br/>
+
+<div class="code"><pre><code>/*useLivePreview: true/false (if true, you need small videos for preview for local videos, otherwise thumbnails). Defaults to false on mobile. */
+useLivePreview:true,</pre></code></div><br/><br/>
+
+and regardless of that, playlist always has thumbnails, at least if you use playlist itself (if its not hidden or you have removed it).<br/><br/>
+
+This is how it works for the playlist links:<br/><br/>
+
+In settings you have this:<br/><br/>
+
+<div class="code"><pre><code>/*previewPath: folder replacement path for the preview data */
+previewPath:'/preview/',
+/*wallPath: folder replacement path for the wall data */
+wallPath:'/wall/',</pre></code></div><br/><br/>
+
+These are the replacement paths, which will replace '/main/' in video paths to /preview/ in this case, or /wall/ in wall layout case.<br/><br/>
+
+So for example, here is video link for the player: <br/><br/>
+
+<div class="code"><pre><code>path equals: 'media/1/main/05.mp4'</pre></code></div><br/><br/>
+
+For the playlist my code will automatically replace these paths and this will become:<br/><br/>
+
+<div class="code"><pre><code>path equals: 'media/1/preview/05.mp4'</pre></code></div><br/><br/>
+
+for the wall layout:<br/><br/>
+
+<div class="code"><pre><code>path equals: 'media/1/wall/05.mp4'</pre></code></div><br/><br/>
+
+So if you look in folder structure in <strong>live_playlist/media</strong> (in demo examples provided) you will see subfolders named '1' and '2'. (they can be named anyhow).<br/><br/>
+
+And in every folder there is a folder named <strong>'main'</strong>, <strong>'preview'</strong> and <strong>'wall'</strong>.<br/><br/>
+
+The point is that you need to have this folder (directory) structure organization. <br/><br/>
+
+<font style="color:red;">Look in the section in help file about reading files from folder for detailed explanation.</font><br/><br/><br/><br/><br/><br/>
+
+
+
+
+
+
+
+If you use 'livePreview' feature, that plays video on playlist item rollover, you should encode short small quality videos, and maybe 10 seconds in length, so they load as faster as possible.<br/><br/>
+
+For youtube this is done automatically, so you dont need to do anything there.<br/><br/><br/><br/><br/><br/>
+            
+
+
+
+                
+                <font style="color:red; font-weight:bold;">If video plays offline, but not on your server in some browsers (Important step! section):</font><br/><br/>
+
+                Add these lines in your .htaccess file on your server and it will work for all browsers. <br/><br/>
+                
+                AddType video/ogg .ogv<br/>
+                AddType video/mp4 .mp4<br/>
+                AddType video/webm .webm<br/><br/>
+                
+                Check this articles which include sections on importance of MIME types on your server.<br/><br/>
+                
+                <a href='http://support.mozilla.org/en-US/questions/917726' target='_blank'>http://support.mozilla.org/en-US/questions/917726</a><br/>
+                <a href='http://www.html5rocks.com/en/tutorials/video/basics/' target='_blank'>http://www.html5rocks.com/en/tutorials/video/basics/</a><br/>
+                <a href='http://jplayer.org/latest/developer-guide/' target='_blank'>http://jplayer.org/latest/developer-guide/</a><br/><br/>
+                
+                Google for 'html5 video MIME types' for additional guidance if neccesarry.<br/><br/>
+                
+                
+                    
+                </p>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Using Youtube</h2><br/>
+                
+                  Youtube player uses <strong>iframe</strong> embed method:<br/>
+                <a href='https://developers.google.com/youtube/iframe_api_reference' target='_blank'>https://developers.google.com/youtube/iframe_api_reference</a><br/><br/>
+                Look into <strong>jquery.apYoutubePlayer.js</strong> if you want to change some settings.<br/><br/>
+                
+                <p>Youtube API:<br/>
+                <a href='https://developers.google.com/youtube/2.0/developers_guide_protocol_audience' target='_blank'>https://developers.google.com/youtube/2.0/developers_guide_protocol_audience</a><br/><br/><br/><br/>
+                 
+                 
+                For youtube you should test online because some videos may not play offline (either main videos or 'Live preview' feature), you might get a message like:<br/><br/>
+                
+                <img src='assets/yt_playback.jpg' width='600' height='401' alt=''/><br/><br/><br/><br/>
+                
+                
+                
+                <strong>Youtube logo:</strong>
+                
+                You cannot remove youtube logo in chromeless version of the player.<br/><br/>
+                
+                Although there is a setting for no logo (<strong>modestbranding</strong>):<br/><br/>
+                
+                <a href='https://developers.google.com/youtube/player_parameters#modestbranding' target='_blank'>https://developers.google.com/youtube/player_parameters#modestbranding</a><br/><br/>
+                
+                this parameter is mutually exlusive with <strong>showinfo</strong> parameter:<br/><br/>
+                
+                <a href='https://developers.google.com/youtube/player_parameters#showinfo' target='_blank'>https://developers.google.com/youtube/player_parameters#showinfo</a><br/><br/>
+                
+                so when info is removed (like in the chromeless version this player is using, logo cannot be removed).<br/><br/><br/><br/>
+                        
+               <h4>Usage and What is supported:</h4>
+               
+                <font style="color:red; font-weight:bold;">Youtube supports 'single video id' and 'playlist id'.</font><br/><br/><br/><br/> 
+                
+               Example of Youtube playlist:<br/><br/>
+                
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+    &lt;data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PLB6A13A6BB4D58A72"&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+Example of Youtube single videos (3 items in the playlist):<br/><br/>
+                
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+    &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jYYV0MEAhzU" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="wd8ZWLDextA" &gt;&lt;/li&gt;
+    &lt;li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="xTZjaQanUzI" &gt;&lt;/li&gt;
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+<strong>Attributes:</strong><br/><br/>
+
+<strong>data-address</strong>: used for juqery deeplinking (unique string within this playlist ul node!)<br/>
+<strong>data-type</strong>: youtube_single/youtube_playlist<br/>
+<strong>data-mp4Path</strong>: single video 'id' or playlist 'id' <br/><br/><br/>
+
+This is the '<strong>raw</strong>' example above for youtube, thumbnails and description can be created automatically using these settings in html:<br/><br/>
+
+<div class="code"><pre><code>/* YOUTUBE SETTINGS */
+/*autoMakePlaylistThumb: true/false (auto make thumb for each video) */
+autoMakePlaylistThumb:true,
+/*autoMakePlaylistInfo: true/false (auto make title and description for each video) */
+autoMakePlaylistInfo:true</pre></code></div><br/><br/>
+
+The same nodes as the local video playlist example will be created in this case (in red):<br/><br/>
+
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+ &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' <font style="color:red;">data-description="Vestibulum id nibh sed turpis laoreet blandit.</font>"&gt;
+     <font style="color:red;">&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;
+     &lt;div class='playlistInfo'&gt;
+         &lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;
+     &lt;/div&gt;</font>
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+Code in jquery.videoGallery.js:<br/><br/>
+
+<div class="code"><pre><code>//thumb
+if(autoMakePlaylistThumb){
+    div = $('&lt;div/&gt;').addClass('playlistThumb').appendTo(li);
+    thumb = div;//div
+    thumbArr.push(thumb);
+    
+    //load youtube thumbs
+    //console.log(_item.thumbnail);
+    thumbImg=$(new Image()).css('opacity',0).attr('data-id', playlistLength-1).load(function() {
+        //console.log($(this).width(), $(this).height());
+        $(this).addClass('thumb_yt').stop().animate({'opacity': 1},  {duration: 500, easing: "easeOutSine"});
+    }).error(function(e) {
+        //console.log("thumb error " + e);
+    }).attr({
+      src: _item.thumbnail
+    }).appendTo(thumb);
+    thumbImgArr.push(thumbImg);//img
+}else{
+    //search for thumbs, if added manually
+    thumb = li.find("div[class='playlistThumb']");//div
+    if(thumb){
+        thumbArr.push(thumb);
+        thumbImg = thumb.find("img[class='thumb']");
+        if(thumbImg){
+            thumbImg.stop().animate({'opacity': 1},  {duration: 500, easing: "easeOutSine"});
+            thumbImgArr.push(thumbImg);//img
+        }
+    }
+}
+
+//title, description
+if(autoMakePlaylistInfo){
+    p=$('&lt;p&gt;&lt;span class="playlistTitle"&gt;'+_item.title+'&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;'+_item.description+'&lt;/span&gt;&lt;/p&gt;');
+    div = $('&lt;div/&gt;').html(p).addClass('playlistInfo').appendTo(li);
+    div.dotdotdot();
+        
+    li.attr('data-description', _item.description);
+    descriptionArr[playlistLength-1] = _item.description;
+}else{
+    //search for description (big description over video), if added manually
+    if(li.attr('data-description') != undefined && !isEmpty(li.attr('data-description'))){
+        descriptionArr[playlistLength-1] = li.attr('data-description');
+    }
+}</pre></code></div><br/><br/><br/><br/><br/>
+
+
+
+<strong>You could manually add thumbnails for youtube or just description by altering these settings</strong>:<br/><br/>
+
+<div class="code"><pre><code>/* YOUTUBE SETTINGS */
+/*autoMakePlaylistThumb: true/false (auto make thumb for each video) */
+autoMakePlaylistThumb:false,
+/*autoMakePlaylistInfo: true/false (auto make title and description for each video) */
+autoMakePlaylistInfo:false</pre></code></div><br/><br/>
+
+And then making these nodes in red manually for youtube like you would do for local videos.<br/><br/>
+
+You could do this:<br/><br/>
+
+<div class="code"><pre><code>&lt;ul id='playlist1' data-address="playlist1"&gt;
+ &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jYYV0MEAhzU" <font style="color:red;">data-description="Vestibulum id nibh sed turpis laoreet blandit.</font>"&gt;
+     <font style="color:red;">&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;
+     &lt;div class='playlistInfo'&gt;
+         &lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;
+     &lt;/div&gt;</font>
+&lt;/ul&gt;</pre></code></div><br/><br/>
+
+                    
+                </p>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>XML Playlist</h2><br/>
+                <p>
+             
+             <strong>XML file needs to have proper format</strong>. Refer to the xml file(s) provided with the download package in player directory <strong>live_playlist/xml</strong> to see what required tags and what optional tags xml can have.<br/><br/>
+            
+<div class="code"><pre><code><strong>'list'</strong> layout includes following XML files: 
+local.xml, mixed.xml, youtube_single.xml, youtube_playlist.xml
+<strong>'wall'</strong> layout includes following XML files: 
+wall1.xml, wall2.xml</pre></code></div><br/><br/>
+            
+            <font style="color:red;">Its important to note that every layout type (list/wall) requires different xml file attributes.</font><br/><br/>
+            
+            So if you are looking to use <strong>index_buttons.html</strong> in our example, which is a <strong>list</strong> layout, you need to supply it with proper XML file.<br/><br/>
+            
+            The basic rule is that xml playlist markup is exactly the same as html playlist markup and this was made intentionally.<br/><br/>
+            
+            So for example, if you look into <strong>index_buttons.html</strong> file, playlist &lt;ul id='playlist1' data-address="playlist1"&gt; is exactly the same as this playlist from <strong>local.xml</strong> file in xml folder.<br/><br/>
+
+            	</p>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Reading files from folder</h2><br/>
+                <p>
+                
+                 <font style="color:red; font-weight:bold;">First and foremost, whenever you are reading files from folder, php is used and this needs to be tested either online or on local server like xampp not offline!</font><br/><br/>
+                
+                To add a <strong>folder</strong> of videos, enter a path to the folder which needs to be either absolute or relative to the player directory <strong>live_playlist</strong> .<br/><br/>
+              
+             <font style="color:red;">Keep in mind you cannot use cross domain absolute path!</font><br/><br/>
+             
+             This is a security restriction and this is simply not possible.<br/><br/>
+             
+             To see this in action for the player demo examples included open index_buttons.html file and set in settings file (jquery.vg.settings_buttons.js) activePlaylist to 'playlist8' and videos from directory named: 'media/1' and 'media/2' will be loaded.<br/><br/>
+             
+             <font style="color:red; font-weight:bold">Directory setup - Very Important!</font><br/><br/>
+             
+             How folder (or directory) structure needs to be organized?<br/><br/>
+             
+             If you look into this <strong>media</strong> folder, you will see folder named '1', so our folder path in this example was as follows: 'media/1', and the requested folder from where videos need to be read automatically is folder named '1'.<br/><br/>
+             
+             Inside the '1' folder you have 3 folders: <strong>main</strong>, <strong>preview</strong> and <strong>wall</strong>.<br/><br/>
+             
+             Whenever you want to automatically load videos from folder you <font style="color:red;">NEED</font> to have this structure (<strong>main</strong>, <strong>preview</strong> and <strong>wall</strong> folders inside the requested folder you want to read).<br/><br/>
+             
+             Basically, my jquery code will look for <strong>main</strong> folder inside the requested folder to be read ('media/1' in our example) and it will assume <strong>preview</strong> and <strong>wall</strong> folders exist inside as well when creating paths for the videos.<br/><br/>
+             
+             This means that having some other nested folders inside wont achive anything, so if you want to read multiple folders, you need to pass this information every time, so for example, we want to read these 2 folders:<br/><br/>
+             
+<div class="code"><pre><code>'media/1'
+'media/2'</pre></code></div><br/><br/> 
+             
+             we need to pass this info twice, for every folder again.<br/><br/>
+             
+             Like in playlist8 example supplied:<br/><br/>
+             
+<div class="code"><pre><code>&lt;!-- folder playlist --&gt;
+&lt;ul id='playlist8' data-address="playlist8"&gt;
+     &lt;li data-address="folder1_" class= "playlistNonSelected" data-type='folder' data-mp4Path='media/1/'/&gt;
+     &lt;li data-address="folder2_" class= "playlistNonSelected" data-type='folder' data-mp4Path='media/2/'/&gt;
+&lt;/ul&gt;</pre></code></div><br/><br/> 
+             
+             This would be much more simple if there is no need for multiple video formats for playing html5 video (mp4 and ogv/webm) since then we would not need 2 files for every video named the same<br/>(eg: my_video.mp4, my_video.ogv) and the other reeason why this may seem complicated is because this player has videos for main video and for the playlist, and it also has the thumbnails for the playlist.<br/><br/>
+             
+             So the folder organization is as it is, just look at the demo provided and videos inside 'media/1' folder:<br/><br/>
+             
+<div class="code"><pre><code>main folder-> 01.jpg (preview image for main/player video)
+      01.mp4 (mp4 video for main/player video)
+      01.ogv (ogv video for main/player video, or 01.webm equivalent)
+
+preview folder->01.jpg (thumbnail image for preview/playlist video)
+        01.mp4 (mp4 video for preview/playlist video, if 'Live preview' is used)
+        01.ogv (ogv video for preview/playlist video, if 'Live preview' is used, or 01.webm equivalent)
+
+wall folder-> 01.jpg (thumbnail image for wall layout video)
+      01.mp4 (mp4 video for wall layout video)
+      01.ogv (ogv video for wall layout video, or 01.webm equivalent)</pre></code></div><br/><br/> 
+                           
+             '01' is just the name of the video, this can be anything of course ('your_video.mp4' for example), just make sure you dont have spaces in your file names, just like any other file naming convention on the web (no spaces!).<br/><br/>
+                           
+             For naming I recommened using underscores (_), my jquery code will process video names and remove this underscores when creating video titles from folder so title for 'your_video.mp4' will become 'your video'.<br/><br/> 
+             
+             <font style="color:red;">This also shows other very important rule in file naming</font>, which is that every video file (and their counter video formats mp4/ogv) need to be named absolutely the same!<br/><br/> 
+             
+             My code will search for files with 'mp4' extension in the <strong>'main'</strong> folder, so when it finds 'your_video.mp4' it will assume that video file with name your_video.ogv (or if we are using webm your_video.webm) exist in the folder.<br/><br/> 
+
+<font style="color:red;">Both video pairs 'mp4' and 'ogv/webm' need to be named exactly the same!</font><br/><br/> 
+
+<div class="code"><pre><code>your_video.mp4
+your_video.ogv</pre></code></div><br/><br/> 
+
+Failing even in just one letter will cause an error because my script cant guess that some 'ogv' video file, for example, is the equivalent pair of some mp4 video file, because they have different name. Could just be a different video.<br/><br/>     
+             
+             <strong>wall</strong> folder is only required for the wall layout, but for other layouts <strong>main</strong> and <strong>preview</strong> folders are required and all the related videos inside all of them!<br/><br/>
+             
+             <strong>main</strong> folder contains 'main' (big) videos for the player itself and preview image for autoplay off (needed for mobile),<br/><br/>
+             
+             <strong>preview</strong> folder contains 'preview' videos for the playlist and thumbnails.<br/><br/>
+             
+             'preview' videos for the playlist are only necessary if 'Live Preview' feature is used for the player (automatically play videos on playlist mouse rollover).<br/><br/>
+             
+             ('useLivePreview' option is available in every player settings page, in our example index_buttons.html, file is called: jquery.vg.settings_buttons.js in js folder.)<br/><br/>
+             
+             If you use 'Live Preview' feature, you should encode short small quality videos, maybe 10 seconds in length, so they load as faster as possible, preferably (but not necessary) without sound so their size is even smaller.<br/><br/>
+
+             For youtube this is done automatically, so you dont need to do anything there.<br/><br/>
+             
+             In the end, keep in mind that reading videos automatically from a folder isnt perfect, because there is no other video information like video titles and description (titles in this case is generated from the video name without extension), and possible other features used in, for example, wall layout like link and hook for every video. <br/><br/>
+             
+             There is no way to pass this info so probably you are better off with xml or database playlist where you can write all the data you need alongside your videos.<br/><br/><br/>
+             
+                
+            	</p>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Wall layout</h2><br/>
+                <p>
+                
+                <strong>index_wall.html</strong> and <strong>index_wall2.html</strong> are a wall layout examples, they are completely different that the rest.<br/><br/>
+                
+                Basically thumbnails get created like in any other layout, but after that the css positioning and organitation of these thumbnails is up to you.<br/><br/>
+                
+                So no scrollbar or any other type of movement is added to the thumbanils in this layout, this is up to you, if you need one.<br/><br/>
+                
+                In the provided demos, both come in some kind of 'grid' look as well, but this can be anything esle.<br/><br/>
+                
+                <strong>Some differences from other layouts:</strong><br/><br/>
+                
+                Paths to main video files and preview image file are not needed for local video, since there is no main/big videos in this layout. (Popup comes from Prettyphoto.)<br/><br/>
+                
+                There is only a thumbnail and preview videos (if 'Live preview' feature is used)<br/><br/>
+                
+                Additional playlist attributtes (that dont exist in other layouts!):<br/><br/>
+                
+                <a href='http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/' target='_blank'>Link to Prettyphoto</a><br/><br/>
+                
+                <strong>data-hook:</strong> Prettyphoto hook (REMOVE for simple link below!)<br/>
+                <strong>data-link:</strong> Prettyphoto link (or if no Prettyphoto hook attribute above, then this becomes simple link like http://www.google.com)<br/>
+                <strong>data-target:</strong> if simple link is used, specify target attributte (_blank - open in new window, _parent - open in same window)<br/><br/>
+                
+                Remove both data-hook and data-link for no action on playlist click.<br/><br/>
+                
+                Example of wall layout playlist items:<br/><br/>
+                
+                Local videos:<br/><br/>
+                
+<div class="code"><pre><code>&lt;li data-hook='prettyPhoto[gallery1]' data-link='http://vimeo.com/14665315' class="playlistNonSelected" data-type='local' data-preview-mp4Path='media/1/wall/01.mp4' data-preview-ogvPath='media/1/wall/01.ogv' data-preview-webmPath='media/1/wall/01.webm' data-description="Sed at diam eu nisl feugiat tempor."&gt;
+    &lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/01.jpg' width='300' height='169' alt=''/&gt;&lt;/div&gt;
+    &lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;A vimeo video from envato&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li data-link='http://www.flashtuning.net' class="playlistNonSelected" data-type='local' data-preview-mp4Path='media/1/wall/02.mp4' data-preview-ogvPath='media/1/wall/02.ogv' data-preview-webmPath='media/1/wall/02.webm' data-description="Nunc auctor gravida odio."&gt;
+    &lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/02.jpg' width='300' height='169' alt=''/&gt;&lt;/div&gt;
+    &lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Some youtube video&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="playlistNonSelected" data-type='local' data-preview-mp4Path='media/1/wall/03.mp4' data-preview-ogvPath='media/1/wall/03.ogv' data-preview-webmPath='media/1/wall/03.webm' data-description="Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit."&gt;
+    &lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/thumb/03.jpg' width='300' height='169' alt=''/&gt;&lt;/div&gt;
+    &lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;A simple link&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/li&gt;</pre></code></div><br/><br/>
+                                     
+                As you can see, there is data-description and title (playlistTitle) but this will be used only if you link to Prettyphoto.<br/> 
+                in such case playlistTitle will become Prettyphoto title, data-description will become Prettyphoto description,<br/>
+                otherwise its not needed.<br/><br/>
+                
+                First one links to Prettyphoto (has both data-hook and data-link attribute),<br/>
+                Second one is a simple link (has only data-link attribute),<br/>
+                Third one is an empty action (no data-hook and data-link attributes).<br/><br/>
+                
+                Youtube single videos:<br/><br/>
+                
+<div class="code"><pre><code>&lt;li data-hook='prettyPhoto[gallery2]' data-link='http://vimeo.com/14665315' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="u8WQeJ2Ajes" &gt;&lt;/li&gt;
+&lt;li data-link='http://www.flashtuning.net' class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" &gt;&lt;/li&gt;
+&lt;li class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" &gt;&lt;/li&gt;</pre></code></div><br/><br/>
+                
+                For youtube single videos the same rules as above for local videos:<br/><br/>
+                
+                <strong>data-hook:</strong> Prettyphoto hook (REMOVE for simple link below!)<br/>
+                <strong>data-link:</strong> Prettyphoto link (or if no Prettyphoto hook attribute above, then this becomes simple link like http://www.google.com)<br/>
+                <strong>data-target:</strong> if simple link is used, specify target attributte (_blank - open in new window, _parent - open in same window)<br/><br/>
+                
+                You can also load youtube playlist into a wall:<br/><br/>
+
+<div class="code"><pre><code>&lt;ul id='playlist3' data-address="playlist3"&gt;
+     &lt;li class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PLB6A13A6BB4D58A72"&gt;&lt;/li&gt; 
+ &lt;/ul&gt;
+ 
+ &lt;ul id='playlist4' data-address="playlist4"&gt;
+     &lt;li data-hook='prettyPhoto[gallery3]' class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PLB6A13A6BB4D58A72"&gt;&lt;/li&gt; 
+ &lt;/ul&gt;
+ 
+ &lt;ul id='playlist5' data-address="playlist5"&gt;
+     &lt;li data-link='http://www.flashtuning.net/portfolio' data-target='_blank' class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PLB6A13A6BB4D58A72"&gt;&lt;/li&gt; 
+ &lt;/ul&gt;</pre></code></div><br/><br/>
+                 
+                But in this case:<br/><br/>
+                
+                First one is an empty action on all videos in playlist (no data-hook and data-link attributes),<br/>
+                Second one links to Prettyphoto, creates the same links to youtube videos in data-mp4Path (has only data-hook attribute),
+                (it creates data-link attribute to every youtube video that exist in that playlist)<br/>
+                Third one is a simple link, but all playlist items will be linked to the same link (has only data-link attribute).<br/><br/>
+ 
+				In wall demo examples <strong>index_wall.html</strong> and <strong>index_wall2.html</strong>, alert is used on videos number 4 and 7, and this comes from <strong>jquery.vg.func.js file</strong>, in a callback: (currently commented out)<br/><br/>
+				
+<div class="code"><pre><code>function itemTriggered(num){
+	//returns number of item clicked (counting starts from zero)
+	//console.log('itemTriggered: ', num);
+	if(num==3 || num ==6){
+		var r = parseInt(num,10)+1;
+		//alert used for wall layout
+		<font style="color:red;">//alert('This is a callback. You have clicked on video number: '+ r + '. You can run your own actions now!');</font>
+	}
+}</pre></code></div><br/><br/> <br/><br/> 
+ 
+                   
+                </p>
+                
+            </div>
+           
+           <div class="page">
+                
+               <h2>Using playlists</h2><br/>
+                <p>
+
+					Available playlist types are located in every html file, and here is the quick overview:<br/><br/> 
+                    
+                    <font style="color:red; font-weight:bold;">Rules:</font><br/><br/> 
+                    
+                    Supported are local tracks, youtube single videos, youtube playlists (these 3 types can be mixed together in a single playlist - check <strong>mixed</strong> playlist example below)<br/><br/> 
+                    
+                    Playlist can also come in a form of an <strong>xml</strong> file or loaded automatically from <strong>folder</strong>. You <font style="color:red; font-weight:bold;">CANNOT</font> place xml playlist inside of this mixed playlist example, this will not work. So for example, this is <font style="color:red; font-weight:bold;">WRONG</font> (doesnt work):<br/><br/> 
+                    
+<div class="code"><pre>&lt;!-- <font style="color:red; font-weight:bold;">some playlist</font> --&gt;
+&lt;ul id='playlist2' data-address="playlist2"&gt;
+     &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="NY-4XAQR_uk" &gt;&lt;/li&gt;
+     <font style="color:red; font-weight:bold;">&lt;li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/youtube_playlist.xml'/&gt;</font>
+&lt;/ul&gt; </pre></code></div><br/><br/>                
+                    
+                    But inside your xml file (playlist) you can mix above 3 mentioned playlist types: local tracks, youtube single videos, youtube playlist, which again is equal to mixed playlist example, it just coming from xml.<br/><br/> 
+                    
+                    The same goes for folder playlist, you <font style="color:red; font-weight:bold;">CANNOT</font> place xml playlist inside of this mixed playlist example, this will not work. <br/><br/> 
+                    
+                    So for example, this is <font style="color:red; font-weight:bold;">WRONG</font> (doesnt work):<br/><br/> 
+                    
+<div class="code"><pre>&lt;!-- <font style="color:red; font-weight:bold;">some playlist</font> --&gt;
+&lt;ul id='playlist2' data-address="playlist2"&gt;
+     &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="NY-4XAQR_uk" &gt;&lt;/li&gt;
+     <font style="color:red; font-weight:bold;">&lt;li data-address="folder1_" class= "playlistNonSelected" data-type='folder' data-mp4Path='media/1/'/&gt;</font>
+&lt;/ul&gt;</pre></code></div><br/><br/>  <br/><br/>         
+                    
+                  
+        Also, dont forget that there are differences in playlist look between <strong>list</strong> layout and <strong>wall</strong> layout but this was covered in previous help chapters.<br/><br/>           
+        Shown below are only playlists for <strong>list</strong> layout! <br/><br/>
+                    
+        Playlist examples:<br/><br/>               
+                    
+<div class="code"><pre><code>&lt;!-- <font style="color:red; font-weight:bold;">mixed playlist</font> --&gt;
+&lt;ul id='playlist0' data-address="playlist0"&gt;
+     &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Etiam fermentum luctus arcu. Curabitur vitae velit eget nisl ornare sollicitudin. Etiam vitae erat. Integer sapien. Vivamus non massa non est consequat pulvinar. Suspendisse accumsan interdum odio. Suspendisse egestas elit in metus. Nam faucibus. Aenean dictum. Nunc libero. Fusce tellus justo, sagittis sollicitudin, ultricies et, lacinia quis, diam. Vestibulum id nibh sed turpis laoreet blandit. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris consequat. Quisque leo erat, egestas quis, pellentesque eu, suscipit sit amet, sem. Proin dapibus enim id nibh. Fusce diam. Duis sagittis erat eget est. Nam pulvinar egestas elit. Quisque turpis nisl, ornare eu, ultrices eu, sodales sit amet, neque. Quisque id dui non mauris congue venenatis. Praesent cursus, ipsum sed hendrerit sollicitudin, lacus orci gravida orci, nec convallis tellus ligula vulputate risus. Phasellus arcu. Sed commodo sapien rutrum nulla. Donec dictum lectus vel purus. Cras massa nisi, ultrices nec, bibendum eu, mollis in, nibh. Fusce tempus, elit non egestas mattis, ligula neque tincidunt nisl, in aliquam neque dui ut diam. Pellentesque aliquam fermentum leo. Proin placerat sollicitudin nisi. Sed at diam eu nisl feugiat tempor. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local2" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/02.mp4' data-ogvPath='media/1/main/02.ogv' data-webmPath='media/1/main/02.webm' data-imagePath='media/1/main/02.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/02.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     
+     &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" &gt;&lt;/li&gt;
+
+     &lt;li data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PL18D7B402EBCEF582"&gt;&lt;/li&gt; 
+&lt;/ul&gt;
+
+&lt;!-- <font style="color:red; font-weight:bold;">local tracks</font> --&gt;
+&lt;ul id='playlist1' data-address="playlist1"&gt;
+     &lt;li data-address="local1" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Etiam fermentum luctus arcu. Curabitur vitae velit eget nisl ornare sollicitudin. Etiam vitae erat. Integer sapien. Vivamus non massa non est consequat pulvinar. Suspendisse accumsan interdum odio. Suspendisse egestas elit in metus. Nam faucibus. Aenean dictum. Nunc libero. Fusce tellus justo, sagittis sollicitudin, ultricies et, lacinia quis, diam. Vestibulum id nibh sed turpis laoreet blandit. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris consequat. Quisque leo erat, egestas quis, pellentesque eu, suscipit sit amet, sem. Proin dapibus enim id nibh. Fusce diam. Duis sagittis erat eget est. Nam pulvinar egestas elit. Quisque turpis nisl, ornare eu, ultrices eu, sodales sit amet, neque. Quisque id dui non mauris congue venenatis. Praesent cursus, ipsum sed hendrerit sollicitudin, lacus orci gravida orci, nec convallis tellus ligula vulputate risus. Phasellus arcu. Sed commodo sapien rutrum nulla. Donec dictum lectus vel purus. Cras massa nisi, ultrices nec, bibendum eu, mollis in, nibh. Fusce tempus, elit non egestas mattis, ligula neque tincidunt nisl, in aliquam neque dui ut diam. Pellentesque aliquam fermentum leo. Proin placerat sollicitudin nisi. Sed at diam eu nisl feugiat tempor. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local2" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/02.mp4' data-ogvPath='media/1/main/02.ogv' data-webmPath='media/1/main/02.webm' data-imagePath='media/1/main/02.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/02.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Vestibulum accumsan enim nec ipsum. Nunc cursus sapien. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local3" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/03.mp4' data-ogvPath='media/1/main/03.ogv' data-webmPath='media/1/main/03.webm' data-imagePath='media/1/main/03.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Mauris ullamcorper velit at metus. Aenean elementum malesuada neque. Vivamus urna. Duis auctor. Donec nec turpis nec sem volutpat pulvinar. Proin id dui sed mi dictum dictum. Aliquam erat volutpat. Nunc eget urna ut velit volutpat rhoncus. In blandit. Sed fermentum pharetra massa. Fusce imperdiet. Praesent consectetur, mauris vitae ultricies pretium, dui ante aliquam nibh, et molestie felis eros eu quam. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/03.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Sed commodo sapien rutrum nulla. Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local4" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/04.mp4' data-ogvPath='media/1/main/04.ogv' data-webmPath='media/1/main/04.webm' data-imagePath='media/1/main/04.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Suspendisse ullamcorper tristique eros. Donec eros tellus, sagittis ac, mattis ac, aliquam quis, lacus. Sed risus risus, tristique id, fringilla suscipit, convallis eget, quam. Ut vel urna. Nullam vitae est. Sed ornare nisl eu ipsum. Maecenas sed sem. Duis lacus diam, mollis et, ornare et, bibendum quis, metus. Duis viverra. Donec mi purus, iaculis id, placerat congue, hendrerit nec, leo. Curabitur scelerisque nisl et mi aliquam rhoncus. Aliquam mollis tincidunt nulla. Vivamus at diam eu diam bibendum laoreet. In hac habitasse platea dictumst. Nunc vulputate est vitae lectus. Fusce quis massa eu sapien luctus vestibulum. Mauris pretium massa id quam. Proin hendrerit, arcu sed consequat egestas, diam nunc pretium urna, mollis commodo nisl erat eget neque. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/04.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Curabitur porta elementum arcu commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local5" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/05.mp4' data-ogvPath='media/1/main/05.ogv' data-webmPath='media/1/main/05.webm' data-imagePath='media/1/main/05.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/05.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Integer tellus justo, commodo in, tempor eu, urna. Nunc vulputate est vitae lectus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local6" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/06.mp4' data-ogvPath='media/1/main/06.ogv' data-webmPath='media/1/main/06.webm' data-imagePath='media/1/main/06.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/06.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Donec vel sapien ultrices lorem laoreet viverra. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local7" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/07.mp4' data-ogvPath='media/1/main/07.ogv' data-webmPath='media/1/main/07.webm' data-imagePath='media/1/main/07.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Suspendisse ullamcorper tristique eros. Donec eros tellus, sagittis ac, mattis ac, aliquam quis, lacus. Sed risus risus, tristique id, fringilla suscipit, convallis eget, quam. Ut vel urna. Nullam vitae est. Sed ornare nisl eu ipsum. Maecenas sed sem. Duis lacus diam, mollis et, ornare et, bibendum quis, metus. Duis viverra. Donec mi purus, iaculis id, placerat congue, hendrerit nec, leo. Curabitur scelerisque nisl et mi aliquam rhoncus. Aliquam mollis tincidunt nulla. Vivamus at diam eu diam bibendum laoreet. In hac habitasse platea dictumst. Nunc vulputate est vitae lectus. Fusce quis massa eu sapien luctus vestibulum. Mauris pretium massa id quam. Proin hendrerit, arcu sed consequat egestas, diam nunc pretium urna, mollis commodo nisl erat eget neque. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/07.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Maecenas eu erat condimentum neque molestie tincidunt. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local8" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/01.mp4' data-ogvPath='media/1/main/01.ogv' data-webmPath='media/1/main/01.webm' data-imagePath='media/1/main/01.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ullamcorper nec, sollicitudin a, blandit ut, metus. Ut quis velit. Maecenas magna dui, laoreet ac, malesuada quis, blandit vitae, leo. Mauris blandit mollis eros. Maecenas porttitor varius odio. Nunc auctor gravida odio. Sed ac ante viverra dolor suscipit gravida. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/01.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+     &lt;li data-address="local9" class="playlistNonSelected" data-type='local' data-mp4Path='media/1/main/02.mp4' data-ogvPath='media/1/main/02.ogv' data-webmPath='media/1/main/02.webm' data-imagePath='media/1/main/02.jpg' data-description="&lt;span class='infoTitle'&gt;Nulla mauris justo&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Aenean egestas. Donec vel sapien ultrices lorem laoreet viverra. Curabitur molestie gravida nisi. Vivamus elementum scelerisque lectus. Etiam interdum, nisi vel adipiscing gravida, leo tortor placerat ipsum, a eleifend velit tortor id ligula. Etiam quis leo a velit mollis vestibulum. Morbi consequat, odio eget feugiat mollis, enim erat dignissim ipsum, eget vehicula sapien metus non massa. Aliquam aliquet sagittis ligula. Sed adipiscing sodales ipsum. Mauris orci ligula, commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum, gravida vitae, tristique sed, porttitor ac, ipsum. Maecenas elit lectus, elementum id, fermentum eget, accumsan ac, quam. Duis lacinia urna ac nisi. Cras bibendum. In hac habitasse platea dictumst. Morbi iaculis volutpat dui. Pellentesque non leo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href='http://www.flashtuning.net' target='_blank'&gt;Link&lt;/a&gt;"&gt;&lt;div class="playlistThumb"&gt;&lt;img class='thumb' src='media/1/preview/02.jpg' width='120' height='68' alt=''/&gt;&lt;/div&gt;&lt;div class='playlistInfo'&gt;&lt;p&gt;&lt;span class='playlistTitle'&gt;Video title goes here&lt;/span&gt;&lt;br&gt;&lt;span class="playlistContent"&gt;Commodo vitae, commodo in, tempor eu, urna. Etiam justo ipsum maecenas nec tellus.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ 
+&lt;!-- <font style="color:red; font-weight:bold;">single youtube tracks</font> --&gt;
+&lt;ul id='playlist2' data-address="playlist2"&gt;
+     &lt;li data-address="youtube_single1" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="F08U2yCxbYg" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single2" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="jXSxzMTrKq0" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single3" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="NY-4XAQR_uk" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single4" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="Ga3_ANRHoAI" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single5" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="TmNEG8IFd_Y" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single6" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="u8WQeJ2Ajes" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single7" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="1jzApuEW0U4" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single8" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="P3FKCwAL904" &gt;&lt;/li&gt;
+     &lt;li data-address="youtube_single9" class='playlistNonSelected' data-type='youtube_single' data-mp4Path="ytuM8-09R-I" &gt;&lt;/li&gt;
+&lt;/ul&gt;
+ 
+&lt;!-- <font style="color:red; font-weight:bold;">youtube playlist</font> --&gt;
+&lt;ul id='playlist3' data-address="playlist3"&gt;
+     &lt;li data-address="youtube_playlist" class= "playlistNonSelected" data-type='youtube_playlist' data-mp4Path="PL18D7B402EBCEF582"&gt;&lt;/li&gt; 
+&lt;/ul&gt;
+ 
+&lt;!-- <font style="color:red; font-weight:bold;">local tracks xml</font> --&gt;
+&lt;ul id='playlist4' data-address="playlist4"&gt;
+     &lt;li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/local.xml'/&gt;
+&lt;/ul&gt;
+ 
+&lt;!-- <font style="color:red; font-weight:bold;">single youtube tracks xml</font> --&gt;
+&lt;ul id='playlist5' data-address="playlist5"&gt;
+     &lt;li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/youtube_single.xml'/&gt;
+&lt;/ul&gt;
+ 
+&lt;!-- <font style="color:red; font-weight:bold;">youtube playlist xml</font> --&gt;
+&lt;ul id='playlist6' data-address="playlist6"&gt;
+     &lt;li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/youtube_playlist.xml'/&gt;
+&lt;/ul&gt;
+ 
+&lt;!-- <font style="color:red; font-weight:bold;">mixed playlist xml</font> --&gt;
+&lt;ul id='playlist7' data-address="playlist7"&gt;
+     &lt;li class= "playlistNonSelected" data-type='xml' data-mp4Path='xml/mixed.xml'/&gt;
+&lt;/ul&gt;
+ 
+&lt;!-- <font style="color:red; font-weight:bold;">folder playlist</font> --&gt;
+&lt;ul id='playlist8' data-address="playlist8"&gt;
+     &lt;li data-address="folder1_" class= "playlistNonSelected" data-type='folder' data-mp4Path='media/1/'/&gt;
+     &lt;li data-address="folder2_" class= "playlistNonSelected" data-type='folder' data-mp4Path='media/2/'/&gt;
+&lt;/ul&gt;</pre></code></div><br/><br/> <br/><br/>
+
+                </p>
+                
+            </div>
+           
+            <div class="page">
+            
+               <h2>Possible video issues</h2><br/>
+                
+                <p>
+                
+                Aside from html5 audio (and video) not being quite ready yet to replace flash (and therefore having lots of bugs and restrictions, especially on mobiles), there are couple of things worth mentioning:<br/><br/>
+                
+                
+                
+                1.<br/>
+                Playing MULTIPLE video instances at the same time causes bug in IOS!<br/><br/>
+                
+                <a href='http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/' target='_blank'>http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/</a><br/>
+                IN OTHER WORDS IT WONT WORK!<br/><br/>
+                
+                (and the million other bugs/restriction with audio and video on ios...)
+                <br/><br/><br/><br/><br/>
+                    
+                    
+                    
+                2. <br/>
+                You cannot control the volume on IOS with javascript, you have to use the physical button on the actual phone!<br/><br/>
+                    
+                This might be true for some other mobiles out there, but for IOS, its definitely true.<br/><br/>
+                
+                <a href='http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/' target='_blank'>http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/</a>
+                <br/><br/><br/><br/><br/>
+                
+                
+                3. <br/>
+                AutoPlay is automatically se to false on mobile (in my code).<br/><br/>
+                
+                This means when you set autoPlay to true, and it will be true on desktop, but on mobiles it wil be false.<br/><br/>
+                
+                <font style="color:red; font-weight:bold;">This is important!</font><br/><br/>
+                
+                AutoPlay definitely doesnt work on ios, and probably some other phones out there, trying to set otherwise (on some other phones) it could break the playback all together.<br/><br/>
+                    
+                This might be true for some other mobiles out there, but for IOS, its definitelly true.<br/><br/>
+                
+                <a href='http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html' target='_blank'>http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html</a><br/><br/>
+                
+                <a href='http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/' target='_blank'>http://blog.millermedeiros.com/unsolved-html5-video-issues-on-ios/</a><br/><br/>
+                
+                My jquery code detects mobile and automatically sets autoplay off, but this is only for the first time, once you click play on first video, every video afterwards plays automatically.<br/><br/>
+Autoplay may work on some other mobiles but its safer to use autoplay off. Trying to force autoplay may potentially broke video on mobile since html5 video is still in development.<br/><br/>
+
+                
+                                
+                    
+                </p>
+                
+            </div>
+                        
+            <div class="page">
+            
+               <h2>Callbacks (methods called from jquery)</h2><br/>
+                
+                <p>
+                	There are currently following callbacks available (in <strong>jquery.vg.func.js</strong> file): 
+                    <br/><br/>
+                   
+<div class="code"><pre><code>function videoGallerySetupDone(){
+    //console.log('videoGallerySetupDone');
+}
+
+function videoGalleryPlaylistEnd(){
+    //console.log('videoGalleryPlaylistEnd');
+}
+
+function itemTriggered(num){
+    //returns number of item clicked (counting starts from zero)
+    //jQuery('#tracer').html('itemTriggered: '+ num);
+    //console.log('itemTriggered: ', num);
+}</code><pre></div>
+                   
+                    <br/><br/>
+                    After <font style="color:red; font-weight:bold;">videoGallerySetupDone</font> gets called, public functions on the component can be called.
+                    
+                    
+                    
+                </p>
+                
+            </div>
+
+            <div class="page">
+            
+                <h2>Public API</h2><br/>
+                
+                <p>
+                	There are some public methods available which you can use. These methods are available after <font style="color:red; font-weight:bold;">videoGallerySetupDone</font> gets called:
+                    <br/><br/>
+                    
+<div class="code"><pre><code>function videoGallerySetupDone(){
+    //console.log('videoGallerySetupDone');
+}</code></pre></div><br/><br/>
+                    
+                    Public API included (located in jquery.vg.func.js file):
+                	<br/><br/>
+                    
+<div class="code"><pre><code>/* API CALLS */
+
+function api_togglePlayback(){
+	/* play/stop active media */
+	if(player1)player1.togglePlayback(); 
+}
+function api_nextMedia(){
+	/* play next media */
+	if(player1)player1.nextMedia(); 
+}
+function api_previousMedia(){
+	/* play previous media */
+	if(player1)player1.previousMedia(); 
+}
+function api_setVolume(val){
+	/* set volume (0-1) */
+	if(player1)player1.setVolume(val); 
+}
+function api_togglePlaylist(){
+	/* toggle playlist */
+	if(player1)player1.togglePlaylist(); 
+}
+function api_toggleDescription(){
+	/* toggle description */
+	if(player1)player1.toggleDescription(); 
+}
+function api_destroyMedia(){
+	/* destroy media */
+	if(player1)player1.destroyMedia(); 
+}
+function api_loadMedia(id){
+	/* load media/playlist:
+	if useDeeplink: 
+		pass deeplink url as string (single or two level).
+		load playlist example (single level): player1.loadMedia('playlist0'), 
+		load media example (two level): player1.loadMedia('playlist1/youtube_single1').
+	no Deeplink: 
+		for media pass number, counting starts from 0,
+		for playlist pass element 'id' attribute. 
+		load playlist example: player1.loadMedia('playlist1'), 
+		load media example: player1.loadMedia(3) 
+		
+		Examples:
+		- no Deeplink examples:  
+		player1.loadMedia(0);//load media 1
+		player1.loadMedia(1);//load media 2
+		player1.loadMedia(2);//load media 3
+		player1.loadMedia(3);//load media 4
+		player1.loadMedia(4);//load media 5
+		
+		- Deeplink examples: 
+		player1.loadMedia('playlist1/local2');//load deeplink (two levels)
+		player1.loadMedia('playlist1/local4');
+		player1.loadMedia('playlist2/youtube_single1');
+		player1.loadMedia('playlist2/youtube_single5');
+		player1.loadMedia('playlist3/youtube_single6');
+		player1.loadMedia('playlist3/youtube_playlist1');
+		
+		player1.loadMedia('playlist1'); //load deeplink (single level)
+		player1.loadMedia('playlist2'); 
+		player1.loadMedia('playlist3'); 
+		*/
+	if(player1)player1.loadMedia(id); 
+}
+function api_cleanPreviewVideo(){
+	/* if useLivePreview = true, call this to clean active preview item if needed */
+	if(player1)player1.cleanPreviewVideo(); 
+}</pre></code></div><br/><br/>
+                    
+                    If you dont use this, you can delete this whole part from the html file.<br/><br/><br/>
+                    
+                    Also, in the css:
+                    <br/><br/><div class="code"><pre><code>/* public functions */	
+#publicFunctions{
+	position: absolute;
+	padding: 10px 25px 20px 20px;
+	background:#555;
+	left:50px;
+	top:50px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color:#fff;
+	list-style:circle;
+	
+	-moz-box-shadow: 2px 2px 5px #222;
+	-webkit-box-shadow: 2px 2px 5px #222;
+	box-shadow: 2px 2px 5px #222;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222');
+	
+	display:none;
+}
+
+#publicFunctions li a{
+	color:#fff;
+}
+
+#publicFunctions li a:hover, #publicFunctions li .current{
+	text-decoration: underline;
+}
+</pre></code></div>                   
+                    
+                    <br/><br/>
+                    You can delete / modify that as well if you dont use them, this is just for display purposes.<br/><br/><br/>
+                    
+                    To see it in action open <strong>index_buttons.html</strong> and change in its related css file (<strong>videoGallery_buttons.css</strong>) #publicFunctions element to display:block and then you will see the quick api demo appear. <br/><br/>
+                    
+                    This demo of course is closely connected to the playlists listed as examples in <strong>index_buttons.html</strong> page so if you have been changing anything to this file directly make sure you revert back to original unmodified.
+                    
+                    Note that API can be used with every player demo instance and above api demo isnt anything special, just a set of javascript function calls to the API itself. And you can call these functions from wherever you want as long its within <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope' target='_blank'>scope.</a><br/><br/>
+                    
+                </p>
+                
+            </div>
+            
+            <div class="page">
+            
+               <h2>Finding errors in code</h2><br/>
+                
+               <p>
+               
+               <font style="color:red;">Its a very good practise to have browser developer console opened when you are setting up your web page!</font><br/><br/>
+               
+               This will ensure that any possible errors you get in code, will be displayed in this console and you will able to see them.<br/><br/>
+               
+               Probably the best one out there (and free) is <strong>firebug</strong> for firefox:<br/><br/>
+
+               <a href='http://getfirebug.com/' target='_blank'>http://getfirebug.com/</a><br/><br/>
+               
+               Chrome and Safari have good developer console as well implemented directly into browser.<br/><br/>
+               
+              <font style="color:red; font-weight:bold;">If your product doesnt work or doesnt work as expected, open browser console and reload the web page to ensure there are no errors or other messages displayed!</font>
+                
+               </p> 
+                    
+            </div>
+        
+        </div>
+                        
+
+        <div id="productTitle"><a href='http://www.flashtuning.net' target='_blank' >HTML5 Video Gallery with Live Playlist</a></div>
+    
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+
+<div style="text-align:left"> 
+  <button onclick="playPause()">Play/Pause</button> 
+
+
+  <br><br>
+  <video id="video1" width="420">
+    <source src="video/movie1.mp4" type="video/mp4" controls="controls">
+    
+    
+    Your browser does not support HTML5 video.
+  </video>
+  
+  </div>
+<div style="text-align:center">
+  <button onclick="playPause()">Play/Pause</button> 
+
+
+  <br><br>
+  <video id="video2" width="420">
+    <source src="video/movie2.mp4" type="video/mp4" controls="controls">
+    <div style="text-align:center">
+  <button onclick="playPause()">Play/Pause</button> 
+</div>
+    
+    Your browser does not support HTML5 video.
+  </video>
+</div>  
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+var myVideo1 = document.getElementById("video2");
+function playPause() { 
+    if (myVideo.paused) 
+        {
+		myVideo.play();
+		makeBig();
+		}
+	else 
+        {myVideo.pause(); 
+		makeSmall();
+		}
+	} 
+function playPause2() { 
+    if (myVideo1.paused) 
+        {
+		myVideo1.play();
+		makeBig();
+		}
+	else 
+        {myVideo1.pause(); 
+		makeSmall();
+		}
+	} 
+
+
+function makeBig() { 
+    myVideo.width = 1000; 
+} 
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 420; 
+} 
+</script> 
+
+<p>Video courtesy of <a href="http://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.</p>
+</body> 
+</html>

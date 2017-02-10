@@ -1,0 +1,11 @@
+
+/* playlist items */	
+.componentWrapper .componentPlaylist .playlistNonSelected,
+.componentWrapper .componentPlaylist .playlistSelected{
+	vertical-align: bottom;/*ie7 fix; spacing between li items*/
+}
+
+.componentWrapper #flashMain,
+.componentWrapper #flashPreview{
+	display:block;
+}	
